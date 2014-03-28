@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head profile="http://www.w3.org/2005/10/profile">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Kalina Kalina">
+
+    <title>Goalkeeper</title>
+  </head>
+
+  <body>  
+    <script type="text/x-handlebars">
+        {{outlet}}
+        {{#link-to 'users' tagName="h2"}}Users{{/link-to}}
+    </script>
+
+    <script type="text/x-handlebars" id="users">
+        {{#each user in users}}
+            <h2>{{#link-to 'user' user}}{{user.first_name}} {{user.last_name}}{{/link-to}}</h2>
+        {{/each}}
+        {{outlet}}
+    </script>
+
+    <script type="text/x-handlebars" id="user">
+        <h1>{{first_name}} {{last_name}}</h1>
+    </script>
+
+    <!-- dependencies --> 
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/handlebars/handlebars.js"></script>
+    <script src="bower_components/ember/ember.js"></script>
+    <script src="bower_components/ember-data/ember-data.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+
+    <!-- App js files -->
+    <script src="public/js/app.js"></script>
+    <script src="public/js/router.js"></script>
+    <script src="public/js/store.js"></script>
+
+    <!-- Models -->
+    <script src="public/js/models/user.js"></script>
+
+    <!-- Routes -->
+    <script src="public/js/routes/userRoute.js"></script>
+    <script src="public/js/routes/usersRoute.js"></script>
+
+    <!-- Controllers -->
+    <script src="public/js/controllers/userController.js"></script>
+    <script src="public/js/controllers/usersController.js"></script>
+
+    <!-- Views -->
+
+    <!-- Components -->
+  </body>
+</html>
