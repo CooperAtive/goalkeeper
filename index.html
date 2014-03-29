@@ -13,14 +13,30 @@
   <body>  
     <script type="text/x-handlebars">
         {{outlet}}
-        {{#link-to 'users' tagName="h2"}}Users{{/link-to}}
+    </script>
+
+    <script type="text/x-handlebars" id="login">
+        <label>Email</label>
+        {{input value=email type="email"}}
+        <label>Password</label>
+        {{input value=password type="password"}}
+        <button class="btn btn-primary" {{action "login"}}> Login </button>
+    </script>
+
+    <script type="text/x-handlebars" id="index">
+        {{#link-to 'login' tagName="h2"}}Login{{/link-to}}
     </script>
 
     <script type="text/x-handlebars" id="users">
-        {{#each user in users}}
-            <h2>{{#link-to 'user' user}}{{user.first_name}} {{user.last_name}}{{/link-to}}</h2>
+        {{#each}}
+            <h2>{{#link-to 'user' this}}{{first_name}} {{last_name}}{{/link-to}}</h2>
         {{/each}}
+
         {{outlet}}
+    </script>
+
+    <script type="text/x-handlebars" id="users.index">
+
     </script>
 
     <script type="text/x-handlebars" id="user">
@@ -46,10 +62,12 @@
     <!-- Routes -->
     <script src="public/js/routes/userRoute.js"></script>
     <script src="public/js/routes/usersRoute.js"></script>
+    <script src="public/js/routes/loginRoute.js"></script>
 
     <!-- Controllers -->
     <script src="public/js/controllers/userController.js"></script>
     <script src="public/js/controllers/usersController.js"></script>
+    <script src="public/js/controllers/loginController.js"></script>
 
     <!-- Views -->
 
