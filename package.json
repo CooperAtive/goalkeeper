@@ -1,8 +1,8 @@
 {
   "name": "goalkeeper",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "GoalKeeper App",
-  "main": "index.js",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },
@@ -13,7 +13,9 @@
     "type": "git",
     "url": "http://github.com/cooperative/goalkeeper"
   },
-  "author": "Cooper Trowbridge",
+  "author": [ "Cooper Trowbridge",
+              "Matt Merkes",
+              "Kalina Wu"],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cooperative/goalkeeper/issues"

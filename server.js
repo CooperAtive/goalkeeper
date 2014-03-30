@@ -37,7 +37,11 @@ app.configure( function() {
 
 var users = require('./routes/users');
 
-app.get('')
+app.get('/api/v1/users', users.collection);
+app.get('/api/v1/users/:id', users.findById);
+app.post('/api/v1/users', users.createUser);
+app.put('/api/v1/users/:id', users.updateUser);
+app.delete('/api/v1/users/:id', users.deleteUser);
 
 var port = 3000;
 app.listen( port, function() {
