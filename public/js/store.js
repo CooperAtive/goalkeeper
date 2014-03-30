@@ -1,10 +1,9 @@
-App.Store = DS.Store.extend({
-   adapter: DS.FixtureAdapter
+DS.RESTAdapter.reopen({
+    namespace: 'api/v1'
 });
-/*
-App.ApplicationAdapter = DS.RESTAdapter;
 
+App.Store = DS.Store.extend({
+});
 App.ApplicationSerializer = DS.RESTSerializer.extend({
   primaryKey: "_id"
 });
-*/

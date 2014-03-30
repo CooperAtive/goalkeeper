@@ -1,8 +1,8 @@
 'use strict';
 
 var User = require('../models/User'),
-Users = require('../collections/Users'),
-Promise = require('bluebird');
+    Users = require('../collections/Users'),
+    Promise = require('bluebird');
 
 exports.createUser = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
@@ -22,7 +22,8 @@ exports.createUser = function(req, res) {
     .save()
     .exec(function(error, user) {
         if(error) {
-            errorResponse();
+            res.writeHead(500);
+            res.send({'error': error});
         } else {
             res.send(user);
         }
@@ -36,7 +37,8 @@ exports.findById = function(req, res) {
     .fetch()
     .exec(function(error, user) {
         if(error) {
-            errorResponse();
+            res.writeHead(500);
+            res.send({'error': error});
         } else {
             res.send(user);
         }
@@ -48,7 +50,8 @@ exports.updateUser = function(req, res) {
     .save(req.body, {patch: true})
     .exec(function(error) {
         if(error) {
-            errorResponse();
+            res.writeHead(500);
+            res.send({'error': error});
         } else {
             res.send({'message': "Success"});
         }
@@ -60,7 +63,8 @@ exports.deleteUser = function(req, res) {
     .destroy()
     .exec(function(error) {
         if(error) {
-            errorResponse();
+            res.writeHead(500);
+            res.send({'error': error});
         } else {
             res.send({'message': "Success"});
         }
@@ -69,11 +73,11 @@ exports.deleteUser = function(req, res) {
 
 exports.collection = function(req, res) {
     res.setHeader("Content-Type", "text/json");
-
     new Users().fetch()
     .exec(function(error, users) {
         if(error) {
-            errorResponse();
+            res.writeHead(500);
+            res.send({'error': error});
         } else {
             res.send(users);
         }

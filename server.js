@@ -3,18 +3,24 @@ var application_root = __dirname,
     express = require( 'express' ),
     path = require( 'path' );
     Bookshelf = require('bookshelf');
-
 // connect to postgres db
 Bookshelf.PG = Bookshelf.initialize({
     client: 'pg',
     connection: {
-        host: 'localhost',
+        host: '127.0.1.1',
+        port: 5432,
         user: 'goaltender',
+        password: 'goal',
         database: 'goaltender_dev',
         charset: 'utf8'
     }
 });
-
+console.log(Bookshelf.PG.knex.client.getConnection());
+Bookshelf.PG.knex.client.getRawConnection().then(function (connection) {
+      console.log('Yay, we have a connection!');
+}).catch(function (err) {
+      console.log('Ooops, something went wrong!');
+});
 // Create server
 var app = express();
 
@@ -36,8 +42,7 @@ app.configure( function() {
 });
 
 var users = require('./routes/users');
-
-app.get('')
+app.get('/api/v1/users', users.collection);
 
 var port = 3000;
 app.listen( port, function() {
