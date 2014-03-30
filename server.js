@@ -2,20 +2,17 @@
 var application_root = __dirname,
     express = require( 'express' ),
     path = require( 'path' );
-// Postgres simple
-    // ????????????? use client pool?
-// can require native libpq bindings by adding .natve option
-var pg = require('pg');
-var conString = "postgres://postgres:3000@localhost/postgres";
-var client = new pg.Client(conString);
-client.connect(function(err) {
-    if(err) {
-        return console.error('could not connect to postgres', err);
-    }
-    //print out time/show successful DB connection
-    console.log(result.rows[0].theTime);
+    Bookshelf = require('bookshelf');
 
-    client.end();
+// connect to postgres db
+Bookshelf.PG = Bookshelf.initialize({
+    client: 'pg',
+    connection: {
+        host: 'localhost',
+        user: 'goaltender',
+        database: 'goaltender_dev',
+        charset: 'utf8'
+    }
 });
 
 // Create server
@@ -37,6 +34,10 @@ app.configure( function() {
     //show all errors in development
     app.use( express.errorHandler( { dumpExceptions: true, showStack: true } ) );
 });
+
+var users = require('./routes/users');
+
+app.get('')
 
 var port = 3000;
 app.listen( port, function() {
