@@ -26,5 +26,12 @@
     "grunt-casper": "^0.3.5",
     "supertest": "^0.10.0",
     "superagent": "^0.17.0"
+  },
+  "dependencies": {
+    "express": "~3.5.1",
+    "path": "~0.4.9",
+    "pg": "~2.11.1",
+    "knex": "~0.5.11",
+    "bookshelf": "~0.6.8"
   }
 }
