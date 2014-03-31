@@ -4,7 +4,7 @@ App.User = DS.Model.extend({
   email: DS.attr(),
   password: DS.attr()
 });
-
+/*
 App.User.FIXTURES = [
   { id: 1,
     first_name: "Matt",
@@ -25,3 +25,4 @@ App.User.FIXTURES = [
     password: 'password'
   }
 ];
+*/

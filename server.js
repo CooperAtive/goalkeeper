@@ -1,18 +1,26 @@
 // Module dependecies
 var application_root = __dirname,
-    express = require( 'express' ),
-    path = require( 'path' );
-    Bookshelf = require('bookshelf');
+express = require( 'express' ),
+path = require( 'path' );
+Bookshelf = require('bookshelf');
 
 // connect to postgres db
 Bookshelf.PG = Bookshelf.initialize({
     client: 'pg',
     connection: {
-        host: 'localhost',
-        user: 'goaltender',
-        database: 'goaltender_dev',
+        host: 'ec2-184-72-231-67.compute-1.amazonaws.com',
+        database: 'd367t35dadpedg',
+        user: 'yqwtqizjzjbvmv',
+        password: 'YR2Bj7KI8c63w51cQQ99e77-uy',
+        port: 5432,
+        ssl: 'require',
         charset: 'utf8'
     }
+});
+Bookshelf.PG.knex.client.getConnection().then(function (connection) {
+      console.log('Yay, we have a connection!');
+}).catch(function (err) {
+      console.log('Ooops, something went wrong!');
 });
 
 // Create server
