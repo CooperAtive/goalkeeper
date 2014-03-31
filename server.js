@@ -1,26 +1,28 @@
 // Module dependecies
 var application_root = __dirname,
-    express = require( 'express' ),
-    path = require( 'path' );
-    Bookshelf = require('bookshelf');
+express = require( 'express' ),
+path = require( 'path' );
+Bookshelf = require('bookshelf');
+
 // connect to postgres db
 Bookshelf.PG = Bookshelf.initialize({
     client: 'pg',
     connection: {
-        host: '127.0.1.1',
+        host: 'ec2-184-72-231-67.compute-1.amazonaws.com',
+        database: 'd367t35dadpedg',
+        user: 'yqwtqizjzjbvmv',
+        password: 'YR2Bj7KI8c63w51cQQ99e77-uy',
         port: 5432,
-        user: 'goaltender',
-        password: 'goal',
-        database: 'goaltender_dev',
+        ssl: 'require',
         charset: 'utf8'
     }
 });
-console.log(Bookshelf.PG.knex.client.getConnection());
-Bookshelf.PG.knex.client.getRawConnection().then(function (connection) {
+Bookshelf.PG.knex.client.getConnection().then(function (connection) {
       console.log('Yay, we have a connection!');
 }).catch(function (err) {
       console.log('Ooops, something went wrong!');
 });
+
 // Create server
 var app = express();
 
@@ -42,7 +44,12 @@ app.configure( function() {
 });
 
 var users = require('./routes/users');
+
 app.get('/api/v1/users', users.collection);
+app.get('/api/v1/users/:id', users.findById);
+app.post('/api/v1/users', users.createUser);
+app.put('/api/v1/users/:id', users.updateUser);
+app.delete('/api/v1/users/:id', users.deleteUser);
 
 var port = 3000;
 app.listen( port, function() {
