@@ -25,7 +25,7 @@ exports.createUser = function(req, res) {
             res.writeHead(500);
             res.send({'error': error});
         } else {
-            res.send(user);
+            res.send({ 'user': user });
         }
     });
 };
@@ -40,7 +40,8 @@ exports.findById = function(req, res) {
             res.writeHead(500);
             res.send({'error': error});
         } else {
-            res.send(user);
+            var u = user.attributes;
+            res.send({ 'user': u });
         }
     });
 };
@@ -72,14 +73,20 @@ exports.deleteUser = function(req, res) {
 };
 
 exports.collection = function(req, res) {
-    res.setHeader("Content-Type", "text/json");
+    res.setHeader('Content-Type', 'application/json');
+
     new Users().fetch()
     .exec(function(error, users) {
         if(error) {
             res.writeHead(500);
             res.send({'error': error});
         } else {
-            res.send(users);
+            var set = users.models.map( function( user ) {
+                var u = user.attributes;
+                return u;
+            });
+            
+            res.send({ 'users': set });
         }
     });
 };
