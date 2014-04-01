@@ -23,6 +23,20 @@
         <button class="btn btn-primary" {{action "login"}}> Login </button>
     </script>
 
+    <script type="text/x-handlebars" id="signup">
+        <label>First Name</label>
+        {{input value=first_name}}
+        <label>Last Name</label>
+        {{input value=last_name}}
+        <label>Email</label>
+        {{input value=email type="email"}}
+        <label>Password</label>
+        {{input value=password type="password"}}
+        <label>Password (confirm)</label>
+        {{input value=password2 type="password"}}
+        <button class="btn btn-primary" {{action "signup"}}> Sign Up </button>
+    </script>
+
     <script type="text/x-handlebars" id="index">
         {{#link-to 'login' tagName="h2"}}Login{{/link-to}}
     </script>
@@ -63,11 +77,13 @@
     <script src="public/js/routes/userRoute.js"></script>
     <script src="public/js/routes/usersRoute.js"></script>
     <script src="public/js/routes/loginRoute.js"></script>
+    <script src="public/js/routes/signupRoute.js"></script>
 
     <!-- Controllers -->
     <script src="public/js/controllers/userController.js"></script>
     <script src="public/js/controllers/usersController.js"></script>
     <script src="public/js/controllers/loginController.js"></script>
+    <script src="public/js/controllers/signupController.js"></script>
 
     <!-- Views -->
 
