@@ -14,10 +14,11 @@ App.Router.map(function() {
   });
   this.resource('game_plan');
   this.resource('targets', function() {
-    this.resource('target', { path: '/:target_id'}, function() {
+    this.resource('runTarget', { path: '/:runTarget_id'}, function() {
       // names -> 
       this.route('edit');
     });
+    this.route('create');
   });
   /*
     QUEUE
