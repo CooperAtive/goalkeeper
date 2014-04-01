@@ -85,7 +85,7 @@ exports.collection = function(req, res) {
                 var u = user.attributes;
                 return u;
             });
-            
+
             res.send({ 'users': set });
         }
     });

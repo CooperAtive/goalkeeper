@@ -1,0 +1,98 @@
+'use strict';
+
+var RunTarget = require('../models/RunTarget'),
+    RunTargets = require('../collections/RunTargets'),
+    Promise = require('bluebird');
+
+exports.createRunTarget = function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    var body = req.body;
+    var user_id = body.user_id;
+    var total_miles = body.total_miles;
+    var start_date = body.start_date;
+    var end_date = body.end_date;
+    var frequency = body.frequency;
+    //var user = get user who creates this target
+    //do I need to send this here or can every one automatically be
+    //attached to a user?
+    RunTarget.forge({
+        user_id: user_id,
+        total_miles: total_miles,
+        start_date: start_date,
+        end_date: end_date,
+        frequency: frequency
+        //user: see above
+    })
+    .save()
+    .exec(function(error, target) {
+        if(error) {
+            res.writeHead(500);
+            res.send({'error': error});
+        } else {
+            res.send({ 'user': target });
+        }
+    });
+};
+
+exports.findById = function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    new RunTarget({'id': req.params.id})
+    .fetch()
+    .exec(function(error, target) {
+        if(error) {
+            res.writeHead(500);
+            res.send({'error': error});
+        } else {
+            var t = target.attributes;
+            res.send({ 'runTarget': t });
+        }
+    });
+};
+
+exports.updateRunTarget = function(req, res) {
+    new RunTarget({id: req.params.id})
+    .save(req.body, {patch: true})
+    .exec(function(error) {
+        if(error) {
+            res.writeHead(500);
+            res.send({'error': error});
+        } else {
+            res.send({'message': 'Success'});
+        }
+    });
+};
+
+exports.deleteRunTarget = function(req, res) {
+    new RunTarget({id: req.params.id})
+    .destroy()
+    .exec(function(error) {
+        if(error) {
+            res.writeHead(500);
+            res.send({'error': error});
+        } else {
+            res.send({'message': 'Success'});
+        }
+    });
+};
+
+exports.collection = function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    new RunTargets().fetch()
+    .exec(function(error, runTargets) {
+        if(error) {
+            res.writeHead(500);
+            res.send({'error': error});
+        } else {
+            var set = runTargets.models.map( function( runTarget ) {
+                var u = runTarget.attributes;
+                return u;
+            });
+
+            res.send({ 'runTargets': set });
+        }
+    });
+};
+
