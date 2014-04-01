@@ -14,7 +14,6 @@ exports.createRunTarget = function(req, res) {
     var end_date = body.end_date;
     var frequency = body.frequency;
     var name = body.name;
-    console.log(body);
 
     // Remove this once users are hooked up to create targets
     if(body.user_id) {
@@ -37,8 +36,7 @@ exports.createRunTarget = function(req, res) {
     .save()
     .exec(function(error, target) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            res.send(500, {'error': error});
         } else {
             res.send({ 'runTarget': target });
         }
@@ -97,8 +95,8 @@ exports.collection = function(req, res) {
             res.send({'error': error});
         } else {
             var set = runTargets.models.map( function( runTarget ) {
-                var u = runTarget.attributes;
-                return u;
+                var t = runTarget.attributes;
+                return t;
             });
 
             res.send({ 'runTargets': set });
