@@ -44,6 +44,8 @@
     "pg": "~2.11.1",
     "knex": "~0.5.11",
     "bookshelf": "~0.6.8",
-    "bluebird": "~1.2.0"
+    "bluebird": "~1.2.0",
+    "underscore": "~1.6.0",
+    "lodash": "~2.4.1"
   }
 }

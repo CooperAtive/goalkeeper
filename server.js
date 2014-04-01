@@ -61,6 +61,7 @@ app.delete('/api/v1/runTargets/:id', runTargets.deleteRunTarget);
 //Running Event Routes
 var runEvents = require('./routes/runEvents');
 app.get('/api/v1/runEvents', runEvents.collection);
+app.get('/api/v1/runEvents/recent', runEvents.tenMostRecent);
 app.get('/api/v1/runEvents/:id', runEvents.findById);
 app.post('/api/v1/runEvents', runEvents.createRunEvent);
 app.put('/api/v1/runEvents/:id', runEvents.updateRunEvent);
