@@ -29,6 +29,9 @@ Bookshelf.PG.knex.client.getConnection().then(function (connection) {
 var app = express();
 
 app.configure( function() {
+    // Log routing
+    app.use(express.logger('dev'));
+    
     //parses request body and populates request.body
     app.use( express.bodyParser() );
 
@@ -44,6 +47,7 @@ app.configure( function() {
     //show all errors in development
     app.use( express.errorHandler( { dumpExceptions: true, showStack: true } ) );
 });
+
 //User Routes
 var users = require('./routes/users');
 app.get('/api/v1/users', users.collection);
@@ -51,14 +55,18 @@ app.get('/api/v1/users/:id', users.findById);
 app.post('/api/v1/users', users.createUser);
 app.put('/api/v1/users/:id', users.updateUser);
 app.delete('/api/v1/users/:id', users.deleteUser);
+
 //Running Target Routes
 var runTargets = require('./routes/runTargets');
 app.get('/api/v1/runTargets', runTargets.collection);
+app.get('/api/v1/targetLites', runTargets.targetLites);
 app.get('/api/v1/runTargets/:id', runTargets.findById);
 app.post('/api/v1/runTargets', runTargets.createRunTarget);
 app.put('/api/v1/runTargets/:id', runTargets.updateRunTarget);
 app.delete('/api/v1/runTargets/:id', runTargets.deleteRunTarget);
+
 //Running Event Routes
+/*
 var runEvents = require('./routes/runEvents');
 app.get('/api/v1/runEvents', runEvents.collection);
 app.get('/api/v1/runEvents/recent', runEvents.tenMostRecent);
@@ -66,6 +74,7 @@ app.get('/api/v1/runEvents/:id', runEvents.findById);
 app.post('/api/v1/runEvents', runEvents.createRunEvent);
 app.put('/api/v1/runEvents/:id', runEvents.updateRunEvent);
 app.delete('/api/v1/runEvents/:id', runEvents.deleteRunEvent);
+*/
 
 var session = require('./routes/session');
 app.post('/login', session.login);
