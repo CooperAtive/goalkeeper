@@ -3,6 +3,8 @@
 var application_root = __dirname,
     express = require( 'express' ),
     path = require( 'path' ),
+    https = require('https'),
+    fs = require('fs'),
     Bookshelf = require('bookshelf');
 
 // connect to postgres db
@@ -18,6 +20,7 @@ Bookshelf.PG = Bookshelf.initialize({
         charset: 'utf8'
     }
 });
+console.log(process.env.GK_PG_HOST);
 
 Bookshelf.PG.knex.client.getConnection().then(function (connection) {
     console.log('Yay, we have a connection!' + connection);
@@ -31,7 +34,7 @@ var app = express();
 app.configure( function() {
     // Log routing
     app.use(express.logger('dev'));
-    
+
     //parses request body and populates request.body
     app.use( express.bodyParser() );
 
@@ -67,19 +70,30 @@ app.delete('/api/v1/runTargets/:id', runTargets.deleteRunTarget);
 
 //Running Event Routes
 /*
-var runEvents = require('./routes/runEvents');
-app.get('/api/v1/runEvents', runEvents.collection);
-app.get('/api/v1/runEvents/recent', runEvents.tenMostRecent);
-app.get('/api/v1/runEvents/:id', runEvents.findById);
-app.post('/api/v1/runEvents', runEvents.createRunEvent);
-app.put('/api/v1/runEvents/:id', runEvents.updateRunEvent);
-app.delete('/api/v1/runEvents/:id', runEvents.deleteRunEvent);
-*/
+   var runEvents = require('./routes/runEvents');
+   app.get('/api/v1/runEvents', runEvents.collection);
+   app.get('/api/v1/runEvents/recent', runEvents.tenMostRecent);
+   app.get('/api/v1/runEvents/:id', runEvents.findById);
+   app.post('/api/v1/runEvents', runEvents.createRunEvent);
+   app.put('/api/v1/runEvents/:id', runEvents.updateRunEvent);
+   app.delete('/api/v1/runEvents/:id', runEvents.deleteRunEvent);
+   */
 
 var session = require('./routes/session');
 app.post('/login', session.login);
 
-var port = 3000;
-app.listen( port, function() {
-    console.log( 'Express server listening on port %d in the %s mode', port, app.settings.env );
-});
+var startServer = function(app, port) {
+    var httpsOptions = {
+        key: fs.readFileSync('./secure/key.pem'),
+        cert: fs.readFileSync('./secure/cert.pem')
+    };
+    return https.createServer(httpsOptions, app).listen(port);
+};
+
+startServer(app, 3000);
+/*
+   var port = 3000;
+   app.listen( port, function() {
+   console.log( 'Express server listening on port %d in the %s mode', port, app.settings.env );
+   });
+   */
