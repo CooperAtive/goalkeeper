@@ -17,6 +17,7 @@ Bookshelf.PG = Bookshelf.initialize({
         charset: 'utf8'
     }
 });
+
 Bookshelf.PG.knex.client.getConnection().then(function (connection) {
       console.log('Yay, we have a connection!');
 }).catch(function (err) {
@@ -50,6 +51,9 @@ app.get('/api/v1/users/:id', users.findById);
 app.post('/api/v1/users', users.createUser);
 app.put('/api/v1/users/:id', users.updateUser);
 app.delete('/api/v1/users/:id', users.deleteUser);
+
+var session = require('./routes/session');
+app.post('/login', session.login);
 
 var port = 3000;
 app.listen( port, function() {
