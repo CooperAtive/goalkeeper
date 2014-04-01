@@ -9,6 +9,7 @@ exports.createRunTarget = function(req, res) {
 
     var body = req.body;
     var user_id = body.user_id;
+    var name = body.name;
     var total_miles = body.total_miles;
     var start_date = body.start_date;
     var end_date = body.end_date;
@@ -18,6 +19,7 @@ exports.createRunTarget = function(req, res) {
     //attached to a user?
     RunTarget.forge({
         user_id: user_id,
+        name: name,
         total_miles: total_miles,
         start_date: start_date,
         end_date: end_date,
@@ -30,7 +32,7 @@ exports.createRunTarget = function(req, res) {
             res.writeHead(500);
             res.send({'error': error});
         } else {
-            res.send({ 'user': target });
+            res.send({ 'target': target });
         }
     });
 };
@@ -87,8 +89,8 @@ exports.collection = function(req, res) {
             res.send({'error': error});
         } else {
             var set = runTargets.models.map( function( runTarget ) {
-                var u = runTarget.attributes;
-                return u;
+                var t = runTarget.attributes;
+                return t;
             });
 
             res.send({ 'runTargets': set });
