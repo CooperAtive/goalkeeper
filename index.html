@@ -49,7 +49,44 @@
         {{outlet}}
     </script>
 
-    <script type="text/x-handlebars" id="users.index">
+    <script type="text/x-handlebars" id="home">
+        <h1>Welcome to Goalkeeper!</h1>
+        <ul>
+        {{#each}}
+            {{#link-to 'runTarget' this.id tagName="li"}}{{name}}{{/link-to}}
+        {{/each}}
+        </ul>
+        {{#link-to 'targets.create'}}Create New Target{{/link-to}}
+    </script>
+
+    <script type="text/x-handlebars" id="runTarget">
+        <h2>{{name}}</h2>
+        <p>{{total_miles}} miles</p>
+    </script>
+
+    <script type="text/x-handlebars" id="targets/create">
+        <h2>Create a new Running Target!</h2>
+
+        <label>Name</label>
+        {{input value=name}}
+        <br>
+        <label>Total Miles</label>
+        {{input type="number" value=total_miles}}
+        <br>
+        <label>Start Date</label>
+        {{input type="date" value=start_date}}
+        <br>
+        <label>End Date</label>
+        {{input type="date" value=end_date}}
+        <br>
+        <label>Frequency (per week)</label>
+        {{input type="number" value=frequency}}
+        <br>
+
+        <button class="btn btn-primary" {{action "createTarget"}}> Create New Target </button>
+    </script>
+
+    <script type="text/x-handlebars" id="users/index">
 
     </script>
 
@@ -72,18 +109,24 @@
 
     <!-- Models -->
     <script src="public/js/models/user.js"></script>
+    <script src="public/js/models/targetlite.js"></script>
+    <script src="public/js/models/runTarget.js"></script>
 
     <!-- Routes -->
     <script src="public/js/routes/userRoute.js"></script>
     <script src="public/js/routes/usersRoute.js"></script>
     <script src="public/js/routes/loginRoute.js"></script>
     <script src="public/js/routes/signupRoute.js"></script>
+    <script src="public/js/routes/homeRoute.js"></script>
+    <script src="public/js/routes/runTargetRoute.js"></script>
+    <script src="public/js/routes/targetsCreateRoute.js"></script>
 
     <!-- Controllers -->
     <script src="public/js/controllers/userController.js"></script>
     <script src="public/js/controllers/usersController.js"></script>
     <script src="public/js/controllers/loginController.js"></script>
     <script src="public/js/controllers/signupController.js"></script>
+    <script src="public/js/controllers/targetsCreateController.js"></script>
 
     <!-- Views -->
 
