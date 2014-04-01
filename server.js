@@ -8,10 +8,10 @@ Bookshelf = require('bookshelf');
 Bookshelf.PG = Bookshelf.initialize({
     client: 'pg',
     connection: {
-        host: 'ec2-184-72-231-67.compute-1.amazonaws.com',
-        database: 'd367t35dadpedg',
-        user: 'yqwtqizjzjbvmv',
-        password: 'YR2Bj7KI8c63w51cQQ99e77-uy',
+        host: process.env.GK_PG_HOST,
+        database: process.env.GK_PG_DATABASE,
+        user: process.env.GK_PG_USER,
+        password: process.env.GK_PG_PASS,
         port: 5432,
         ssl: 'require',
         charset: 'utf8'
