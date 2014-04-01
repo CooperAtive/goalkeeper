@@ -1,8 +1,10 @@
 'use strict';
 
+var _ = require('underscore');
+
 var RunEvent = require('../models/RunEvent'),
-    RunEvents = require('../collections/RunEvents'),
-    Promise = require('bluebird');
+RunEvents = require('../collections/RunEvents'),
+Promise = require('bluebird');
 
 exports.createRunEvent = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
@@ -85,6 +87,30 @@ exports.collection = function(req, res) {
             });
 
             res.send({ 'runEvents': set });
+        }
+    });
+};
+
+exports.tenMostRecent = function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    new RunEvents().fetch()
+    .exec(function(error, runEvents) {
+        if(error) {
+            //res.writeHead(500);
+
+            res.send(500, {'error': error});
+        } else {
+            var set = runEvents.models.map( function (runEvent ) {
+                var e = runEvent.attributes;
+                return e;
+            });
+            var byDate = _.sortBy(set, function(elem) {
+                return elem.date;
+            });
+            var tenMostRecent = _.first(byDate, 10);
+            console.log(tenMostRecent);
+            res.send({'runEvents': tenMostRecent});
         }
     });
 };
