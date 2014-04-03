@@ -15,7 +15,7 @@ App.Router.map(function() {
   this.resource('game_plan');
   this.resource('targets', function() {
     this.resource('runTarget', { path: '/:runTarget_id'}, function() {
-      // names -> 
+      // names ->
       this.route('edit');
     });
     this.route('create');

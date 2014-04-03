@@ -2,8 +2,14 @@ App.User = DS.Model.extend({
   first_name: DS.attr(),
   last_name: DS.attr(),
   email: DS.attr(),
-  password: DS.attr()
+  password: DS.attr(),
+  //Profile Only properties
+  email_preferences: DS.attr(),
+  text_preferences: DS.attr(),
+  alternate_email: DS.attr(),
+  notify_friends: DS.attr()
 });
+
 /*
 App.User.FIXTURES = [
   { id: 1,
