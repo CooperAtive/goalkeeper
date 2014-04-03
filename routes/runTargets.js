@@ -1,8 +1,8 @@
 'use strict';
 
 var RunTarget = require('../models/RunTarget'),
-    RunTargets = require('../collections/RunTargets'),
-    Promise = require('bluebird');
+RunTargets = require('../collections/RunTargets'),
+Promise = require('bluebird');
 
 exports.createRunTarget = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
@@ -46,17 +46,19 @@ exports.createRunTarget = function(req, res) {
 exports.findById = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 
-    new RunTarget({'id': req.params.id})
+    new RunTarget({'id': req.params.id}).runEvents()
     .fetch()
     .exec(function(error, target) {
-        if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
-        } else {
-            var t = target.attributes;
-            res.send({ 'runTarget': t });
-        }
-    });
+              if(error) {
+                  res.writeHead(500);
+                  res.send({'error': error});
+              } else {
+                  console.log(target);
+                  var t = target.attributes;
+                  console.log(t);
+                  res.send({ 'runTarget': t });
+              }
+          });
 };
 
 exports.updateRunTarget = function(req, res) {
@@ -108,22 +110,22 @@ exports.targetLites = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     new RunTargets()
-        .fetch()
-        .exec(function(error, runTargets) {
-            if(error) {
-                res.send(500, {'error': error});
-            } else {
-                var targets = runTargets.models.map( function( runTarget ) {
-                    var target = {
-                        name: runTarget.attributes.name,
-                        id: runTarget.attributes.id
-                    };
+    .fetch()
+    .exec(function(error, runTargets) {
+        if(error) {
+            res.send(500, {'error': error});
+        } else {
+            var targets = runTargets.models.map( function( runTarget ) {
+                var target = {
+                    name: runTarget.attributes.name,
+                    id: runTarget.attributes.id
+                };
 
-                    return target;
-                });
+                return target;
+            });
 
-                res.send({ 'targetLites': targets });
-            }
+            res.send({ 'targetLites': targets });
+        }
     });
 };
 
