@@ -41,6 +41,7 @@ exports.findById = function(req, res) {
             res.send({'error': error});
         } else {
             var e = event.attributes;
+            console.log(e);
             res.send({ 'runEvent': e });
         }
     });
