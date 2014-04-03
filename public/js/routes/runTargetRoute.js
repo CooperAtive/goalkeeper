@@ -1,5 +1,8 @@
+'use strict';
 App.RunTargetRoute = Ember.Route.extend({
   model: function(params) {
-    return this.store.find('runTarget', params.runTarget_id);
+    var a = this.store.find('runTarget', params.runTarget_id);
+    console.dir(a);
+    return a;
   }
 });

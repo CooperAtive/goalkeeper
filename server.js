@@ -1,11 +1,11 @@
 'use strict';
 // Module dependecies
-var application_root = __dirname,
-    express = require( 'express' ),
-    path = require( 'path' ),
-    https = require('https'),
-    fs = require('fs'),
-    Bookshelf = require('bookshelf');
+var application_root = __dirname;
+var express = require( 'express' );
+var path = require( 'path' );
+var https = require('https');
+var fs = require('fs');
+var Bookshelf = require('bookshelf');
 
 // connect to postgres db
 Bookshelf.PG = Bookshelf.initialize({
@@ -24,9 +24,9 @@ console.log(process.env.GK_PG_HOST);
 
 Bookshelf.PG.knex.client.getConnection().then(function (connection) {
     console.log('Yay, we have a connection!' + connection);
-}).catch(function (err) {
+    }).catch(function (err) {
     console.log('Ooops, something went wrong!' + err);
-});
+    });
 
 // Create server
 var app = express();
@@ -79,21 +79,21 @@ app.delete('/api/v1/runTargets/:id', runTargets.deleteRunTarget);
    app.delete('/api/v1/runEvents/:id', runEvents.deleteRunEvent);
    */
 
-var session = require('./routes/session');
-app.post('/login', session.login);
+/*
+   var session = require('./routes/session');
+   app.post('/login', session.login);
 
-var startServer = function(app, port) {
-    var httpsOptions = {
-        key: fs.readFileSync('./secure/key.pem'),
-        cert: fs.readFileSync('./secure/cert.pem')
-    };
-    return https.createServer(httpsOptions, app).listen(port);
+   var startServer = function(app, port) {
+   var httpsOptions = {
+key: fs.readFileSync('./secure/key.pem'),
+cert: fs.readFileSync('./secure/cert.pem')
+};
+return https.createServer(httpsOptions, app).listen(port);
 };
 
 startServer(app, 3000);
-/*
-   var port = 3000;
-   app.listen( port, function() {
-   console.log( 'Express server listening on port %d in the %s mode', port, app.settings.env );
-   });
-   */
+*/
+var port = 3000;
+app.listen( port, function() {
+    console.log( 'Express server listening on port %d in the %s mode', port, app.settings.env );
+});
