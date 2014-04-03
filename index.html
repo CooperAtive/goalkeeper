@@ -1,135 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head profile="http://www.w3.org/2005/10/profile">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Kalina Kalina">
+    <head profile="http://www.w3.org/2005/10/profile">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Kalina Kalina">
 
-    <title>Goalkeeper</title>
-  </head>
+        <title>Goalkeeper</title>
+    </head>
 
-  <body>  
-    <script type="text/x-handlebars">
-        {{outlet}}
-    </script>
+    <body>  
+        <script type="text/x-handlebars">
+            {{outlet}}
+        </script>
 
-    <script type="text/x-handlebars" id="login">
-        <label>Email</label>
-        {{input value=email type="email"}}
-        <label>Password</label>
-        {{input value=password type="password"}}
-        <button class="btn btn-primary" {{action "login"}}> Login </button>
-    </script>
+        <script type="text/x-handlebars" id="login">
+            <label>Email</label>
+            {{input value=email type="email"}}
+            <label>Password</label>
+            {{input value=password type="password"}}
+            <button class="btn btn-primary" {{action "login"}}> Login </button>
+        </script>
 
-    <script type="text/x-handlebars" id="signup">
-        <label>First Name</label>
-        {{input value=first_name}}
-        <label>Last Name</label>
-        {{input value=last_name}}
-        <label>Email</label>
-        {{input value=email type="email"}}
-        <label>Password</label>
-        {{input value=password type="password"}}
-        <label>Password (confirm)</label>
-        {{input value=password2 type="password"}}
-        <button class="btn btn-primary" {{action "signup"}}> Sign Up </button>
-    </script>
+        <script type="text/x-handlebars" id="signup">
+            <label>First Name</label>
+            {{input value=first_name}}
+            <label>Last Name</label>
+            {{input value=last_name}}
+            <label>Email</label>
+            {{input value=email type="email"}}
+            <label>Password</label>
+            {{input value=password type="password"}}
+            <label>Password (confirm)</label>
+            {{input value=password2 type="password"}}
+            <button class="btn btn-primary" {{action "signup"}}> Sign Up </button>
+        </script>
 
-    <script type="text/x-handlebars" id="index">
-        {{#link-to 'login' tagName="h2"}}Login{{/link-to}}
-    </script>
+        <script type="text/x-handlebars" id="index">
+            {{#link-to 'login' tagName="h2"}}Login{{/link-to}}
+        </script>
 
-    <script type="text/x-handlebars" id="users">
-        {{#each}}
+        <script type="text/x-handlebars" id="users">
+            {{#each}}
             <h2>{{#link-to 'user' this}}{{first_name}} {{last_name}}{{/link-to}}</h2>
-        {{/each}}
+            {{/each}}
 
-        {{outlet}}
-    </script>
+            {{outlet}}
+        </script>
 
-    <script type="text/x-handlebars" id="home">
-        <h1>Welcome to Goalkeeper!</h1>
-        <ul>
-        {{#each}}
-            {{#link-to 'runTarget' this.id tagName="li"}}{{name}}{{/link-to}}
-        {{/each}}
-        </ul>
-        {{#link-to 'targets.create'}}Create New Target{{/link-to}}
-    </script>
+        <script type="text/x-handlebars" id="home">
+            <h1>Welcome to Goalkeeper!</h1>
+            <ul>
+                {{#each}}
+                {{#link-to 'runTarget' this.id tagName="li"}}{{name}}{{/link-to}}
+                {{/each}}
+            </ul>
+            {{#link-to 'targets.create'}}Create New Target{{/link-to}}
+            {{#link-to 'profile'}}View Profile{{/link-to}}
+        </script>
 
-    <script type="text/x-handlebars" id="runTarget">
-        <h2>{{name}}</h2>
-        <p>{{total_miles}} miles</p>
-    </script>
+        <script type="text/x-handlebars" id="profile/index">
+            <h1>Profile View</h1>
+            <ul>
+                <li>First Name: {{first_name}}</li>
+                <li>Last Name: {{last_name}}</li>
+            </ul>
+            {{ outlet }}
+            {{#link-to 'profile.edit'}}Edit Profile{{/link-to}}
+        </script>
 
-    <script type="text/x-handlebars" id="targets/create">
-        <h2>Create a new Running Target!</h2>
+        <script type="text/x-handlebars" id="profile/edit">
+            <h1>Profile Edit</h1>
+            <label>First Name</label>
+            {{input value=first_name}}
+            <label>Last Name</label>
+            {{input value=last_name}}
+        </script>
 
-        <label>Name</label>
-        {{input value=name}}{{name}}
-        <br>
-        <label>Total Miles</label>
-        {{input type="number" value=total_miles}}
-        <br>
-        <label>Start Date</label>
-        {{input type="date" value=start_date}}
-        <br>
-        <label>End Date</label>
-        {{input type="date" value=end_date}}
-        <br>
-        <label>Frequency (per week)</label>
-        {{input type="number" value=frequency}}
-        <br>
+        <script type="text/x-handlebars" id="runTarget">
+            <h2>{{name}}</h2>
+            <p>{{total_miles}} miles</p>
+            {{events}}
+            <ul>
+                {{#each events}}
+                <li>{{events}}</li>
+                {{/each}}
+        </script>
 
-        <button class="btn btn-primary" {{action "createTarget"}}> Create New Target </button>
-    </script>
+        <script type="text/x-handlebars" id="targets/create">
+            <h2>Create a new Running Target!</h2>
 
-    <script type="text/x-handlebars" id="users/index">
+            <label>Name</label>
+            {{input value=name}}{{name}}
+            <br>
+            <label>Total Miles</label>
+            {{input type="number" value=total_miles}}
+            <br>
+            <label>Start Date</label>
+            {{input type="date" value=start_date}}
+            <br>
+            <label>End Date</label>
+            {{input type="date" value=end_date}}
+            <br>
+            <label>Frequency (per week)</label>
+            {{input type="number" value=frequency}}
+            <br>
 
-    </script>
+            <button class="btn btn-primary" {{action "createTarget"}}> Create New Target </button>
+        </script>
 
-    <script type="text/x-handlebars" id="user">
-        <h1>{{first_name}} {{last_name}}</h1>
-    </script>
+        <script type="text/x-handlebars" id="users/index">
 
-    <!-- dependencies --> 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/handlebars/handlebars.js"></script>
-    <script src="bower_components/ember/ember.js"></script>
-    <script src="bower_components/ember-data/ember-data.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
+        </script>
 
-    <!-- App js files -->
-    <script src="public/js/app.js"></script>
-    <script src="public/js/router.js"></script>
-    <script src="public/js/store.js"></script>
+        <script type="text/x-handlebars" id="user">
+            <h1>{{first_name}} {{last_name}}</h1>
+        </script>
 
-    <!-- Models -->
-    <script src="public/js/models/user.js"></script>
-    <script src="public/js/models/targetlite.js"></script>
-    <script src="public/js/models/runTarget.js"></script>
+        <!-- dependencies --> 
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/handlebars/handlebars.js"></script>
+        <script src="bower_components/ember/ember.js"></script>
+        <script src="bower_components/ember-data/ember-data.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
 
-    <!-- Routes -->
-    <script src="public/js/routes/userRoute.js"></script>
-    <script src="public/js/routes/usersRoute.js"></script>
-    <script src="public/js/routes/loginRoute.js"></script>
-    <script src="public/js/routes/signupRoute.js"></script>
-    <script src="public/js/routes/homeRoute.js"></script>
-    <script src="public/js/routes/runTargetRoute.js"></script>
-    <script src="public/js/routes/targetsCreateRoute.js"></script>
+        <!-- App js files -->
+        <script src="public/js/app.js"></script>
+        <script src="public/js/router.js"></script>
+        <script src="public/js/store.js"></script>
 
-    <!-- Controllers -->
-    <script src="public/js/controllers/userController.js"></script>
-    <script src="public/js/controllers/usersController.js"></script>
-    <script src="public/js/controllers/loginController.js"></script>
-    <script src="public/js/controllers/signupController.js"></script>
-    <script src="public/js/controllers/targetsCreateController.js"></script>
+        <!-- Models -->
+        <script src="public/js/models/user.js"></script>
+        <script src="public/js/models/targetlite.js"></script>
+        <script src="public/js/models/runTarget.js"></script>
+        <script src="public/js/models/runEvent.js"></script>
+        <script src="public/js/models/profile.js"></script>
 
-    <!-- Views -->
+        <!-- Routes -->
+        <script src="public/js/routes/userRoute.js"></script>
+        <script src="public/js/routes/usersRoute.js"></script>
+        <script src="public/js/routes/loginRoute.js"></script>
+        <script src="public/js/routes/signupRoute.js"></script>
+        <script src="public/js/routes/homeRoute.js"></script>
+        <script src="public/js/routes/runTargetRoute.js"></script>
+        <script src="public/js/routes/targetsCreateRoute.js"></script>
+        <script src="public/js/routes/profileRoute.js"></script>
+        <script src="public/js/routes/profileEditRoute.js"></script>
 
-    <!-- Components -->
-  </body>
+        <!-- Controllers -->
+        <script src="public/js/controllers/userController.js"></script>
+        <script src="public/js/controllers/usersController.js"></script>
+        <script src="public/js/controllers/loginController.js"></script>
+        <script src="public/js/controllers/signupController.js"></script>
+        <script src="public/js/controllers/targetsCreateController.js"></script>
+        <script src="public/js/controllers/profileController.js"></script>
+
+        <!-- Views -->
+
+        <!-- Components -->
+    </body>
 </html>

@@ -1,9 +1,13 @@
 'use strict';
 
 var Bookshelf = require('bookshelf').PG;
+var RunTarget = require('./RunTarget');
 
 var RunEvent = Bookshelf.Model.extend({
-    tableName: 'running_events'
+    tableName: 'running_events',
+    runTarget: function() {
+        return this.belongsTo(RunTarget, 'target_id');
+    }
 });
 
 module.exports = RunEvent;
