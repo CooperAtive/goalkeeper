@@ -20,7 +20,6 @@ Bookshelf.PG = Bookshelf.initialize({
         charset: 'utf8'
     }
 });
-console.log(process.env.GK_PG_HOST);
 
 Bookshelf.PG.knex.client.getConnection().then(function (connection) {
     console.log('Yay, we have a connection!' + connection);
@@ -69,15 +68,14 @@ app.put('/api/v1/runTargets/:id', runTargets.updateRunTarget);
 app.delete('/api/v1/runTargets/:id', runTargets.deleteRunTarget);
 
 //Running Event Routes
-/*
-   var runEvents = require('./routes/runEvents');
-   app.get('/api/v1/runEvents', runEvents.collection);
-   app.get('/api/v1/runEvents/recent', runEvents.tenMostRecent);
-   app.get('/api/v1/runEvents/:id', runEvents.findById);
-   app.post('/api/v1/runEvents', runEvents.createRunEvent);
-   app.put('/api/v1/runEvents/:id', runEvents.updateRunEvent);
-   app.delete('/api/v1/runEvents/:id', runEvents.deleteRunEvent);
-   */
+var runEvents = require('./api/routes/runEvents');
+app.get('/api/v1/runEvents', runEvents.collection);
+app.get('/api/v1/runEvents/recent', runEvents.tenMostRecent);
+app.get('/api/v1/runEvents/:id', runEvents.findById);
+app.post('/api/v1/runEvents', runEvents.createRunEvent);
+app.put('/api/v1/runEvents/:id', runEvents.updateRunEvent);
+app.delete('/api/v1/runEvents/:id', runEvents.deleteRunEvent);
+
 
 /*
    var session = require('./routes/session');
@@ -95,5 +93,5 @@ startServer(app, 3000);
 */
 var port = 3000;
 app.listen( port, function() {
-    console.log( 'Express server listening on port %d in the %s mode', port, app.settings.env );
+    console.log( 'Express server listening on port %d in the %s mode', port);
 });
