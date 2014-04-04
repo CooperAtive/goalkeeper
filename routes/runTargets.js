@@ -54,18 +54,15 @@ exports.findById = function(req, res) {
                   res.writeHead(500);
                   res.send({'error': error});
               } else {
-                  var t = target.attributes;
-                  t.runEvents = [];
-                  var e = [];
+                  var runTarget = target.attributes;
+                  runTarget.runEvents = [];
+                  var runEvents = [];
                   target.relations.runEvents.models.forEach(function(elem) {
-                      e.push(elem.attributes);
+                      runEvents.push(elem.attributes);
+                      runTarget.runEvents.push(elem.attributes.id);
                   });
-                  e.forEach(function(elem) {
-                    t.runEvents.push(elem.id);
-                  });
-                  console.log(t);
-                  res.send({ 'runTarget': t,
-                             'runEvents' : e
+                  res.send({ 'runTarget': runTarget,
+                             'runEvents' : runEvents
                 });
               }
           });
