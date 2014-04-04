@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Goalkeeper | Login</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login.css">
+  </head>
+
+  <body>
+
+
+    <div class="container">
+      <div class="full-circle" id="goalkeeper-circle">
+        <center id="title">Goalkeeper</center>
+      </div>
+
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                Log In
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <form class="form-signin" role="form">
+                <input type="email" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" required>
+                <label class="checkbox">
+                  <input type="checkbox" value="remember-me"> Remember me
+                </label>
+                <button class="btn btn-lg btn-primary btn-block" id="login-button" type="submit">Let's Go!</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                Sign Up
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+              <form class="form-signup" role="form">
+                <input type="text" class="form-control" placeholder="First name" required autofocus>
+                <input type="text" class="form-control" placeholder="Last name" required>
+                <input type="email" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" required>
+                <input type="password" class="form-control" placeholder="Confirm password" required>
+                <button class="btn btn-lg btn-primary btn-block" id="sign-up-button" type="submit">Let's Go!</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
