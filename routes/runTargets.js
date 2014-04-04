@@ -55,10 +55,15 @@ exports.findById = function(req, res) {
                   res.send({'error': error});
               } else {
                   var t = target.attributes;
+                  t.runEvents = [];
                   var e = [];
                   target.relations.runEvents.models.forEach(function(elem) {
                       e.push(elem.attributes);
                   });
+                  e.forEach(function(elem) {
+                    t.runEvents.push(elem.id);
+                  });
+                  console.log(t);
                   res.send({ 'runTarget': t,
                              'runEvents' : e
                 });
