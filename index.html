@@ -112,6 +112,18 @@
                 </li>
                 {{/each}}
             </ol>
+            <h2>Create a new Running Event!</h2>
+            <label>How far you ran: </label>
+            {{input type="number" value=distance}}
+            <br>
+            <label>On what day:</label>
+            {{input type="date" value=date}}
+            <br>
+            <label>How long you ran for: </label>
+            {{input type="number" value=time}}
+            <br>
+            <button class="btn btn-primary" {{action "saveEvent"}}> Save this Run </button>
+
         </script>
 
         <script type="text/x-handlebars" id="targets/create">
@@ -182,6 +194,7 @@
         <script src="public/js/controllers/signupController.js"></script>
         <script src="public/js/controllers/targetsCreateController.js"></script>
         <script src="public/js/controllers/profileController.js"></script>
+        <script src="public/js/controllers/runTargetController.js"></script>
 
         <!-- Views -->
 
