@@ -81,9 +81,19 @@
         <script type="text/x-handlebars" id="runTarget">
             <h2>{{name}}</h2>
             <p>{{total_miles}} miles</p>
-            {{#each runEvent in runEvents}}
-                {{runEvent .distance}}
-            {{/each}}
+            <ol class='list-group'>
+                {{#each runEvent in runEvents}}
+                <li class='list-group-item'>
+                I ran: {{runEvent.distance}} miles<br>
+                On: {{formatDate runEvent.date}}<br>
+                {{log runEvent.time}}
+                In: {{#if runEvent.time.hours}} 
+                        {{runEvent.time.hours}} Hours and
+                    {{/if}}
+                    {{runEvent.time.minutes}} minutes
+                </li>
+                {{/each}}
+            </ol>
         </script>
 
         <script type="text/x-handlebars" id="targets/create">
@@ -158,5 +168,8 @@
         <!-- Views -->
 
         <!-- Components -->
+
+        <!-- Helpers -->
+        <script src="public/js/helpers/helpers.js"></script>
     </body>
 </html>

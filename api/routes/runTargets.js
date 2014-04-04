@@ -107,7 +107,7 @@ exports.collection = function(req, res) {
                 var t = runTarget.attributes;
                 return t;
             });
-
+            console.log(set);
             res.send({ 'runTargets': set });
         }
     });
