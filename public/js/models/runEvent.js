@@ -1,3 +1,5 @@
+'use strict';
+
 App.RunEvent = DS.Model.extend({
   target_id: DS.belongsTo('runTarget'),
   distance: DS.attr(),
