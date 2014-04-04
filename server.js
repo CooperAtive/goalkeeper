@@ -52,7 +52,7 @@ app.configure( function() {
 });
 
 //User Routes
-var users = require('./routes/users');
+var users = require('./api/routes/users');
 app.get('/api/v1/users', users.collection);
 app.get('/api/v1/users/:id', users.findById);
 app.post('/api/v1/users', users.createUser);
@@ -60,7 +60,7 @@ app.put('/api/v1/users/:id', users.updateUser);
 app.delete('/api/v1/users/:id', users.deleteUser);
 
 //Running Target Routes
-var runTargets = require('./routes/runTargets');
+var runTargets = require('./api/routes/runTargets');
 app.get('/api/v1/runTargets', runTargets.collection);
 app.get('/api/v1/targetLites', runTargets.targetLites);
 app.get('/api/v1/runTargets/:id', runTargets.findById);
