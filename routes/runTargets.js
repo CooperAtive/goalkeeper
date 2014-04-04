@@ -3,6 +3,7 @@
 var RunTarget = require('../models/RunTarget'),
 RunTargets = require('../collections/RunTargets'),
 Promise = require('bluebird');
+var _ = require('underscore');
 
 exports.createRunTarget = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
@@ -46,17 +47,21 @@ exports.createRunTarget = function(req, res) {
 exports.findById = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 
-    new RunTarget({'id': req.params.id}).runEvents()
-    .fetch()
+    new RunTarget({'id': req.params.id})
+    .fetch({withRelated: 'runEvents'})
     .exec(function(error, target) {
               if(error) {
                   res.writeHead(500);
                   res.send({'error': error});
               } else {
-                  console.log(target);
                   var t = target.attributes;
-                  console.log(t);
-                  res.send({ 'runTarget': t });
+                  var e = [];
+                  target.relations.runEvents.models.forEach(function(elem) {
+                      e.push(elem.attributes);
+                  });
+                  res.send({ 'runTarget': t,
+                             'runEvents' : e
+                });
               }
           });
 };
