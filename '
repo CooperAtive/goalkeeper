@@ -81,9 +81,8 @@
         <script type="text/x-handlebars" id="runTarget">
             <h2>{{name}}</h2>
             <p>{{total_miles}} miles</p>
-            {{#each runEvent in runEvents}}
-                {{runEvent .distance}}
-            {{/each}}
+            {{log runEvents}}
+            {{runEvents}}
         </script>
 
         <script type="text/x-handlebars" id="targets/create">
