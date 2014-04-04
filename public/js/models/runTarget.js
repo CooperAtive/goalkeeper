@@ -4,5 +4,6 @@ App.RunTarget = DS.Model.extend({
   start_date: DS.attr(),
   end_date: DS.attr(),
   frequency: DS.attr(),
-  name: DS.attr()
+  name: DS.attr(),
+  runEvents: DS.hasMany('runEvent')
 });

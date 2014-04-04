@@ -1,8 +1,9 @@
 'use strict';
 
 var RunTarget = require('../models/RunTarget'),
-    RunTargets = require('../collections/RunTargets'),
-    Promise = require('bluebird');
+RunTargets = require('../collections/RunTargets'),
+Promise = require('bluebird');
+var _ = require('underscore');
 
 exports.createRunTarget = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
@@ -47,16 +48,24 @@ exports.findById = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     new RunTarget({'id': req.params.id})
-    .fetch()
+    .fetch({withRelated: 'runEvents'})
     .exec(function(error, target) {
-        if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
-        } else {
-            var t = target.attributes;
-            res.send({ 'runTarget': t });
-        }
-    });
+              if(error) {
+                  res.writeHead(500);
+                  res.send({'error': error});
+              } else {
+                  var runTarget = target.attributes;
+                  runTarget.runEvents = [];
+                  var runEvents = [];
+                  target.relations.runEvents.models.forEach(function(elem) {
+                      runEvents.push(elem.attributes);
+                      runTarget.runEvents.push(elem.attributes.id);
+                  });
+                  res.send({ 'runTarget': runTarget,
+                             'runEvents' : runEvents
+                });
+              }
+          });
 };
 
 exports.updateRunTarget = function(req, res) {
@@ -108,22 +117,22 @@ exports.targetLites = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     new RunTargets()
-        .fetch()
-        .exec(function(error, runTargets) {
-            if(error) {
-                res.send(500, {'error': error});
-            } else {
-                var targets = runTargets.models.map( function( runTarget ) {
-                    var target = {
-                        name: runTarget.attributes.name,
-                        id: runTarget.attributes.id
-                    };
+    .fetch()
+    .exec(function(error, runTargets) {
+        if(error) {
+            res.send(500, {'error': error});
+        } else {
+            var targets = runTargets.models.map( function( runTarget ) {
+                var target = {
+                    name: runTarget.attributes.name,
+                    id: runTarget.attributes.id
+                };
 
-                    return target;
-                });
+                return target;
+            });
 
-                res.send({ 'targetLites': targets });
-            }
+            res.send({ 'targetLites': targets });
+        }
     });
 };
 
