@@ -1,0 +1,49 @@
+/*Embedding Non-Standard Fonts*/
+@font-face {
+  font-family: 'GeosansLight';
+  src: url(fonts/GeosansLight.woff) format('woff');
+}
+
+/*Styling for HTML elements*/
+html, body {
+  margin: 0px;
+  padding: 0px;
+
+  background-color: #007BA7;
+
+  font-family: 'GeosansLight';
+}
+
+#goalkeeper-circle {
+  height: 80px;
+  width: 80px;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  margin: auto;
+  z-index: 2000;
+
+  background-color: rgba(204, 0, 102, 0);
+  border: 3px solid #FFFFFF;
+}
+
+#title {
+  top: 45%;
+  margin-top: -0.5em;
+  position: relative;
+
+  color: #FFFFFF;
+}
+
+#accordion {
+  margin-top: 50px;
+}
+
+#sign-up-button {
+  margin-top: 10px;
+}
+
+.container {
+
+}
+
+
