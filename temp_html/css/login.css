@@ -12,12 +12,11 @@ html, body {
   background-color: #007BA7;
 
   font-family: 'GeosansLight';
-  color: #FFFFFF;
 }
 
 #goalkeeper-circle {
-  height: 80px;
   width: 80px;
+  height: 80px;
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
   margin: auto;
@@ -31,14 +30,14 @@ html, body {
   top: 45%;
   margin-top: -0.5em;
   position: relative;
+
+  color: #FFFFFF;
+}
+
+#accordion {
+  margin-top: 50px;
 }
 
 #sign-up-button {
   margin-top: 10px;
 }
-
-.container {
-
-}
-
-
