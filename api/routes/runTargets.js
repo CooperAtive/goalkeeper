@@ -115,8 +115,8 @@ exports.collection = function(req, res) {
 
 exports.targetLites = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
-
     new RunTargets()
+    .query('where', 'user_id', '=', req.query.user_id)
     .fetch()
     .exec(function(error, runTargets) {
         if(error) {
