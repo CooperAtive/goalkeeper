@@ -12,8 +12,9 @@ App.SignupController = Ember.ObjectController.extend({
       if( this.get('password2') !== user.password ) {
         alert('The passwords must match');
       } else {
-        $.post('api/v1/users', user, function() {
-          self.transitionToRoute('users');
+        $.post('signup', user, function(response) {
+          localStorage.user_id = response.user.id;
+          self.transitionToRoute('home');
         }).fail( function() {
           alert('Signup failure');
         });
