@@ -10,10 +10,14 @@ exports.createRunEvent = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     var body = req.body;
+    var user_id = body.user_id;
+    var target_id = body.target_id;
     var distance = body.distance;
     var date = body.date;
     var time = body.time;
     RunEvent.forge({
+        user_id: user_id,
+        target_id: target_id,
         distance: distance,
         date: date,
         time: time
@@ -22,8 +26,8 @@ exports.createRunEvent = function(req, res) {
     .save()
     .exec(function(error, event) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            console.log(error);
+            res.send(500, {'error': error});
         } else {
             res.send({ 'event': event });
         }
