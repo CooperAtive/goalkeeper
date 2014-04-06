@@ -14,8 +14,33 @@ exports.login = function(request, response) {
         response.send(500, {'error': 'Password does not match'});
       } else {
         delete user.password;
-        response.send({'message': 'Success'});
+        response.send({'user': user });
       }
     }
   });
+};
+
+exports.signup = function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    var body = req.body;
+    var first_name = body.first_name;
+    var last_name = body.last_name;
+    var email = body.email;
+    var password = body.password;
+
+    User.forge({
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        password: password
+    })
+    .save()
+    .exec(function(error, user) {
+        if(error) {
+            res.send(500, {'error': error});
+        } else {
+            res.send({ 'user': user });
+        }
+    });
 };

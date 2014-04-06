@@ -22,10 +22,10 @@ Bookshelf.PG = Bookshelf.initialize({
 });
 
 Bookshelf.PG.knex.client.getConnection().then(function (connection) {
-    console.log('Yay, we have a connection!' + connection);
+        console.log('Yay, we have a connection!' + connection);
     }).catch(function (err) {
-    console.log('Ooops, something went wrong!' + err);
-    });
+        console.log('Ooops, something went wrong!' + err);
+});
 
 // Create server
 var app = express();
@@ -54,7 +54,6 @@ app.configure( function() {
 var users = require('./api/routes/users');
 app.get('/api/v1/users', users.collection);
 app.get('/api/v1/users/:id', users.findById);
-app.post('/api/v1/users', users.createUser);
 app.put('/api/v1/users/:id', users.updateUser);
 app.delete('/api/v1/users/:id', users.deleteUser);
 
@@ -77,20 +76,10 @@ app.put('/api/v1/runEvents/:id', runEvents.updateRunEvent);
 app.delete('/api/v1/runEvents/:id', runEvents.deleteRunEvent);
 
 
-/*
-   var session = require('./routes/session');
-   app.post('/login', session.login);
+var session = require('./api/routes/session');
+app.post('/login', session.login);
+app.post('/signup', session.signup);
 
-   var startServer = function(app, port) {
-   var httpsOptions = {
-key: fs.readFileSync('./secure/key.pem'),
-cert: fs.readFileSync('./secure/cert.pem')
-};
-return https.createServer(httpsOptions, app).listen(port);
-};
-
-startServer(app, 3000);
-*/
 var port = 3000;
 app.listen( port, function() {
     console.log( 'Express server listening on port %d in the %s mode', port);
