@@ -19,6 +19,7 @@
                 {{#link-to 'home'}}<img src="public/images/goalkeeper_logo.png" id="logo">{{/link-to}}
                 {{#link-to 'profile' class="profile_pic"}}<a href="#profile"></a>{{/link-to}}
                 <span class='userId'>User Id: {{userId}}</span>
+                <button {{action logout}}>Get me out of here!</button>
             </div>
             <div class="container">
                 <div class="row">    
@@ -191,6 +192,7 @@
         <script src="public/js/routes/profileEditRoute.js"></script>
 
         <!-- Controllers -->
+        <script src="public/js/controllers/applicationController.js"></script>
         <script src="public/js/controllers/userController.js"></script>
         <script src="public/js/controllers/usersController.js"></script>
         <script src="public/js/controllers/loginController.js"></script>
