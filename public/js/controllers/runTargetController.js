@@ -13,20 +13,24 @@ App.RunTargetController = Ember.ObjectController.extend({
 
     actions: {
         saveEvent: function() {
-            var event = new App.RunEvent({
+            var self = this;
+            var event = {
                 target_id: this.get('model.id'),
                 user_id: localStorage.user_id,
                 distance: this.get('distance'),
                 date: this.get('date'),
                 time: this.get('time')
-            });
+            };
 
             console.log(event);
 
-            $.post('api/v1/runEvents', event, function() {console.log("done")}
-                  ).fail( function() {
-                      alert('Invalid Event');
-                  });
+            $.post('api/v1/runEvents', event, function(response) {
+                    var savedEvent = self.store.push('runEvent', response.event);
+                    self.get('runEvents').addObject(savedEvent);
+                })
+                .fail( function() {
+                    alert('Invalid Event');
+            });
         }
     }
     /*
