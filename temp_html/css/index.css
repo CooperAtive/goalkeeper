@@ -1,28 +1,46 @@
-/*Embedding Non-Standard Fonts*/
+/* Embedding Non-Standard Fonts */
 @font-face {
   font-family: 'GeosansLight';
   src: url(fonts/GeosansLight.woff) format('woff');
 }
 
-/*Styling for HTML elements*/
+/* Styling for HTML elements */
 html, body {
   height: 100%;
   margin: 0px;
   padding: 0px;
 
-  font-family: 'GeosansLight';
   color: #FFFFFF;
+  font-family: 'GeosansLight';
 }
 
+/* Animation */
+p {
+  -webkit-animation-name: animateText;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-duration: 5s;
+
+  animation-name: animateText;
+  animation-delay: 2s;
+  animation-duration: 5s;
+}
+
+@-webkit-keyframes animateText {
+  100% {left: 200px;}
+}
+
+@keyframes animateText {
+  100% {left: 200px;}
+}
+
+/* Default Styling (for all sizes) */
 #goalkeeper-circle {
   width: 200px;
   height: 200px;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
-
   top: 0; left: 0; bottom: 0; right: 0;
   margin: auto;
-
   position: absolute;
   z-index: 2000;
 
@@ -33,21 +51,19 @@ html, body {
 #title {
   top: 50%;
   margin-top: -0.6em;
-
   position: relative;
 
   font-size: 200%;
 }
 
 #login-button {
-  width: 80px;
-  height: 30px;
+  width: 100px;
+  height: 40px;
 
   left: 50%;
   bottom: 25%;
-  margin-left: -40px;
+  margin-left: -50px;
   padding: 0px;
-
   position: absolute;
   z-index: 2000;
 
@@ -57,13 +73,12 @@ html, body {
   border-style: solid;
   border-width: 1px;
 
-  font-family: 'GeosansLight';
   color: #FFFFFF;
+  font-family: 'GeosansLight';
+  font-size: 125%;
   text-align: center;
   vertical-align: center;
 }
-
-
 
 /* Mobile Styling */
 #goal1 {
@@ -157,6 +172,7 @@ html, body {
     z-index: 2000;
 
     color: #FFFFFF;
+    font-size: 120%;
     font-weight: bolder;
   }
 }
