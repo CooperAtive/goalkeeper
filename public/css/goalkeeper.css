@@ -2,6 +2,14 @@
   width: 200px;
   margin: 2rem;
 }
+.signUp {
+    display: block;
+}
+
+.userId {
+    border: 3px solid teal;
+    padding: 2px;
+}
 
 .profile_pic {
   background: url(../images/merkes_profile.jpg) no-repeat;
@@ -13,7 +21,7 @@
   border-radius: 50px;
   -moz-background-size: 100% 100%; 
   -webkit-background-size: 100% 100%;
-  margin: 5rem 5rem;
+  margin: 2rem 2rem;
 }
 
 .profile_pic:hover {

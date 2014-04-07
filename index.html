@@ -15,9 +15,12 @@
 
     <body>  
         <script type="text/x-handlebars">
-            {{#link-to 'home'}}<img src="public/images/goalkeeper_logo.png" id="logo">{{/link-to}}
-            {{#link-to 'profile' class="profile_pic"}}<a href="#profile"></a>{{/link-to}}
-            
+            <div class="row">
+                {{#link-to 'home'}}<img src="public/images/goalkeeper_logo.png" id="logo">{{/link-to}}
+                {{#link-to 'profile' class="profile_pic"}}<a href="#profile"></a>{{/link-to}}
+                <span class='userId'>User Id: {{userId}}</span>
+                <button {{action logout}}>Get me out of here!</button>
+            </div>
             <div class="container">
                 <div class="row">    
                     <div class="col-md-8 col-md-offset-2">
@@ -33,6 +36,7 @@
             <label>Password</label>
             {{input value=password type="password"}}
             <button class="btn btn-primary" {{action "login"}}> Login </button>
+            {{#link-to 'signup' class="signUp"}}No account&#63; Signup{{/link-to}}
         </script>
 
         <script type="text/x-handlebars" id="signup">
@@ -112,6 +116,18 @@
                 </li>
                 {{/each}}
             </ol>
+            <h2>Create a new Running Event!</h2>
+            <label>How far you ran: </label>
+            {{input type="number" value=distance}}
+            <br>
+            <label>On what day:</label>
+            {{input type="date" value=date}}
+            <br>
+            <label>How long you ran for: </label>
+            {{input type="number" value=time}}
+            <br>
+            <button class="btn btn-primary" {{action "saveEvent"}}> Save this Run </button>
+
         </script>
 
         <script type="text/x-handlebars" id="targets/create">
@@ -176,12 +192,14 @@
         <script src="public/js/routes/profileEditRoute.js"></script>
 
         <!-- Controllers -->
+        <script src="public/js/controllers/applicationController.js"></script>
         <script src="public/js/controllers/userController.js"></script>
         <script src="public/js/controllers/usersController.js"></script>
         <script src="public/js/controllers/loginController.js"></script>
         <script src="public/js/controllers/signupController.js"></script>
         <script src="public/js/controllers/targetsCreateController.js"></script>
         <script src="public/js/controllers/profileController.js"></script>
+        <script src="public/js/controllers/runTargetController.js"></script>
 
         <!-- Views -->
 
