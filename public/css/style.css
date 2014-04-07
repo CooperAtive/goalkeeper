@@ -10,13 +10,24 @@ body {
   padding: 0px;
   font-family: 'GeosansLight';
 }
+/*
 #background {
   float: left;
   z-index: 0;
+}*/
+
+.home {
+  background: url(../images/kites2.jpg) no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: auto;
 }
+
 #container {
-  width: 1000px;
-  height: 700px;
+  width: 100%;
+  min-height: 100%;
   position: relative;
 }
 #goalkeeper-circle {
