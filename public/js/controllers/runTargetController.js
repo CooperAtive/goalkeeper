@@ -15,7 +15,7 @@ App.RunTargetController = Ember.ObjectController.extend({
         saveEvent: function() {
             var event = {
                 target_id: this.get('model.id'),
-                user_id: 1,
+                user_id: localStorage.user_id,
                 distance: this.get('distance'),
                 date: this.get('date'),
                 time: this.get('time')

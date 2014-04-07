@@ -18,6 +18,7 @@
             <div class="row">
                 {{#link-to 'home'}}<img src="public/images/goalkeeper_logo.png" id="logo">{{/link-to}}
                 {{#link-to 'profile' class="profile_pic"}}<a href="#profile"></a>{{/link-to}}
+                <span class='userId'>User Id: {{userId}}</span>
             </div>
             <div class="container">
                 <div class="row">    
@@ -34,6 +35,7 @@
             <label>Password</label>
             {{input value=password type="password"}}
             <button class="btn btn-primary" {{action "login"}}> Login </button>
+            {{#link-to 'signup' class="signUp"}}No account&#63; Signup{{/link-to}}
         </script>
 
         <script type="text/x-handlebars" id="signup">
