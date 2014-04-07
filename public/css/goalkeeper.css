@@ -2,6 +2,14 @@
   width: 200px;
   margin: 2rem;
 }
+.signUp {
+    display: block;
+}
+
+.userId {
+    border: 3px solid teal;
+    padding: 2px;
+}
 
 .profile_pic {
   background: url(../images/merkes_profile.jpg) no-repeat;

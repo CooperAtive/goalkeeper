@@ -1,3 +1,5 @@
+'use strict';
+
 window.App = Ember.Application.create();
 
 App.Route = Ember.Route.extend({
