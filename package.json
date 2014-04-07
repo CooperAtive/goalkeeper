@@ -7,17 +7,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "http://github.com/cooperative/goalkeeper"
   },
-  "author": [
-    "Cooper Trowbridge",
-    "Matt Merkes",
-    "Kalina Wu"
-  ],
+  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cooperative/goalkeeper/issues"

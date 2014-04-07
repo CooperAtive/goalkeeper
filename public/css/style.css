@@ -3,19 +3,12 @@
   font-family: 'GeosansLight';
   src: url(../fonts/GeosansLight.woff) format('woff');
 }
-/*Styling for HTML elements*/
-html,
-body {
-  margin: 0px;
-  padding: 0px;
-  font-family: 'GeosansLight';
-}
 /*
 #background {
   float: left;
   z-index: 0;
-}*/
-
+}
+*/
 .home {
   background: url(../images/kites2.jpg) no-repeat top center fixed;
   -webkit-background-size: cover;
@@ -23,14 +16,14 @@ body {
   -o-background-size: cover;
   background-size: cover;
   overflow: auto;
+  z-index: 1000;
 }
-
 #container {
   width: 100%;
-  min-height: 100%;
-  position: relative;
+  height: 100%;
+  position: absolute;
 }
-#goalkeeper-circle {
+#goalkeeper-circle-home {
   width: 80px;
   height: 80px;
   -moz-border-radius: 40px;
@@ -41,12 +34,11 @@ body {
   background-color: rgba(0, 0, 0, 0);
   border: 3px solid #FFFFFF;
 }
-#title {
+#title-home {
   top: 45%;
   margin-top: -0.5em;
   position: relative;
   z-index: 2000;
-  color: #FFFFFF;
 }
 #pic-circle {
   width: 120px;
@@ -82,7 +74,6 @@ body {
   top: 45%;
   margin-top: -0.5em;
   position: relative;
-  color: #FFFFFF;
   font-weight: bolder;
 }
 .radial-progress {

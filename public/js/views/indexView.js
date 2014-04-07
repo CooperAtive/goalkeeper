@@ -1,6 +1,6 @@
 App.IndexView = Ember.View.extend({
   didInsertElement: function() {
-    $('#login-button').click(function() {
+    $('#get-started-button').click(function() {
       window.location.href = 'login.html';
     });
   }
