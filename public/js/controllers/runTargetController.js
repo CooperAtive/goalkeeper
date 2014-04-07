@@ -13,13 +13,14 @@ App.RunTargetController = Ember.ObjectController.extend({
 
     actions: {
         saveEvent: function() {
-            var event = {
+            var event = new App.RunEvent({
                 target_id: this.get('model.id'),
                 user_id: localStorage.user_id,
                 distance: this.get('distance'),
                 date: this.get('date'),
                 time: this.get('time')
-            };
+            });
+
             console.log(event);
 
             $.post('api/v1/runEvents', event, function() {console.log("done")}

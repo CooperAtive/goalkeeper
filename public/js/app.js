@@ -4,8 +4,10 @@ window.App = Ember.Application.create();
 
 App.Route = Ember.Route.extend({
   beforeModel: function() {
-    if(!localStorage.user_id) {
-      this.transitionTo('login');
+    if(!this.get('router.url')) {
+      return;
+    } else if (!localStorage.user_id) {
+      return this.transitionTo('login');
     }
   }
 });

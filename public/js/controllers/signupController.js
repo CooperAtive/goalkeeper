@@ -1,4 +1,8 @@
 App.SignupController = Ember.ObjectController.extend({
+  needs: 'application',
+
+  app: Ember.computed.alias('controllers.application'),
+
   actions: {
     signup: function() {
       var self = this;
@@ -14,6 +18,7 @@ App.SignupController = Ember.ObjectController.extend({
       } else {
         $.post('signup', user, function(response) {
           localStorage.user_id = response.user.id;
+          self.set('app.userId', response.user.id);
           self.transitionToRoute('home');
         }).fail( function() {
           alert('Signup failure');
