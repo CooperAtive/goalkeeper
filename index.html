@@ -10,11 +10,9 @@
         <link rel="stylesheet" type="text/css" href="public/css/index.css">
         <link rel="stylesheet/less" type="text/css" href="public/css/style.less">
         <link rel="stylesheet" type="text/css" href="public/css/style.css">
-
-        <title>Goalkeeper</title>
     </head>
 
-    <body>  
+    <body>
         <script type="text/x-handlebars" id="oldApp">
             <div class="row">
                 {{#link-to 'home'}}<img src="public/images/goalkeeper_logo.png" id="logo">{{/link-to}}
@@ -23,7 +21,7 @@
                 <button {{action "logout"}}>Get me out of here!</button>
             </div>
             <div class="container">
-                <div class="row">    
+                <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         {{outlet}}
                     </div>
@@ -36,7 +34,7 @@
         </script>
 
         <script type="text/x-handlebars" id="index">
-            <div class="circle" id="goalkeeper-circle">
+            <div id="goalkeeper-circle">
               <center id="title">Goalkeeper</center>
             </div>
 
@@ -45,7 +43,7 @@
             <p class="text" id="goal3">Run more</p>
             <p class="text" id="goal4">Laugh more</p>
 
-            <button class="btn btn-default" id="login-button">Get Started</button>
+            <button class="btn btn-default" id="get-started-button">Get Started</button>
 
             <img class="pic" id="pic1" src="public/images/friends2.jpg" />
             <img class="pic" id="pic2" src="public/images/couple-travel.jpg" />
@@ -91,8 +89,8 @@
         <script type="text/x-handlebars" id="home">
             {{#link-to 'index' tagName="button"}}Go Back{{/link-to}}
             <div id="container">
-                <div id="goalkeeper-circle">
-                    <center id="title">Goalkeeper</center>
+                <div id="goalkeeper-circle-home">
+                    <center id="title-home">Goalkeeper</center>
                 </div>
                 <div id="pic-circle"></div>
             </div>
@@ -142,7 +140,7 @@
                 I ran: {{runEvent.distance}} miles<br>
                 On: {{formatDate runEvent.date}}<br>
                 {{log runEvent.time}}
-                In: {{#if runEvent.time.hours}} 
+                In: {{#if runEvent.time.hours}}
                         {{runEvent.time.hours}} Hours and
                     {{/if}}
                     {{runEvent.time.minutes}} minutes
@@ -193,7 +191,7 @@
             <h1>{{first_name}} {{last_name}}</h1>
         </script>
 
-        <!-- dependencies --> 
+        <!-- dependencies -->
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="bower_components/handlebars/handlebars.js"></script>

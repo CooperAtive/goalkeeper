@@ -6,10 +6,10 @@
 
 /* Styling for HTML elements */
 html, body {
-  height: 100%;
   margin: 0px;
   padding: 0px;
 
+  background-color: #007BA7;
   color: #FFFFFF;
   font-family: 'GeosansLight';
 }
@@ -56,7 +56,7 @@ p {
   font-size: 200%;
 }
 
-#login-button {
+#get-started-button {
   width: 100px;
   height: 40px;
 
