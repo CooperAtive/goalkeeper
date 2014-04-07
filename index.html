@@ -3,18 +3,19 @@
     <head profile="http://www.w3.org/2005/10/profile">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="Kalina Kalina">
-        <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-        <link href="public/css/cerulean-bootstrap.css" rel="stylesheet">
-        <link href="public/css/goalkeeper.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Goalkeeper | Welcome</title>
+
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="public/css/index.css">
+        <link rel="stylesheet/less" type="text/css" href="public/css/style.less">
+        <link rel="stylesheet" type="text/css" href="public/css/style.css">
 
         <title>Goalkeeper</title>
     </head>
 
     <body>  
-        <script type="text/x-handlebars">
+        <script type="text/x-handlebars" id="oldApp">
             <div class="row">
                 {{#link-to 'home'}}<img src="public/images/goalkeeper_logo.png" id="logo">{{/link-to}}
                 {{#link-to 'profile' class="profile_pic"}}<a href="#profile"></a>{{/link-to}}
@@ -28,6 +29,28 @@
                     </div>
                 </div>
             </div>
+        </script>
+
+        <script type="text/x-handlebars">
+            {{outlet}}
+        </script>
+
+        <script type="text/x-handlebars" id="index">
+            <div class="circle" id="goalkeeper-circle">
+              <center id="title">Goalkeeper</center>
+            </div>
+
+            <p class="text" id="goal1">Play more</p>
+            <p class="text" id="goal2">Travel more</p>
+            <p class="text" id="goal3">Run more</p>
+            <p class="text" id="goal4">Laugh more</p>
+
+            <button class="btn btn-default" id="login-button">Get Started</button>
+
+            <img class="pic" id="pic1" src="public/images/friends2.jpg" />
+            <img class="pic" id="pic2" src="public/images/couple-travel.jpg" />
+            <img class="pic" id="pic3" src="public/images/woman-running.jpeg" />
+            <img class="pic" id="pic4" src="public/images/man-laughing.jpg" />
         </script>
 
         <script type="text/x-handlebars" id="login">
@@ -53,7 +76,7 @@
             <button class="btn btn-primary" {{action "signup"}}> Sign Up </button>
         </script>
 
-        <script type="text/x-handlebars" id="index">
+        <script type="text/x-handlebars" id="index2">
             {{#link-to 'login' tagName="h2"}}Login{{/link-to}}
         </script>
 
@@ -66,6 +89,16 @@
         </script>
 
         <script type="text/x-handlebars" id="home">
+            {{#link-to 'index' tagName="button"}}Go Back{{/link-to}}
+            <div id="container">
+                <div id="goalkeeper-circle">
+                    <center id="title">Goalkeeper</center>
+                </div>
+                <div id="pic-circle"></div>
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" id="home2">
             <h1>Welcome to Goalkeeper!</h1>
             <ul>
                 {{#each}}
@@ -161,12 +194,13 @@
         </script>
 
         <!-- dependencies --> 
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="bower_components/handlebars/handlebars.js"></script>
         <script src="bower_components/ember/ember.js"></script>
         <script src="bower_components/ember-data/ember-data.js"></script>
         <script src="bower_components/moment/moment.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
 
         <!-- App js files -->
         <script src="public/js/app.js"></script>
@@ -202,6 +236,8 @@
         <script src="public/js/controllers/runTargetController.js"></script>
 
         <!-- Views -->
+        <script src="public/js/views/indexView.js"></script>
+        <script src="public/js/views/homeView.js"></script>
 
         <!-- Components -->
 
