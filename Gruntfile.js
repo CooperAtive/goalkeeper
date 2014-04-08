@@ -35,7 +35,7 @@ module.exports = function(grunt) {
                 src:['test/*.js', '!test/acceptance/*_test.js'],
                 options:{
                     reporter: 'spec',
-                    slow: 200,
+                    slow: 500,
                     timeout: 1000,
                     node_env: 'test'
                 }

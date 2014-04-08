@@ -19,7 +19,10 @@ var chai = require('chai');
 var expect = chai.expect;
 var should = chai.should;
 
+var app = require('../server').app;
+
 describe('Targets API', function() {
+    var id;
     var user_id;
 
     it('can get the id of a new user to use as creator of the target', function(done) {
@@ -35,7 +38,7 @@ describe('Targets API', function() {
             expect(res.body.user).to.not.be.eql(null);
             expect(res.body.user.first_name).to.be.eql('Kalina');
             expect(res.body.user.last_name).to.be.eql('Wongorwu');
-            user_id = res.body.user.id;
+            user_id = res.body.user_id;
 
             done();
 
@@ -43,56 +46,65 @@ describe('Targets API', function() {
     });
 
     it('can create a new target', function(done) {
-        superagent.get('localhost:3000/api/v1/runTargets')
+        superagent.post('localhost:3000/api/v1/runTargets')
         .send({
-            first_name: 'Kalina',
-            last_name: 'Wongorwu',
-            email: 'kalina@wong.com',
-            password: 'valid_password'
+            user_id: user_id,
+            name: 'Test Target',
+            total_miles: 100,
+            start_date: '4/15/2014',
+            end_date: '9/15/2014',
+            frequency: '1'
         })
         .end(function(e, res) {
             expect(e).to.eql(null);
-            expect(res.body.user).to.not.be.eql(null);
-            expect(res.body.user.first_name).to.be.eql('Kalina');
-            expect(res.body.user.last_name).to.be.eql('Wongorwu');
-            user_id = res.body.user.id;
+            expect(res.body.runTarget).to.not.be.eql(null);
+            expect(res.body.runTarget.name).to.be.eql('Test Target');
+            expect(res.body.runTarget.total_miles).to.be.eql(100);
+            expect(res.body.runTarget.start_date).to.be.eql('4/15/2014');
+            expect(res.body.runTarget.end_date).to.be.eql('9/15/2014');
+            expect(res.body.runTarget.frequency).to.be.eql('1');
+            expect(res.body.runTarget.user_id).to.be.eql(user_id);
+
+            id = res.body.runTarget.id;
 
             done();
 
         });
     });
 
-    it('can get a single user', function(done) {
-        superagent.get('localhost:3000/api/v1/users/' + id)
+    it('can find a target by Id', function(done) {
+        superagent.get('localhost:3000/api/v1/runTargets/'+ id)
         .end(function(e, res) {
             expect(e).to.eql(null);
-            expect(res.body.user).to.not.be.eql(null);
-            expect(res.body.user.first_name).to.be.eql('Kalina');
-            expect(res.body.user.last_name).to.be.eql('Wongorwu');
+            expect(res.body.runTarget).to.not.be.eql(null);
+            expect(res.body.runTarget.name).to.be.eql('Test Target');
+            expect(res.body.runTarget.total_miles).to.be.eql(100);
+            expect(res.body.runTarget.frequency).to.be.eql(1);
+            expect(res.body.runTarget.user_id).to.be.eql(user_id);
 
             done();
 
         });
     });
 
-    it('can update a user\'s first name', function(done) {
-        superagent.put('localhost:3000/api/v1/users/' + id)
+    it('can update a target\'s name', function(done) {
+        superagent.put('localhost:3000/api/v1/runTargets/' + id)
         .send(
             {
-            first_name: 'Matt'
+            name: 'Test Target-name changed'
         })
         .end(function(e, res) {
             expect(e).to.eql(null);
-            expect(res.body.user).to.not.be.eql(null);
-            expect(res.body.user.first_name).to.be.eql('Matt');
+            expect(res.body.runTarget).to.not.be.eql(null);
+            expect(res.body.runTarget.name).to.be.eql('Test Target-name changed');
 
             done();
 
         });
     });
 
-    it('can delete a user', function(done) {
-        superagent.del('localhost:3000/api/v1/users/' + id)
+    it('can delete a target', function(done) {
+        superagent.del('localhost:3000/api/v1/runTargets/' + id)
         .end(function(e, res) {
             expect(e).to.eql(null);
             expect(res.body.message).to.be.eql('Success');
@@ -101,4 +113,5 @@ describe('Targets API', function() {
 
         });
     });
+    superagent.del('localhost:3000/api/v1/users/' + user_id);
 });
