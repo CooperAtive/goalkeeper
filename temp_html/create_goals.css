@@ -62,3 +62,7 @@
 #time-number, #distance-number {
   width: 50px;
 }
+
+#go-to-run-goal-button {
+  background-color: #007BA7;
+}
