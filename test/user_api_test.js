@@ -18,6 +18,8 @@ var chai = require('chai');
 var expect = chai.expect;
 var should = chai.should;
 
+var app = require('../server').app;
+
 describe('Users API', function() {
     var id;
 
@@ -52,7 +54,7 @@ describe('Users API', function() {
         });
     });
 
-    it('can get a single user', function(done) {
+    it('can find a user by id', function(done) {
         superagent.get('localhost:3000/api/v1/users/' + id)
         .end(function(e, res) {
             expect(e).to.eql(null);
