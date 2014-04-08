@@ -68,7 +68,7 @@ App.HomeView = Ember.View.extend({
       //$('.radial-progress').click(window.randomize);
     }
 
-    $('body').addClass('home');
+    $('#container').addClass('home');
 
     $(window).resize(function() {
       $('.radial-progress').remove();

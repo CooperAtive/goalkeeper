@@ -3,7 +3,7 @@
   height: 80px;
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
-  margin: auto;
+  margin: 1rem auto 2rem auto;
   z-index: 2000;
 
   background-color: rgba(204, 0, 102, 0);
@@ -18,15 +18,11 @@
   color: #FFFFFF;
 }
 
-#accordion {
-  margin-top: 100px;
-}
-
 #sign-up-button {
   margin-top: 10px;
 }
 
-#password, #login {
+.input-topper {
   margin-top: 15px;
 }
 
