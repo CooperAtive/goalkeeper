@@ -1,102 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head profile="http://www.w3.org/2005/10/profile">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="Kalina Kalina">
-        <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-        <link href="public/css/cerulean-bootstrap.css" rel="stylesheet">
-        <link href="public/css/goalkeeper.css" rel="stylesheet">
+  <head profile="http://www.w3.org/2005/10/profile">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Goalkeeper | Welcome</title>
 
-        <title>Goalkeeper</title>
-    </head>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="public/css/index.css">
+    <link rel="stylesheet/less" type="text/css" href="public/css/style.less">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/login.css">
+  </head>
 
-    <body>  
-        <script type="text/x-handlebars">
-            <div class="row">
-                {{#link-to 'home'}}<img src="public/images/goalkeeper_logo.png" id="logo">{{/link-to}}
-                {{#link-to 'profile' class="profile_pic"}}<a href="#profile"></a>{{/link-to}}
-                <span class='userId'>User Id: {{userId}}</span>
-                <button {{action "logout"}}>Get me out of here!</button>
+  <body>
+    <script type="text/x-handlebars">
+      {{#if userId}}
+        <button id="logout-button" {{action logout}}>Logout</button>
+      {{/if}}
+      {{outlet}}
+    </script>
+
+    <script type="text/x-handlebars" id="index">
+      <div id="goalkeeper-circle">
+        <center id="title">Goalkeeper</center>
+      </div>
+
+      <p class="text" id="goal1">Play more</p>
+      <p class="text" id="goal2">Travel more</p>
+      <p class="text" id="goal3">Run more</p>
+      <p class="text" id="goal4">Laugh more</p>
+
+      <button class="btn btn-default" id="get-started-button" {{action 'go_login'}}>Get Started</button>
+
+      <img class="pic" id="pic1" src="public/images/friends2.jpg" />
+      <img class="pic" id="pic2" src="public/images/couple-travel.jpg" />
+      <img class="pic" id="pic3" src="public/images/woman-running.jpeg" />
+      <img class="pic" id="pic4" src="public/images/man-laughing.jpg" />
+    </script>
+
+    <script type="text/x-handlebars" id="login">
+      <div class="container">
+        <div id="goalkeeper-circle-login">
+          <center id="title-login">Goalkeeper</center>
+        </div>
+
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">Log In</h4>
             </div>
-            <div class="container">
-                <div class="row">    
-                    <div class="col-md-8 col-md-offset-2">
-                        {{outlet}}
-                    </div>
-                </div>
-            </div>
-        </script>
+              <div class="panel-body">
+                <form class="form-signin" role="form">
+                  {{input type="email" id="email" class="form-control input-topper" placeholder="Email address" value=email}}
+                  {{input type="password" id="password" class="form-control input-topper" placeholder="Password" value=password}}
+                  <button class="btn btn-lg btn-primary btn-block" id="login-button" {{action "login"}}>Let&#39;s Go!</button>
+                  {{#link-to 'signup' class="signUp"}}No account&#63; Signup{{/link-to}}
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </script>
 
-        <script type="text/x-handlebars" id="login">
-            <label>Email</label>
-            {{input value=email type="email"}}
-            <label>Password</label>
-            {{input value=password type="password"}}
-            <button class="btn btn-primary" {{action "login"}}> Login </button>
-            {{#link-to 'signup' class="signUp"}}No account&#63; Signup{{/link-to}}
-        </script>
+    <script type="text/x-handlebars" id="signup">
+      <div class="container">
+        <div id="goalkeeper-circle-login">
+          <center id="title-login">Goalkeeper</center>
+        </div>
 
-        <script type="text/x-handlebars" id="signup">
-            <label>First Name</label>
-            {{input value=first_name}}
-            <label>Last Name</label>
-            {{input value=last_name}}
-            <label>Email</label>
-            {{input value=email type="email"}}
-            <label>Password</label>
-            {{input value=password type="password"}}
-            <label>Password (confirm)</label>
-            {{input value=password2 type="password"}}
-            <button class="btn btn-primary" {{action "signup"}}> Sign Up </button>
-        </script>
-
-        <script type="text/x-handlebars" id="index">
-            {{#link-to 'login' tagName="h2"}}Login{{/link-to}}
-        </script>
-
-        <script type="text/x-handlebars" id="users">
-            {{#each}}
-            <h2>{{#link-to 'user' this}}{{first_name}} {{last_name}}{{/link-to}}</h2>
-            {{/each}}
-
-            {{outlet}}
-        </script>
-
-        <script type="text/x-handlebars" id="home">
-            <h1>Welcome to Goalkeeper!</h1>
-            <ul>
-                {{#each}}
-                {{#link-to 'runTarget' this.id tagName="li"}}{{name}}{{/link-to}}
-                {{/each}}
-            </ul>
-            {{#link-to 'targets.create'}}Create New Target{{/link-to}}
-            {{#link-to 'profile'}}View Profile{{/link-to}}
-        </script>
-
-        <script type="text/x-handlebars" id="profile/index">
-            <h1>Profile View</h1>
-            <ul>
-                <li>First Name: {{first_name}}</li>
-                <li>Last Name: {{last_name}}</li>
-            </ul>
-            {{ outlet }}
-            {{#link-to 'profile.edit'}}Edit Profile{{/link-to}}
-        </script>
-
-        <script type="text/x-handlebars" id="profile/edit">
-            <h1>Profile Edit</h1>
-            <label>First Name</label>
-            {{input value=first_name}}
-            <label>Last Name</label>
-            {{input value=last_name}}
-        </script>
-
-        <script type="text/x-handlebars" id="targets">
-            <div class="container">
-                {{outlet}}
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">Signup</h4>
             </div>
         </script>
 
@@ -209,4 +185,183 @@
         <!-- Helpers -->
         <script src="public/js/helpers/helpers.js"></script>
     </body>
+              <div class="panel-body">
+                <form class="form-signup" role="form">
+                  {{input type="text" id="first_name" class="form-control input-topper" placeholder="First name" value=first_name}}
+                  {{input type="text" id="last_name" class="form-control input-topper" placeholder="Last name" value=last_name}}
+                  {{input type="email" id="email" class="form-control input-topper" placeholder="Email address" value=email}}
+                  {{input type="password" id="password" class="form-control input-topper" placeholder="Password" value=password}}
+                  {{input type="password" id="password2" class="form-control input-topper" placeholder="Re-type Password" value=password2}}
+                  <button class="btn btn-lg btn-primary btn-block" id="login-button" {{action "signup"}}>Let&#39;s Go!</button>
+                  {{#link-to 'login' class="signUp"}}Already registered&#63; Login{{/link-to}}
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/x-handlebars" id="home">
+      <div id="container">
+        <div id="goalkeeper-circle-home">
+            <center id="title-home">Goalkeeper</center>
+        </div>
+        <div id="pic-circle"></div>
+      </div>
+    </script>
+
+    <script type="text/x-handlebars" id="users">
+      {{#each}}
+      <h2>{{#link-to 'user' this}}{{first_name}} {{last_name}}{{/link-to}}</h2>
+      {{/each}}
+
+      {{outlet}}
+    </script>
+
+    <script type="text/x-handlebars" id="home2">
+      <h1>Welcome to Goalkeeper!</h1>
+      <ul>
+        {{#each}}
+        {{#link-to 'runTarget' this.id tagName="li"}}{{name}}{{/link-to}}
+        {{/each}}
+      </ul>
+      {{#link-to 'targets.create'}}Create New Target{{/link-to}}
+      {{#link-to 'profile'}}View Profile{{/link-to}}
+    </script>
+
+    <script type="text/x-handlebars" id="profile/index">
+      <h1>Profile View</h1>
+      <ul>
+        <li>First Name: {{first_name}}</li>
+        <li>Last Name: {{last_name}}</li>
+      </ul>
+      {{ outlet }}
+      {{#link-to 'profile.edit'}}Edit Profile{{/link-to}}
+    </script>
+
+    <script type="text/x-handlebars" id="profile/edit">
+      <h1>Profile Edit</h1>
+      <label>First Name</label>
+      {{input value=first_name}}
+      <label>Last Name</label>
+      {{input value=last_name}}
+    </script>
+
+    <script type="text/x-handlebars" id="targets">
+      <div class="container">
+        {{outlet}}
+      </div>
+    </script>
+
+    <script type="text/x-handlebars" id="runTarget">
+      <h2>{{name}}</h2>
+      <p>{{total_miles}} miles</p>
+      <ol class='list-group'>
+        {{#each runEvent in runEvents}}
+        <li class='list-group-item'>
+        I ran: {{runEvent.distance}} miles<br>
+        On: {{formatDate runEvent.date}}<br>
+        {{log runEvent.time}}
+        In: {{#if runEvent.time.hours}}
+                {{runEvent.time.hours}} Hours and
+            {{/if}}
+            {{runEvent.time.minutes}} minutes
+        </li>
+        {{/each}}
+      </ol>
+      <h2>Create a new Running Event!</h2>
+      <label>How far you ran: </label>
+      {{input type="number" value=distance}}
+      <br>
+      <label>On what day:</label>
+      {{input type="date" value=date}}
+      <br>
+      <label>How long you ran for: </label>
+      {{input type="number" value=time}}
+      <br>
+      <button class="btn btn-primary" {{action "saveEvent"}}> Save this Run </button>
+    </script>
+
+    <script type="text/x-handlebars" id="targets/create">
+      <h2>Create a new Running Target!</h2>
+
+      <label>Name</label>
+      {{input value=name}}{{name}}
+      <br>
+      <label>Total Miles</label>
+      {{input type="number" value=total_miles}}
+      <br>
+      <label>Start Date</label>
+      {{input type="date" value=start_date}}
+      <br>
+      <label>End Date</label>
+      {{input type="date" value=end_date}}
+      <br>
+      <label>Frequency (per week)</label>
+      {{input type="number" value=frequency}}
+      <br>
+
+      <button class="btn btn-primary" {{action "createTarget"}}> Create New Target </button>
+    </script>
+
+    <script type="text/x-handlebars" id="users/index">
+
+    </script>
+
+    <script type="text/x-handlebars" id="user">
+      <h1>{{first_name}} {{last_name}}</h1>
+    </script>
+
+    <!-- dependencies -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="bower_components/handlebars/handlebars.js"></script>
+    <script src="bower_components/ember/ember.js"></script>
+    <script src="bower_components/ember-data/ember-data.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
+
+    <!-- App js files -->
+    <script src="public/js/app.js"></script>
+    <script src="public/js/router.js"></script>
+    <script src="public/js/store.js"></script>
+
+    <!-- Models -->
+    <script src="public/js/models/user.js"></script>
+    <script src="public/js/models/targetlite.js"></script>
+    <script src="public/js/models/runTarget.js"></script>
+    <script src="public/js/models/runEvent.js"></script>
+    <script src="public/js/models/profile.js"></script>
+
+    <!-- Routes -->
+    <script src="public/js/routes/userRoute.js"></script>
+    <script src="public/js/routes/usersRoute.js"></script>
+    <script src="public/js/routes/loginRoute.js"></script>
+    <script src="public/js/routes/signupRoute.js"></script>
+    <script src="public/js/routes/homeRoute.js"></script>
+    <script src="public/js/routes/runTargetRoute.js"></script>
+    <script src="public/js/routes/targetsCreateRoute.js"></script>
+    <script src="public/js/routes/profileRoute.js"></script>
+    <script src="public/js/routes/profileEditRoute.js"></script>
+
+    <!-- Controllers -->
+    <script src="public/js/controllers/applicationController.js"></script>
+    <script src="public/js/controllers/indexController.js"></script>
+    <script src="public/js/controllers/userController.js"></script>
+    <script src="public/js/controllers/usersController.js"></script>
+    <script src="public/js/controllers/loginController.js"></script>
+    <script src="public/js/controllers/signupController.js"></script>
+    <script src="public/js/controllers/targetsCreateController.js"></script>
+    <script src="public/js/controllers/profileController.js"></script>
+    <script src="public/js/controllers/runTargetController.js"></script>
+
+    <!-- Views -->
+    <script src="public/js/views/indexView.js"></script>
+    <script src="public/js/views/homeView.js"></script>
+
+    <!-- Components -->
+
+    <!-- Helpers -->
+    <script src="public/js/helpers/helpers.js"></script>
+  </body>
 </html>
