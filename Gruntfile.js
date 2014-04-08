@@ -1,20 +1,24 @@
 'use strict';
 
 module.exports = function(grunt) {
-
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    //build
+    grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-ember-templates');
-    grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-express-server');
+    //testing
+    grunt.loadNpmTasks('grunt-simple-mocha');
     grunt.loadNpmTasks('grunt-casperjs');
+    //deploy
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-forever');
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        //ENVIRONMENT
+        //============== ENVIRONMENT
         env: {
             options: {
             },
@@ -25,30 +29,66 @@ module.exports = function(grunt) {
                 NODE_ENV: 'test'
             }
         },
-        //BUILD TASKS
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: ['public/js/libs/jquery.js',
-                    'public/js/libs/bootstrap.js',
-                    'public/js/libs/handlebars.js',
-                    'public/js/libs/ember.js',
-                    'public/js/libs/moment.js',
-                    'public/js/libs/smooth-scroll.js',
-                    'js/app.js',
-                    'js/helpers/helpers.js',
-                    'js/router.js',
-                    'js/routes/*.js',
-                    'js/controllers/*.js',
-                    'js/templates.js',
-                    'js/views/*.js',
-                    'js/components/*.js'],
-                    dest: 'dist/built.js'
+        //=============== TESTING
+        simplemocha: {
+            test: {
+                src:['test/*.js', '!test/acceptance/*_test.js'],
+                options:{
+                    reporter: 'spec',
+                    slow: 200,
+                    timeout: 1000,
+                    node_env: 'test'
+                }
             }
         },
 
+        casperjs: {
+            options: {
+                async: {
+                    parallel: false
+                }
+            },
+            files: []//**********add acceptance tests
+        },
+        //=============== DEPLOY
+        watch: {
+            all: {
+                files:['server.js', './**/*.js' ],
+                tasks:['jshint']
+            },
+            express: {
+                files: [
+                    'server.js',
+                    'api/**/*',
+                    'public/js/**/*',
+                    'routes/**/*.js',
+                    'modles/**/*.js',
+                    'index.html',
+                    'Gruntfile.js'
+                ],
+                tasks: [ 'build:dev', 'express:dev' ],
+                options: {
+                    spawn: false,
+                    livereload: true
+                }
+            }
+        },
+
+        forever: {
+            server: {
+                options: {
+                    index: 'server.js',
+                }
+            }
+        },
+
+        //============= DEVELOPMENT
+        jshint: {
+            all: ['Gruntfile.js', 'server.js', 'api/**/*.js', 'public/js/**/*.js'],
+            options: {
+                jshintrc: true
+            }
+        },
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
@@ -59,29 +99,66 @@ module.exports = function(grunt) {
                 }
             }
         },
-
+        concat: {
+            options: {
+                separator: ';'
+            },
+            dist: {
+                src: [
+                    'bower_components/jquery/dist/jquery.js',
+                    'bower_components/bootstrap/dist/js/bootstrap.js',
+                    'bower_components/handlebars/handlebars.js',
+                    'bower_components/ember/ember.js',
+                    'bower_components/ember-data/ember-data.js',
+                    'bower_components/moment/moment.js',
+                    'public/js/app.js',
+                    'public/js/store.js',
+                    'public/js/helpers/helpers.js',
+                    'public/js/router.js',
+                    'public/js/routes/*.js',
+                    'public/js/controllers/*.js',
+                    'public/js/views/*.js'
+                ],
+                dest: 'dist/built.js'
+            }
+        },
         clean: {
             build: {
                 src: ['dist', 'dist']
             }
         },
-        //DEVELOPMENT TASKS
-
-        jshint: {
-            files: ['Gruntfile.js', 'server.js', 'public/js/**/*/.js'],
-
-            options: {
-                globals: {
-                    jQuery: true,
-                    console: true,
-                    module: true
+        less: {
+            development: {
+                options: {
+                    paths: ['assets/css']
+                },
+                files: {
+                    'path/to/result.css': 'path/to/source.less'
+                }
+            },
+            production: {
+                options: {
+                    paths: ['assets/css'],
+                    cleancss: true,
+                },
+                files: {
+                    'path/to/result.css': 'path/to/source.less'
                 }
             }
         },
-
+        emberTemplates: {
+            compile: {
+                options: {
+                    templateBasePath: /public\/js\/templates\//
+                },
+                    files: {
+                        'public/js/templates.js': 'public/js/templates/**/*.hbs'
+                    }
+            }
+        },
         express: {
             options: {
-                //override defaults here
+                // Override defaults here
             },
             dev: {
                 options: {
@@ -101,36 +178,11 @@ module.exports = function(grunt) {
                     node_env: 'test'
                 }
             }
-        },
-
-        watch: {
-            express: {
-                files:  [
-                    'public/js/**/*',
-                    'server.js',
-                    'routes/**/*.js',
-                    'models/**/*.js',
-                    'collections/**/*.js',
-                    'index.html',
-                    'Gruntfile.js'],
-                    tasks:  [ 'build:dev', 'express:dev' ],
-                    options: {
-                        spawn: false,
-                        livereload: true
-                    },
-            }
-        },
-        casperjs: {
-            options: {
-                async: {
-                    parallel: false
-                }
-            },
-            files: [
-            ]
         }
+
     });
-    grunt.registerTask('test:acceptance', ['build:dev', 'env:dev', 'express:dev', 'casperjs', 'dropUsers']);
+    grunt.registerTask('test', ['build:dev', 'env:dev', 'simplemocha']);
+    grunt.registerTask('test:acceptance', ['build:dev', 'express:dev', 'casperjs', 'dropUsers']);
     grunt.registerTask('build:dev', ['emberTemplates']);
     grunt.registerTask('build:prod', ['clean', 'emberTemplates', 'concat', 'uglify']);
     grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express']);

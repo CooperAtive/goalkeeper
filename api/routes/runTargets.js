@@ -9,19 +9,16 @@ exports.createRunTarget = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     var body = req.body.runTarget;
-    var user_id;
+    var user_id = req.body.user_id;
+    if (!user_id) {
+        res.send(500, {'error': 'Must be logged in'});
+    }
     var total_miles = body.total_miles;
     var start_date = body.start_date;
     var end_date = body.end_date;
     var frequency = body.frequency;
     var name = body.name;
 
-    // Remove this once users are hooked up to create targets
-    if(body.user_id) {
-        user_id = body.user_id;
-    } else {
-        user_id = 1;
-    }
     //var user = get user who creates this target
     //do I need to send this here or can every one automatically be
     //attached to a user?
