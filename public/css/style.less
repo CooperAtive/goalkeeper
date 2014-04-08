@@ -4,45 +4,46 @@
   src: url(../fonts/GeosansLight.woff) format('woff');
 }
 
-/*Styling for HTML elements*/
-html, body {
-  margin: 0px;
-  padding: 0px;
-
-  font-family: 'GeosansLight';
-}
-
+/*
 #background {
   float: left;
   z-index: 0;
 }
+*/
 
-#container {
-  width: 1000px;
-  height: 700px;
-  position: relative;
+.home {
+  background: url(../images/kites2.jpg) no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: auto;
+  z-index: 1000;
 }
 
-#goalkeeper-circle {
+#container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#goalkeeper-circle-home {
   width: 80px;
   height: 80px;
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
-  margin: auto;
+  margin: 1rem auto auto 1rem;
   position: absolute;
   z-index: 2000;
-
   background-color: rgba(0, 0, 0, 0);
   border: 3px solid #FFFFFF;
 }
 
-#title {
+#title-home {
   top: 45%;
   margin-top: -0.5em;
   position: relative;
   z-index: 2000;
-
-  color: #FFFFFF;
 }
 
 #pic-circle {
@@ -50,11 +51,13 @@ html, body {
   height: 120px;
   -moz-border-radius: 60px;
   -webkit-border-radius: 60px;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   margin: auto;
   position: absolute;
   z-index: 2000;
-
   background-color: rgba(224, 224, 224, 0.2);
   background-image: url(../images/amelie2.jpg);
   background-position: center;
@@ -70,7 +73,6 @@ html, body {
   margin: auto;
   position: absolute;
   z-index: 2000;
-
   background-color: rgba(224, 224, 224, 0.3);
   /*border: 3px solid #FFFFFF;*/
 }
@@ -79,42 +81,35 @@ html, body {
   top: 45%;
   margin-top: -0.5em;
   position: relative;
-
-  color: #FFFFFF;
+  font-size: 110%;
   font-weight: bolder;
 }
 
 .radial-progress {
-  @circle-size: 100px;
-  @circle-color: rgba(224, 224, 224, 0.5);
-  @transition-length: 1s;
-
-  width:  @circle-size;
-  height: @circle-size;
+  width: 100px;
+  height: 100px;
   position: absolute;
-
   box-shadow: 0 0 0 3px white inset;
-
   border-radius: 50%;
-  .circle {
-    .mask, .fill {
-      width:    @circle-size;
-      height:   @circle-size;
-      position: absolute;
+}
 
-      border-radius: 50%;
+.radial-progress .circle .mask,
+.radial-progress .circle .fill {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 50%;
+  transition: -webkit-transform 1s;
+  transition: -ms-transform 1s;
+  transition: transform 1s;
+  -webkit-backface-visibility: hidden;
+}
 
-      transition: -webkit-transform @transition-length;
-      transition: -ms-transform @transition-length;
-      transition: transform @transition-length;
-      -webkit-backface-visibility: hidden;
-    }
-    .mask {
-      clip: rect(0px, @circle-size, @circle-size, @circle-size/2);
-      .fill {
-        clip: rect(0px, @circle-size/2, @circle-size, 0px);
-        background-color: @circle-color;
-      }
-    }
-  }
+.radial-progress .circle .mask {
+  clip: rect(0px, 100px, 100px, 50px);
+}
+
+.radial-progress .circle .mask .fill {
+  clip: rect(0px, 50px, 100px, 0px);
+  background-color: rgba(224, 224, 224, 0.5);
 }
