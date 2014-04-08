@@ -6,9 +6,11 @@ App.RunTargetController = Ember.ObjectController.extend({
     time: '',
 
     resetForm: function() {
+        console.log('resetform');
         this.set('distance', '');
         this.set('date', '');
         this.set('time', '');
+        console.log('resetform');
     },
 
     actions: {
@@ -22,8 +24,6 @@ App.RunTargetController = Ember.ObjectController.extend({
                 time: this.get('time')
             };
 
-            console.log(event);
-
             $.post('api/v1/runEvents', event, function(response) {
                     var savedEvent = self.store.push('runEvent', response.event);
                     self.get('runEvents').addObject(savedEvent);
@@ -31,6 +31,7 @@ App.RunTargetController = Ember.ObjectController.extend({
                 .fail( function() {
                     alert('Invalid Event');
             });
+            this.resetForm();
         }
     }
     /*
