@@ -22,11 +22,11 @@ exports.findById = function(req, res) {
 exports.updateUser = function(req, res) {
     new User({id: req.params.id})
     .save(req.body, {patch: true})
-    .exec(function(error) {
+    .exec(function(error, user) {
         if(error) {
             res.send(500, {'error': error});
         } else {
-            res.send({'message': "Success"});
+            res.send({'user': user});
         }
     });
 };
