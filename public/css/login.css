@@ -1,20 +1,4 @@
-/*Embedding Non-Standard Fonts*/
-@font-face {
-  font-family: 'GeosansLight';
-  src: url(fonts/GeosansLight.woff) format('woff');
-}
-
-/*Styling for HTML elements*/
-html, body {
-  margin: 0px;
-  padding: 0px;
-
-  background-color: #007BA7;
-
-  font-family: 'GeosansLight';
-}
-
-#goalkeeper-circle {
+#goalkeeper-circle-login {
   width: 80px;
   height: 80px;
   -moz-border-radius: 40px;
@@ -26,7 +10,7 @@ html, body {
   border: 3px solid #FFFFFF;
 }
 
-#title {
+#title-login {
   top: 45%;
   margin-top: -0.5em;
   position: relative;
@@ -35,9 +19,17 @@ html, body {
 }
 
 #accordion {
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 #sign-up-button {
   margin-top: 10px;
+}
+
+#password, #login {
+  margin-top: 15px;
+}
+
+.signUp {
+  margin: 15px;
 }

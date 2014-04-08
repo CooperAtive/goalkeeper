@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="public/css/index.css">
         <link rel="stylesheet/less" type="text/css" href="public/css/style.less">
         <link rel="stylesheet" type="text/css" href="public/css/style.css">
+        <link rel="stylesheet" type="text/css" href="public/css/login.css">
 
         <title>Goalkeeper</title>
     </head>
@@ -20,7 +21,7 @@
                 {{#link-to 'home'}}<img src="public/images/goalkeeper_logo.png" id="logo">{{/link-to}}
                 {{#link-to 'profile' class="profile_pic"}}<a href="#profile"></a>{{/link-to}}
                 <span class='userId'>User Id: {{userId}}</span>
-                <button {{action "logout"}}>Get me out of here!</button>
+                <button {{action "logout"}}>log</button>
             </div>
             <div class="container">
                 <div class="row">    
@@ -29,9 +30,13 @@
                     </div>
                 </div>
             </div>
+            
         </script>
 
         <script type="text/x-handlebars">
+            {{#if userId}}
+                <button id="logout-button" {{action logout}}>Logout</button>
+            {{/if}}
             {{outlet}}
         </script>
 
@@ -45,7 +50,7 @@
             <p class="text" id="goal3">Run more</p>
             <p class="text" id="goal4">Laugh more</p>
 
-            <button class="btn btn-default" id="login-button">Get Started</button>
+            <button class="btn btn-default" id="get-started-button">Get Started</button>
 
             <img class="pic" id="pic1" src="public/images/friends2.jpg" />
             <img class="pic" id="pic2" src="public/images/couple-travel.jpg" />
@@ -54,12 +59,27 @@
         </script>
 
         <script type="text/x-handlebars" id="login">
-            <label>Email</label>
-            {{input value=email type="email"}}
-            <label>Password</label>
-            {{input value=password type="password"}}
-            <button class="btn btn-primary" {{action "login"}}> Login </button>
-            {{#link-to 'signup' class="signUp"}}No account&#63; Signup{{/link-to}}
+            <div class="container">
+              <div class="circle" id="goalkeeper-circle-login">
+                <center id="title-login">Goalkeeper</center>
+              </div>
+
+              <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Log In</h4>
+                  </div>
+                    <div class="panel-body">
+                      <form class="form-signin" role="form">
+                        {{input type="email" id="email" class="form-control" placeholder="Email address" value=email}}
+                        {{input type="password" id="password" class="form-control" placeholder="Password" value=password}}
+                        <button class="btn btn-lg btn-primary btn-block" id="login-button" {{action "login"}}>Let&#39;s Go!</button>
+                        {{#link-to 'signup' class="signUp"}}No account&#63; Signup{{/link-to}}
+                      </form>
+                    </div>
+                </div>
+              </div>
+            </div>
         </script>
 
         <script type="text/x-handlebars" id="signup">
