@@ -32,7 +32,7 @@ module.exports = function(grunt) {
         //=============== TESTING
         simplemocha: {
             test: {
-                src:['test/*_test.js', '!test/acceptance/*_test.js'],
+                src:['test/*.js', '!test/acceptance/*_test.js'],
                 options:{
                     reporter: 'spec',
                     slow: 200,
@@ -181,7 +181,7 @@ module.exports = function(grunt) {
         }
 
     });
-    grunt.registerTask('test', ['build:dev', 'env:dev', 'mochaTest']);
+    grunt.registerTask('test', ['build:dev', 'env:dev', 'simplemocha']);
     grunt.registerTask('test:acceptance', ['build:dev', 'express:dev', 'casperjs', 'dropUsers']);
     grunt.registerTask('build:dev', ['emberTemplates']);
     grunt.registerTask('build:prod', ['clean', 'emberTemplates', 'concat', 'uglify']);
