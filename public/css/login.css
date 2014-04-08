@@ -1,15 +1,9 @@
-/*Embedding Non-Standard Fonts*/
-@font-face {
-  font-family: 'GeosansLight';
-  src: url(fonts/GeosansLight.woff) format('woff');
-}
-
 #goalkeeper-circle-login {
   width: 80px;
   height: 80px;
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
-  margin: auto;
+  margin: 1rem auto 2rem auto;
   z-index: 2000;
 
   background-color: rgba(204, 0, 102, 0);
@@ -24,10 +18,14 @@
   color: #FFFFFF;
 }
 
-#accordion {
-  margin-top: 50px;
-}
-
 #sign-up-button {
   margin-top: 10px;
+}
+
+.input-topper {
+  margin-top: 15px;
+}
+
+.signUp {
+  margin: 15px;
 }
