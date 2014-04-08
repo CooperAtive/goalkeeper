@@ -8,8 +8,6 @@
 //==========
 
 //**********
-//delete user after test
-//rename this file to runTarget _api_test
 
 'use strict';
 //jshint unused:false
@@ -38,7 +36,7 @@ describe('Targets API', function() {
             expect(res.body.user).to.not.be.eql(null);
             expect(res.body.user.first_name).to.be.eql('Kalina');
             expect(res.body.user.last_name).to.be.eql('Wongorwu');
-            user_id = res.body.user_id;
+            user_id = res.body.user.id;
 
             done();
 
