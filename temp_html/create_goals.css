@@ -5,6 +5,7 @@
 }
 
 #create-goals {
+  background-color: #000000;
   color: #FFFFFF;
   font-family: 'GeosansLight';
 }
@@ -14,6 +15,8 @@
   height: 100%;
   position: absolute;
   z-index: 0;
+
+  opacity: 0.8;
 }
 
 #goalkeeper-circle-create-goals {
