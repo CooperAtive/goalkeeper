@@ -21,19 +21,18 @@ $(document).ready(function() {
 
   var myLine = new Chart(document.getElementById("run-canvas").getContext("2d")).Line(lineChartData, {scaleFontColor: '007BA7', scaleGridLineColor: "rgba(0,0,0,0.1)"});
 
-  $(function () {
-    $('#date-picker').datetimepicker({
-        defaultDate: "11/1/13",
-        pickTime: false
-    });
-  });
-
   $(document).on("click", "#add-run-milestone-button", function(e) {
     var distance_ran = $("#distance-ran").val();
     var distance_unit = $("#distance-ran-unit").val();
     var time_ran = $("#time-ran").val();
     var time_unit = $("#time-ran-unit").val();
-    var date_ran = $("#date-ran").val();
+    var date_ran = $("#date-picker").val();
     $("ul").append("<li>" + "Ran " + distance_ran + " " + distance_unit + " in " + time_ran + " " + time_unit + " on " + date_ran + "." + "</li>");
+
+    $("#distance-ran").val("#");
+    $("#distance-ran-unit").val("");
+    $("#time-ran").val("#");
+    $("#time-ran-unit").val("");
+    $("#date-picker").val("mm/dd/yyyy");
   });
 });
