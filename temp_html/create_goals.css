@@ -1,0 +1,61 @@
+/* Embedding Non-Standard Fonts */
+@font-face {
+  font-family: 'GeosansLight';
+  src: url(fonts/GeosansLight.woff) format('woff');
+}
+
+#create-goals {
+  color: #FFFFFF;
+  font-family: 'GeosansLight';
+}
+
+#background-create-goals {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+#goalkeeper-circle-create-goals {
+  width: 80px;
+  height: 80px;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  margin: auto;
+  position: absolute;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0);
+  border: 3px solid #FFFFFF;
+}
+
+#title-create-goals {
+  top: 45%;
+  margin-top: -0.5em;
+  position: relative;
+  z-index: 2000;
+}
+
+#form-create-goals {
+  width: 60%;
+  height: 40%;
+  top: 45%;
+  left: 15%;
+  position: absolute;
+
+  font-size: 125%;
+  font-weight: bolder;
+  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
+}
+
+#pick-goal {
+  width: 150px;
+}
+
+#goal-steps {
+  margin-top: 2.5%;
+  position: absolute;
+}
+
+#time-number, #distance-number {
+  width: 50px;
+}

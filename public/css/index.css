@@ -44,7 +44,7 @@ p {
   position: absolute;
   z-index: 2000;
 
-  background-color: rgba(224, 224, 224, 0.3);
+  background-color: rgba(224, 224, 224, 0.4);
   border: 3px solid #FFFFFF;
 }
 
