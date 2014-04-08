@@ -10,7 +10,7 @@ App.HomeView = Ember.View.extend({
               "<div class='mask full'> <div class='fill'></div> </div>" +
               "<div class='mask half'> <div class='fill'></div> </div>" +
               "<center class='goal-name'>" + goal + "</center>" +
-            "</div> </div>");
+              "</div> </div>");
       }
     }
 
