@@ -11,6 +11,7 @@ html, body {
 
   background-color: #007BA7;
   color: #FFFFFF;
+  background-color: #007BA7;
   font-family: 'GeosansLight';
 }
 
@@ -78,6 +79,39 @@ p {
   font-size: 125%;
   text-align: center;
   vertical-align: center;
+}
+
+#login-button {
+  width: 100px;
+  height: 40px;
+
+  padding: 10px;
+  margin: 20px auto 0 auto;
+  z-index: 2000;
+
+  color: #007BA7;
+  background-color: white;
+  border-color: #007BA7;
+  border-style: solid;
+  border-width: 1px;
+
+  font-family: 'GeosansLight';
+  font-size: 125%;
+  text-align: center;
+  vertical-align: center;
+  border-radius: 10px;
+}
+
+#logout-button {
+  color: white;
+  font-weight: bold;
+  background-color: #007BA7;
+  border-radius: 5px;
+  top: 0;
+  right: 0;
+  position: absolute;
+  z-index: 2000;
+  margin: 1rem;
 }
 
 /* Mobile Styling */
