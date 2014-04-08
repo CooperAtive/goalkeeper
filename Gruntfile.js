@@ -17,8 +17,18 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-forever');
 
-
     grunt.initConfig({
+        //============== ENVIRONMENT
+        env: {
+            options: {
+            },
+            dev: {
+                NODE_ENV: 'dev'
+            },
+            test: {
+                NODE_ENV: 'test'
+            }
+        },
         //=============== TESTING
         simplemocha: {
             test: {
@@ -171,4 +181,9 @@ module.exports = function(grunt) {
         }
 
     });
+    grunt.registerTask('test', ['build:dev', 'env:dev', 'mochaTest']);
+    grunt.registerTask('test:acceptance', ['build:dev', 'express:dev', 'casperjs', 'dropUsers']);
+    grunt.registerTask('build:dev', ['emberTemplates']);
+    grunt.registerTask('build:prod', ['clean', 'emberTemplates', 'concat', 'uglify']);
+    grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express']);
 };
