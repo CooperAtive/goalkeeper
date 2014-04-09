@@ -7,7 +7,8 @@ var _ = require('underscore');
 
 exports.createRunTarget = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
-    var body = req.body;
+
+    var body = req.body.runTarget;
     var user_id = body.user_id;
     if (!user_id) {
         res.send(500, {'error': 'Must be logged in'});
