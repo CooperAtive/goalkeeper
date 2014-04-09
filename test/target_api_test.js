@@ -45,14 +45,14 @@ describe('Targets API', function() {
 
     it('can create a new target', function(done) {
         superagent.post('localhost:3000/api/v1/runTargets')
-        .send({
+        .send({ runTarget: {
             user_id: user_id,
             name: 'Test Target',
             total_miles: 100,
             start_date: '4/15/2014',
             end_date: '9/15/2014',
             frequency: '1'
-        })
+        }})
         .end(function(e, res) {
             expect(e).to.eql(null);
             expect(res.body.runTarget).to.not.be.eql(null);

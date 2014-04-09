@@ -1,9 +1,7 @@
 'use strict';
 
 App.RunTarget = DS.Model.extend({
-  user_id: function() {
-      return localStorage_userId;
-  },
+  user_id: DS.attr(),
   total_miles: DS.attr(),
   start_date: DS.attr(),
   end_date: DS.attr(),
