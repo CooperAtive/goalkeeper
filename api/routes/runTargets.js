@@ -8,8 +8,9 @@ var _ = require('underscore');
 exports.createRunTarget = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 
+    console.log(req.body);
     var body = req.body.runTarget;
-    var user_id = req.body.user_id;
+    var user_id = body.user_id;
     if (!user_id) {
         res.send(500, {'error': 'Must be logged in'});
     }
@@ -34,6 +35,7 @@ exports.createRunTarget = function(req, res) {
     .save()
     .exec(function(error, target) {
         if(error) {
+            console.log("error: " + error);
             res.send(500, {'error': error});
         } else {
             res.send({ 'runTarget': target });
