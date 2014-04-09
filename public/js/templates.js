@@ -176,10 +176,17 @@ function program2(depth0,data) {
   return buffer;
   }
 
+<<<<<<< HEAD
+  data.buffer.push("<div id=\"goalkeeper-circle\">\n  <center id=\"title-run-goal\">Goalkeeper</center>\n</div>\n\n<h2>");
+  stack1 = helpers._triageMustache.call(depth0, "name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</h2>\n\n<div class=\"container\">\n  <div class=\"row marketing\">\n    <form class=\"form-inline\" id=\"form-run-goal\" role=\"form\">\n      <label>I ran</label>\n      <input type=\"text\" class=\"form-control\" id=\"distance-ran\" placeholder=\"#\"/>\n      <select class=\"form-control\" id=\"distance-ran-unit\">\n        <option>miles</option>\n        <option>kilometers</option>\n      </select>\n      <label>in</label>\n      <input type=\"text\" class=\"form-control\" id=\"time-ran\" placeholder=\"#\"/>\n      <select class=\"form-control\" id=\"time-ran-unit\">\n        <option>minutes</option>\n        <option>hours</option>\n      </select>\n      <label>on</label>\n      <input type=\"date\" class=\"form-control\" id=\"date-picker\" data-date-format=\"MM/DD/YYYY\">\n      <button type=\"button\" class=\"btn btn-primary\" id=\"add-run-milestone-button\">Add</button>\n    </form>\n  </div>\n  <h3>Progress List</h3>\n  <ul id=\"progress-list\"></ul>\n</div>\n\n\n\n\n<p>");
+=======
   data.buffer.push("<h2>");
   stack1 = helpers._triageMustache.call(depth0, "name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("</h2>\n<p>");
+>>>>>>> 5582d4cf4ac736bf1a663d029e1ed9a86e0951a7
   stack1 = helpers._triageMustache.call(depth0, "total_miles", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push(" miles</p>\n<ol class='list-group'>\n  ");

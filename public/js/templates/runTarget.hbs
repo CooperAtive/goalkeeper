@@ -1,4 +1,34 @@
+<div id="goalkeeper-circle">
+  <center id="title-run-goal">Goalkeeper</center>
+</div>
+
 <h2>{{name}}</h2>
+
+<div class="container">
+  <div class="row marketing">
+    <form class="form-inline" id="form-run-goal" role="form">
+      <label>I ran</label>
+      <input type="text" class="form-control" id="distance-ran" placeholder="#"/>
+      <select class="form-control" id="distance-ran-unit">
+        <option>miles</option>
+        <option>kilometers</option>
+      </select>
+      <label>in</label>
+      <input type="text" class="form-control" id="time-ran" placeholder="#"/>
+      <select class="form-control" id="time-ran-unit">
+        <option>minutes</option>
+        <option>hours</option>
+      </select>
+      <label>on</label>
+      <input type="date" class="form-control" id="date-picker" data-date-format="MM/DD/YYYY">
+      <button type="button" class="btn btn-primary" id="add-run-milestone-button">Add</button>
+    </form>
+  </div>
+  <h3>Progress List</h3>
+  <ul id="progress-list"></ul>
+</div>
+
+
 <p>{{total_miles}} miles</p>
 <ol class='list-group'>
   {{#each runEvent in runEvents}}
