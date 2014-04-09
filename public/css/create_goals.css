@@ -4,38 +4,29 @@
   src: url(fonts/GeosansLight.woff) format('woff');
 }
 
-#create-goals {
-  background-color: #000000;
-  color: #FFFFFF;
-  font-family: 'GeosansLight';
-}
-
 #background-create-goals {
   width: 100%;
   height: 100%;
   position: absolute;
+  top: 0;
+  left: 0;
   z-index: 0;
 
   opacity: 0.8;
 }
 
-#goalkeeper-circle-create-goals {
-  width: 80px;
-  height: 80px;
-  -moz-border-radius: 40px;
-  -webkit-border-radius: 40px;
-  margin: auto;
-  position: absolute;
-  z-index: 2000;
-  background-color: rgba(0, 0, 0, 0);
-  border: 3px solid #FFFFFF;
+#target-name-create {
+  width: 290px;
 }
 
-#title-create-goals {
-  top: 45%;
-  margin-top: -0.5em;
-  position: relative;
-  z-index: 2000;
+#start-date {
+  color: black;
+  margin: 5px;
+  width: 175px;
+}
+
+.align-labels {
+  width: 105px;
 }
 
 #form-create-goals {
@@ -51,14 +42,16 @@
 }
 
 #pick-goal {
-  width: 150px;
+  width: 175px;
+  margin: 5px;
 }
 
-#goal-steps {
+.goal-steps {
   margin-top: 2.5%;
-  position: absolute;
+  display: none;
 }
 
-#time-number, #distance-number {
+#total-distance, #frequency, #target-duration {
   width: 50px;
+  margin: 5px;
 }

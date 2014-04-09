@@ -35,7 +35,7 @@ p {
 }
 
 /* Default Styling (for all sizes) */
-#goalkeeper-circle {
+#goalkeeper-circle-index {
   width: 200px;
   height: 200px;
   -moz-border-radius: 100px;
