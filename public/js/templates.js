@@ -25,10 +25,21 @@ function program1(depth0,data) {
 Ember.TEMPLATES["home"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
   
+  
+  data.buffer.push("\n      <center id=\"create-logo1\">Create</center>\n      <center id=\"create-logo2\">Goal</center>\n    ");
+  }
 
-
-  data.buffer.push("<div id=\"container\">\n  <div id=\"goalkeeper-circle\">\n    <center id=\"title-logo\">Goalkeeper</center>\n  </div>\n  <div id=\"pic-circle\"></div>\n</div>\n");
+  data.buffer.push("<div id=\"container\">\n  <div id=\"goalkeeper-circle\">\n    <center id=\"title-logo\">Goalkeeper</center>\n  </div>\n\n  <div id=\"create-circle\">\n    ");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
+    'class': ("signUp")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "targets.create", options) : helperMissing.call(depth0, "link-to", "targets.create", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n  </div>\n\n  <div id=\"pic-circle\"></div>\n  <div id=\"line1\"></div>\n  <div id=\"line2\"></div>\n  <div id=\"line3\"></div>\n  <div id=\"line4\"></div>\n</div>\n");
+  return buffer;
   
 });
 
@@ -38,9 +49,9 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("<div id=\"goalkeeper-circle-index\">\n  <center id=\"title\">Goalkeeper</center>\n</div>\n\n<p class=\"text\" id=\"goal1\">Play more</p>\n<p class=\"text\" id=\"goal2\">Travel more</p>\n<p class=\"text\" id=\"goal3\">Run more</p>\n<p class=\"text\" id=\"goal4\">Laugh more</p>\n\n<button class=\"btn btn-default\" id=\"get-started-button\" ");
+  data.buffer.push("<div id=\"goalkeeper-circle-index\">\n  <center id=\"title\">Goalkeeper</center>\n</div>\n\n<p class=\"text\" id=\"goal1\">Play more</p>\n<p class=\"text\" id=\"goal2\">Travel more</p>\n<p class=\"text\" id=\"goal3\">Run more</p>\n<p class=\"text\" id=\"goal4\">Laugh more</p>\n<p class=\"text\" id=\"goal5\">Do more</p>\n<p class=\"text\" id=\"goal6\">Live more</p>\n\n<button class=\"btn btn-default\" id=\"get-started-button\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "go_login", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(">Get Started</button>\n\n<img class=\"pic\" id=\"pic1\" src=\"public/images/friends2.jpg\" />\n<img class=\"pic\" id=\"pic2\" src=\"public/images/couple-travel.jpg\" />\n<img class=\"pic\" id=\"pic3\" src=\"public/images/woman-running.jpeg\" />\n<img class=\"pic\" id=\"pic4\" src=\"public/images/man-laughing.jpg\" />\n\n<div class=\"goal-circle\" id=\"goal-circle1\"></div>\n<div class=\"goal-circle\" id=\"goal-circle2\"></div>\n<div class=\"goal-circle\" id=\"goal-circle3\"></div>\n<div class=\"goal-circle\" id=\"goal-circle4\"></div>\n\n<label id=\"text1\">Do more</label>\n<label id=\"text2\">Live more</label>\n");
+  data.buffer.push(">Get Started</button>\n\n<img class=\"pic\" id=\"pic1\" src=\"public/images/friends2.jpg\" />\n<img class=\"pic\" id=\"pic2\" src=\"public/images/couple-travel.jpg\" />\n<img class=\"pic\" id=\"pic3\" src=\"public/images/woman-running.jpeg\" />\n<img class=\"pic\" id=\"pic4\" src=\"public/images/man-laughing.jpg\" />\n\n<div class=\"goal-circle\" id=\"goal-circle1\"></div>\n<div class=\"goal-circle\" id=\"goal-circle2\"></div>\n<div class=\"goal-circle\" id=\"goal-circle3\"></div>\n<div class=\"goal-circle\" id=\"goal-circle4\"></div>\n");
   return buffer;
   
 });
@@ -261,13 +272,13 @@ function program1(depth0,data) {
     'class': ("form-control"),
     'id': ("target-name-create")
   },hashTypes:{'value': "ID",'placeholder': "STRING",'class': "STRING",'id': "STRING"},hashContexts:{'value': depth0,'placeholder': depth0,'class': depth0,'id': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n  <br>\n  <label class='align-labels'>I am going to</label>\n  <select class=\"form-control\" id=\"pick-goal\">\n    <option>play more</option>\n    <option>read more</option>\n    <option>run more</option>\n    <option>travel more</option>\n  </select>\n  <br>\n  <label class=\"align-labels\">Starting on</label>\n    ");
+  data.buffer.push("\n  <br>\n  <label class='align-labels'>I am going to</label>\n  <select class=\"form-control\" id=\"pick-goal\">\n    <option>play more</option>\n    <option>read more</option>\n    <option>run more</option>\n    <option>travel more</option>\n  </select>\n  <br>\n  <div id=\"buffer\">\n    <label class=\"align-labels\">Starting on</label>\n      ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'type': ("date"),
     'value': ("start_date"),
     'id': ("start-date")
   },hashTypes:{'type': "STRING",'value': "ID",'id': "STRING"},hashContexts:{'type': depth0,'value': depth0,'id': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n  <div class=\"goal-steps\">\n    <label class='align-labels'>For the next</label>\n    <input type=\"number\" class='form-control' id='target-duration' placeholder='#'>\n    <select class='form-control' id='time-unit'>\n      <option>days</option>\n      <option>weeks</option>\n      <option>months</option>\n      <option>years</option>\n    </select>\n\n    <label>I will run a total of </label>\n    <input type='text' class='form-control' id='total-distance' placeholder='#'>\n    <select class='form-control' id='distance-unit'>\n      <option>miles</option>\n      <option>kilometers</option>\n    </select>\n    <label>and I will run...</label>\n    <br>\n    <label class=\"align-labels\">At least </label>\n    ");
+  data.buffer.push("\n  </div>\n  <div class=\"goal-steps\">\n    <label class='align-labels'>For the next</label>\n    <input type=\"number\" class='form-control' id='target-duration' placeholder='#'>\n    <select class='form-control' id='time-unit'>\n      <option>days</option>\n      <option>weeks</option>\n      <option>months</option>\n      <option>years</option>\n    </select>\n\n    <label>I will run a total of </label>\n    <input type='text' class='form-control' id='total-distance' placeholder='#'>\n    <select class='form-control' id='distance-unit'>\n      <option>miles</option>\n      <option>kilometers</option>\n    </select>\n    <label>and I will run...</label>\n    <br>\n    <label class=\"align-labels\">At least </label>\n    ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'type': ("number"),
     'class': ("form-control"),

@@ -9,6 +9,8 @@ lib-cov
 *.gz
 secure/
 
+public/js/templates.js
+
 pids
 logs
 results

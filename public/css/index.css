@@ -37,7 +37,6 @@ p {
 */
 
 /* Default Styling (for all sizes) */
-
 #goalkeeper-circle-index {
   width: 200px;
   height: 200px;
@@ -47,16 +46,35 @@ p {
   margin: auto;
   position: absolute;
   z-index: 2000;
+
+  background-color: rgba(224, 224, 224, 0.4);
+  border: 3px solid #FFFFFF;
 }
 
-#text1 {
-  margin: 0 auto;
-  display: block;
+#goal5 {
+  width: 100px;
+  height: 30px;
+
+  left: 50%;
+  bottom: 29%;
+  margin-left: -50px;
+
+  text-align: center;
+  vertical-align: center;
+  text-shadow: 0 0 1px black,0 0 1px black,0 0 1px black,0 1px 1px #000;
 }
 
-#text2 {
-  position: absolute;
-  z-index: 2000;
+#goal6 {
+  width: 100px;
+  height: 30px;
+
+  left: 50%;
+  bottom: 24%;
+  margin-left: -50px;
+
+  text-align: center;
+  vertical-align: center;
+  text-shadow: 0 0 1px black,0 0 1px black,0 0 1px black,0 1px 1px #000;
 }
 
 #get-started-button {
@@ -64,7 +82,7 @@ p {
   height: 40px;
 
   left: 50%;
-  bottom: 25%;
+  bottom: 15%;
   margin-left: -50px;
   padding: 0px;
   position: absolute;
@@ -144,24 +162,28 @@ p {
   bottom: 1%;
 
   text-align: left;
+  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
 }
 
 #goal2 {
   bottom: 1%;
 
   text-align: left;
+  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
 }
 
 #goal3 {
   bottom: 30%;
 
   text-align: left;
+  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
 }
 
 #goal4 {
   bottom: 10%;
 
   text-align: left;
+  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
 }
 
 .pic {
@@ -183,7 +205,6 @@ p {
 
   color: #FFFFFF;
   font-weight: bolder;
-  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
 }
 
 /* Desktop Styling */
@@ -215,6 +236,7 @@ p {
     bottom: 90%;
 
     text-align: right;
+    text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
   }
 
   #goal2 {
@@ -222,6 +244,7 @@ p {
     bottom: 65%;
 
     text-align: left;
+    text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
   }
 
   #goal3 {
@@ -229,6 +252,7 @@ p {
     bottom: 20%;
 
     text-align: right;
+    text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
   }
 
   #goal4 {
@@ -236,6 +260,7 @@ p {
     bottom: 10%;
 
     text-align: left;
+    text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
   }
 
   #goal-circle1 {
@@ -282,15 +307,12 @@ p {
   }
 
   .text {
-    margin: 0;
-    padding: 0;
     position: absolute;
     z-index: 2000;
 
     color: #FFFFFF;
     font-size: 130%;
     font-weight: bolder;
-    text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
   }
 }
 
