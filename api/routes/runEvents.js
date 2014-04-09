@@ -25,6 +25,7 @@ exports.createRunEvent = function(req, res) {
     })
     .save()
     .exec(function(error, event) {
+        console.log(event);
         if(error) {
             console.log(error);
             res.send(500, {'error': error});
@@ -41,8 +42,7 @@ exports.findById = function(req, res) {
     .fetch()
     .exec(function(error, event) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            res.send(500, {'error': error});
         } else {
             var e = event.attributes;
             console.log(e);
@@ -54,12 +54,11 @@ exports.findById = function(req, res) {
 exports.updateRunEvent = function(req, res) {
     new RunEvent({id: req.params.id})
     .save(req.body, {patch: true})
-    .exec(function(error) {
+    .exec(function(error, runEvent) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            res.send(500, {'error': error});
         } else {
-            res.send({'message': 'Success'});
+            res.send({'runEvent': runEvent});
         }
     });
 };

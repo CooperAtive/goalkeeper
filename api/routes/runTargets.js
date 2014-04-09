@@ -7,7 +7,6 @@ var _ = require('underscore');
 
 exports.createRunTarget = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
-    console.log(req.body);
     var body = req.body;
     var user_id = body.user_id;
     if (!user_id) {
@@ -100,7 +99,6 @@ exports.collection = function(req, res) {
                 var t = runTarget.attributes;
                 return t;
             });
-            console.log(set);
             res.send({ 'runTargets': set });
         }
     });
