@@ -8,11 +8,11 @@ casper.test.begin('home page', 3, function suite(test) {
   });
 
   casper.then(function(){
-    test.assertTitle('OurAgendaApp | Home', 'title is OurAgendaApp');
+    test.assertTitle('Goalkeeper | Welcome', 'title is Goalkeeper');
   });
 
   casper.then(function() {
-    test.assertSelectorHasText('h1.largeHeader','OurAgendaApp');
+    test.assertSelectorHasText('button.btn','Get Started');
   });
 
   casper.run(function(){

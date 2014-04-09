@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ember-templates');
     grunt.loadNpmTasks('grunt-express-server');
     //testing
-    grunt.loadNpmTasks('grunt-simple-mocha');
+    grunt.loadNpmTasks('grunt-mocha');
     grunt.loadNpmTasks('grunt-casperjs');
     //deploy
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -30,11 +30,10 @@ module.exports = function(grunt) {
             }
         },
         //=============== TESTING
-        simplemocha: {
+        mocha: {
             test: {
                 src:['test/*.js', '!test/acceptance/*_test.js'],
                 options:{
-                    reporter: 'spec',
                     slow: 500,
                     timeout: 1000,
                     node_env: 'test'
@@ -48,7 +47,7 @@ module.exports = function(grunt) {
                     parallel: false
                 }
             },
-            files: []//**********add acceptance tests
+            files: ['test/acceptance/*_test.js']
         },
         //=============== DEPLOY
         watch: {
