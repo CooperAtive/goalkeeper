@@ -11,8 +11,7 @@ exports.findById = function(req, res) {
     .fetch()
     .exec(function(error, user) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            res.send(500, {'error': error});
         } else {
             var u = user.attributes;
             res.send({ 'user': u });
@@ -23,12 +22,11 @@ exports.findById = function(req, res) {
 exports.updateUser = function(req, res) {
     new User({id: req.params.id})
     .save(req.body, {patch: true})
-    .exec(function(error) {
+    .exec(function(error, user) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            res.send(500, {'error': error});
         } else {
-            res.send({'message': "Success"});
+            res.send({'user': user});
         }
     });
 };
@@ -38,8 +36,7 @@ exports.deleteUser = function(req, res) {
     .destroy()
     .exec(function(error) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            res.send(500, {'error': error});
         } else {
             res.send({'message': "Success"});
         }
@@ -52,8 +49,7 @@ exports.collection = function(req, res) {
     new Users().fetch()
     .exec(function(error, users) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            res.send(500, {'error': error});
         } else {
             var set = users.models.map( function( user ) {
                 var u = user.attributes;
@@ -65,9 +61,3 @@ exports.collection = function(req, res) {
     });
 };
 
-
-
-function errorResponse() {
-    res.writeHead(500);
-    res.send({'error': error});
-};
