@@ -7,7 +7,7 @@ lib-cov
 *.out
 *.pid
 *.gz
-secure
+secure/
 
 pids
 logs
