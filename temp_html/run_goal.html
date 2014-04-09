@@ -8,18 +8,49 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="datetimepicker/jquery.datetimepicker.css">
     <link rel="stylesheet" type="text/css" href="run_goal.css">
   </head>
 
-  <body id="create-goals">
+  <body id="run-goal">
+    <div id="goalkeeper-circle-run-goal">
+      <center id="title-run-goal">Goalkeeper</center>
+    </div>
 
-    <div id="goalkeeper-circle-create-goals">
-      <center id="title-create-goals">Goalkeeper</center>
+    <div class="container">
+      <div class="jumbotron">
+        <canvas id="run-canvas" height="450" width="600"></canvas>
+      </div>
+
+      <div class="row marketing">
+        <form class="form-inline" id="form-run-goal" role="form">
+          <label>I ran</label>
+          <input type="text" class="form-control" id="distance-ran" placeholder="#"/>
+          <select class="form-control" id="distance-ran-unit">
+            <option>miles</option>
+            <option>kilometers</option>
+          </select>
+          <label>in</label>
+          <input type="text" class="form-control" id="time-ran" placeholder="#"/>
+          <select class="form-control" id="time-ran-unit">
+            <option>minutes</option>
+            <option>hours</option>
+          </select>
+          <label>on</label>
+          <input type="date" class="form-control" id="date-picker" data-date-format="MM/DD/YYYY">
+          <button type="button" class="btn btn-primary" id="add-run-milestone-button">Add</button>
+        </form>
+      </div>
+
+      <h3>Progress List</h3>
+      <ul id="progress-list"></ul>
     </div>
 
     <!--Libraries-->
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="datetimepicker/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="Chart.js"></script>
     <script type="text/javascript" src="run_goal.js"></script>
   </body>
 </html>
