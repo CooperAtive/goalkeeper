@@ -1,0 +1,49 @@
+#run-goal {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background-color: #007BA7;
+  color: #FFFFFF;
+  font-family: 'GeosansLight';
+}
+
+#goalkeeper-circle-run-goal {
+  width: 80px;
+  height: 80px;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  margin: auto;
+  position: absolute;
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, 0);
+  border: 3px solid #FFFFFF;
+}
+
+#title-run-goal {
+  top: 45%;
+  margin-top: -0.5em;
+  position: relative;
+  z-index: 2000;
+}
+
+#form-run-goal {
+  padding: 15px;
+}
+
+#distance-ran, #time-ran {
+  width: 75px;
+}
+
+#distance-ran-unit {
+  width: 100px;
+}
+
+#add-run-milestone-button {
+  background-color: #DCDCDC;
+  color: #555555;
+}
+
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
