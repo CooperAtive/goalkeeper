@@ -16,8 +16,10 @@
     <option>travel more</option>
   </select>
   <br>
-  <label class="align-labels">Starting on</label>
-    {{input type="date" value=start_date id="start-date"}}
+  <div id="buffer">
+    <label class="align-labels">Starting on</label>
+      {{input type="date" value=start_date id="start-date"}}
+  </div>
   <div class="goal-steps">
     <label class='align-labels'>For the next</label>
     <input type="number" class='form-control' id='target-duration' placeholder='#'>
