@@ -1,0 +1,26 @@
+<h2>{{name}}</h2>
+<p>{{total_miles}} miles</p>
+<ol class='list-group'>
+  {{#each runEvent in runEvents}}
+  <li class='list-group-item'>
+  I ran: {{runEvent.distance}} miles<br>
+  On: {{formatDate runEvent.date}}<br>
+  {{log runEvent.time}}
+  In: {{#if runEvent.time.hours}}
+          {{runEvent.time.hours}} Hours and
+      {{/if}}
+      {{runEvent.time.minutes}} minutes
+  </li>
+  {{/each}}
+</ol>
+<h2>Create a new Running Event!</h2>
+<label>How far you ran: </label>
+{{input type="number" value=distance}}
+<br>
+<label>On what day:</label>
+{{input type="date" value=date}}
+<br>
+<label>How long you ran for: </label>
+{{input type="number" value=time}}
+<br>
+<button class="btn btn-primary" {{action "saveEvent"}}> Save this Run </button>
