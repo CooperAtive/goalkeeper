@@ -1,0 +1,92 @@
+/* Embedding Non-Standard Fonts */
+@font-face {
+  font-family: 'GeosansLight';
+  src: url(fonts/GeosansLight.woff) format('woff');
+}
+
+#background-create-goals {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  opacity: 0.8;
+}
+
+#buffer {
+  padding-top: 10px;
+}
+
+#target-name-create {
+  display: block;
+  width: 290px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+#start-date {
+  display: inline;
+  width: 175px;
+  height: 34px;
+  margin-left: 5px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.align-labels {
+  width: 105px;
+}
+
+#form-create-goals {
+  width: 60%;
+  height: 40%;
+  top: 45%;
+  left: 18%;
+  position: absolute;
+
+  font-size: 125%;
+  font-weight: bolder;
+  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
+}
+
+#pick-goal {
+  width: 175px;
+  margin: 5px;
+}
+
+.goal-steps {
+  margin-top: 2.5%;
+  display: none;
+}
+
+#total-distance, #frequency, #target-duration {
+  width: 50px;
+  margin: 5px;
+}
+
+#go-to-run-goal-button {
+  background-color: #007BA7;
+}

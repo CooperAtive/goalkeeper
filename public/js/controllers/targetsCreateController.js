@@ -40,6 +40,13 @@ App.TargetsCreateController = Ember.ObjectController.extend({
         }
     },
 
+    formatDate: function(date) {
+        var newDate = moment(date).format('YYYY MM DD');
+        var re = / /g;
+
+        return newDate.replace(re, '-');
+    },
+
     actions: {
         createTarget: function() {
             var self = this;
@@ -48,8 +55,8 @@ App.TargetsCreateController = Ember.ObjectController.extend({
             var duration = +$('#target-duration').val();
             var start_date = new Date(this.get('model.start_date'));
             var end_date = this.calculateEndDate(time_unit, duration, start_date);
-            this.set('model.start_date', start_date)
-            .set('model.end_date', end_date);
+            this.set('model.start_date', this.formatDate(start_date))
+            .set('model.end_date', this.formatDate(end_date));
 
             var distance = $('#total-distance').val();
             var distance_unit = $('#distance-unit option:selected').val();

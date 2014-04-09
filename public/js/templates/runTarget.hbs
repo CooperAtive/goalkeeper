@@ -1,10 +1,16 @@
 <div id="goalkeeper-circle">
-  <center id="title-run-goal">Goalkeeper</center>
+  <center id="title-logo">Goalkeeper</center>
 </div>
 
-<h2>{{name}}</h2>
+<h2 id="title-run-target">{{name}}</h2>
 
 <div class="container">
+  <div class="jumbotron">
+    <canvas id="run-canvas" height="450" width="600"></canvas>
+  </div>
+
+  <h3 id="progress-miles">100 of {{total_miles}} miles completed</h3>
+
   <div class="row marketing">
     <form class="form-inline" id="form-run-goal" role="form">
       <label>I ran</label>
@@ -14,43 +20,18 @@
         <option>kilometers</option>
       </select>
       <label>in</label>
-      <input type="text" class="form-control" id="time-ran" placeholder="#"/>
-      <select class="form-control" id="time-ran-unit">
-        <option>minutes</option>
-        <option>hours</option>
-      </select>
-      <label>on</label>
-      <input type="date" class="form-control" id="date-picker" data-date-format="MM/DD/YYYY">
-      <button type="button" class="btn btn-primary" id="add-run-milestone-button">Add</button>
+      <input type="number" class="form-control" id="minutes-ran" placeholder="#"/>
+      <label>minutes and</label>
+      <input type="number" class="form-control" id="seconds-ran" placeholder="#"/>
+      <label>seconds on</label>
+      <input type="date" class="form-control" id="date-picker">
+      <button type="button" class="btn btn-primary" id="add-run-milestone-button" {{action "saveEvent"}}>Add</button>
     </form>
   </div>
   <h3>Progress List</h3>
-  <ul id="progress-list"></ul>
+  <ul id="progress-list">
+    {{#each run in runEvents}}
+      <li>You ran {{run.distance}} miles on {{formatDate run.date}}</li>
+    {{/each}}
+  </ul>
 </div>
-
-
-<p>{{total_miles}} miles</p>
-<ol class='list-group'>
-  {{#each runEvent in runEvents}}
-  <li class='list-group-item'>
-  I ran: {{runEvent.distance}} miles<br>
-  On: {{formatDate runEvent.date}}<br>
-  {{log runEvent.time}}
-  In: {{#if runEvent.time.hours}}
-          {{runEvent.time.hours}} Hours and
-      {{/if}}
-      {{runEvent.time.minutes}} minutes
-  </li>
-  {{/each}}
-</ol>
-<h2>Create a new Running Event!</h2>
-<label>How far you ran: </label>
-{{input type="number" value=distance}}
-<br>
-<label>On what day:</label>
-{{input type="date" value=date}}
-<br>
-<label>How long you ran for: </label>
-{{input type="number" value=time}}
-<br>
-<button class="btn btn-primary" {{action "saveEvent"}}> Save this Run </button>

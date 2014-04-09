@@ -6,7 +6,7 @@ App.HomeView = Ember.View.extend({
     function createGoals() {
       for (var i = 0; i < goals_array.length; i++) {
         var goal = goals_array[i];
-        $("#container").append("<div class='radial-progress'> <div class='circle' id='goal-" + i + "'>" +
+        $("#container").append("<div class='radial-progress' id='goal-outer" + i + "'> <div class='circle' id='goal-inner" + i + "'>" +
               "<div class='mask full'> <div class='fill'></div> </div>" +
               "<div class='mask half'> <div class='fill'></div> </div>" +
               "<center class='goal-name'>" + goal + "</center>" +
@@ -55,15 +55,15 @@ App.HomeView = Ember.View.extend({
       }
 
       $('.radial-progress').click(function() {
-        $('#pic-circle').animate({top: '-65%', left:'-85%'});
-        //$('#pic-circle').css(transform_styles[i], 'scale(.5, .5)');
-        //$('#pic-circle').show('scale', {percent: 75}, 2000);
-
-        $(this).animate({left:'250px'});
+        $('#pic-circle').animate({top:'-55%', left:'-88%'});
+        $('#goalkeeper-circle').animate({left:'1.75%'});
+        $('#create-circle').hide();
+        $('#goal-outer0').animate({top:'33%', left:'1.75%'});
+        $('#goal-outer1').animate({top:'53%', left:'1.75%'});
+        $('#goal-outer2').animate({top:'73%', left:'1.75%'});
       });
 
       window.randomize();
-
       //setTimeout(window.randomize, 200);
       //$('.radial-progress').click(window.randomize);
     }
