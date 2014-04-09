@@ -11,6 +11,7 @@
     <link rel="stylesheet/less" type="text/css" href="public/css/style.less">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/login.css">
+    <link rel="stylesheet" type="text/css" href="public/css/create_goals.css">
   </head>
 
   <body>
@@ -22,7 +23,7 @@
     </script>
 
     <script type="text/x-handlebars" id="index">
-      <div id="goalkeeper-circle">
+      <div id="goalkeeper-circle-index">
         <center id="title">Goalkeeper</center>
       </div>
 
@@ -92,8 +93,8 @@
 
     <script type="text/x-handlebars" id="home">
       <div id="container">
-        <div id="goalkeeper-circle-home">
-            <center id="title-home">Goalkeeper</center>
+        <div id="goalkeeper-circle">
+            <center id="title-logo">Goalkeeper</center>
         </div>
         <div id="pic-circle"></div>
       </div>
@@ -105,17 +106,6 @@
       {{/each}}
 
       {{outlet}}
-    </script>
-
-    <script type="text/x-handlebars" id="home2">
-      <h1>Welcome to Goalkeeper!</h1>
-      <ul>
-        {{#each}}
-        {{#link-to 'runTarget' this.id tagName="li"}}{{name}}{{/link-to}}
-        {{/each}}
-      </ul>
-      {{#link-to 'targets.create'}}Create New Target{{/link-to}}
-      {{#link-to 'profile'}}View Profile{{/link-to}}
     </script>
 
     <script type="text/x-handlebars" id="profile/index">
@@ -137,9 +127,7 @@
     </script>
 
     <script type="text/x-handlebars" id="targets">
-      <div class="container">
-        {{outlet}}
-      </div>
+      {{outlet}}
     </script>
 
     <script type="text/x-handlebars" id="runTarget">
@@ -172,25 +160,56 @@
     </script>
 
     <script type="text/x-handlebars" id="targets/create">
-      <h2>Create a new Running Target!</h2>
+      <img id="background-create-goals" src="public/images/frame-by-frame.jpg">
 
-      <label>Name</label>
-      {{input value=name}}{{name}}
-      <br>
-      <label>Total Miles</label>
-      {{input type="number" value=total_miles}}
-      <br>
-      <label>Start Date</label>
-      {{input type="date" value=start_date}}
-      <br>
-      <label>End Date</label>
-      {{input type="date" value=end_date}}
-      <br>
-      <label>Frequency (per week)</label>
-      {{input type="number" value=frequency}}
-      <br>
+      {{#link-to 'home'}}<div id="goalkeeper-circle">
+        <center id="title-logo">Goalkeeper</center>
+      </div>{{/link-to}}
 
-      <button class="btn btn-primary" {{action "createTarget"}}> Create New Target </button>
+
+      <form class="form-inline" id="form-create-goals" role="form">
+        {{input value=name placeholder="Name your target" class='form-control' id="target-name-create"}}
+        <br>
+        <label class='align-labels'>I am going to</label>
+        <select class="form-control" id="pick-goal">
+          <option>play more</option>
+          <option>read more</option>
+          <option>run more</option>
+          <option>travel more</option>
+        </select>
+        <br>
+        <label class="align-labels">Starting on</label>
+          {{input type="date" value=start_date id="start-date"}}
+        <div class="goal-steps">
+          <label class='align-labels'>For the next</label> 
+          <input type="number" class='form-control' id='target-duration' placeholder='#'>
+          <select class='form-control' id='time-unit'>
+            <option>days</option>
+            <option>weeks</option>
+            <option>months</option>
+            <option>years</option>
+          </select>
+          
+          <label>I will run a total of </label>
+          <input type='text' class='form-control' id='total-distance' placeholder='#'>
+          <select class='form-control' id='distance-unit'>
+            <option>miles</option>
+            <option>kilometers</option>
+          </select>
+          <label>and I will run...</label>
+          <br>
+          <label class="align-labels">At least </label>
+          {{input type="number" class='form-control' id='frequency' placeholder='#'}}
+          <label>times every</label>
+          <select class='form-control' id='frequency-unit'>
+            <option>week</option>
+            <option>month</option>
+          </select>
+          <label>.</label>
+
+          <button type='button' class='btn btn-primary' id='go-to-run-goal-button' {{action "createTarget"}}>Go!</button>
+        </div>
+      </form>
     </script>
 
     <script type="text/x-handlebars" id="users/index">
@@ -247,6 +266,7 @@
     <!-- Views -->
     <script src="public/js/views/indexView.js"></script>
     <script src="public/js/views/homeView.js"></script>
+    <script src="public/js/views/targetsCreateView.js"></script>
 
     <!-- Components -->
 
