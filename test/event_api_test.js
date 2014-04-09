@@ -1,5 +1,5 @@
 //==========
-//This file tests all the aspects of the Target API
+//This file tests all the aspects of the Events API
 //Further tests for events, etc. may depend on the successful creation of a user and/or
 //a new target. The calls to each test's dependencies will be made in each test file.
 //While this does provide some repetition, if one object's create process is broken,
@@ -19,8 +19,9 @@ var should = chai.should;
 
 var app = require('../server').app;
 
-describe('Targets API', function() {
+describe('Events API', function() {
     var id;
+    var target_id;
     var user_id;
 
     it('can get the id of a new user to use as creator of the target', function(done) {
@@ -43,7 +44,7 @@ describe('Targets API', function() {
         });
     });
 
-    it('can create a new target', function(done) {
+    it('can create a target to attach events to', function(done) {
         superagent.post('localhost:3000/api/v1/runTargets')
         .send({ runTarget: {
             user_id: user_id,
@@ -52,7 +53,8 @@ describe('Targets API', function() {
             start_date: '4/15/2014',
             end_date: '9/15/2014',
             frequency: '1'
-        }})
+        }
+        })
         .end(function(e, res) {
             expect(e).to.eql(null);
             expect(res.body.runTarget).to.not.be.eql(null);
@@ -63,46 +65,82 @@ describe('Targets API', function() {
             expect(res.body.runTarget.frequency).to.be.eql('1');
             expect(res.body.runTarget.user_id).to.be.eql(user_id);
 
-            id = res.body.runTarget.id;
+            target_id = res.body.runTarget.id;
 
             done();
 
         });
     });
 
-    it('can find a target by Id', function(done) {
-        superagent.get('localhost:3000/api/v1/runTargets/'+ id)
-        .end(function(e, res) {
-            expect(e).to.eql(null);
-            expect(res.body.runTarget).to.not.be.eql(null);
-            expect(res.body.runTarget.name).to.be.eql('Test Target');
-            expect(res.body.runTarget.total_miles).to.be.eql(100);
-            expect(res.body.runTarget.frequency).to.be.eql(1);
-            expect(res.body.runTarget.user_id).to.be.eql(user_id);
-
-            done();
-
-        });
-    });
-
-    it('can update a target\'s name', function(done) {
-        superagent.put('localhost:3000/api/v1/runTargets/' + id)
-        .send(
-            {
-            name: 'Test Target-name changed'
+    it('can create a new event with correct user and target id\'s', function(done) {
+        superagent.post('localhost:3000/api/v1/runEvents/')
+        .send({
+            user_id: user_id,
+            target_id: target_id,
+            distance: 3,
+            date: '4/17/2014',
+            time: {minutes: 30}
         })
         .end(function(e, res) {
             expect(e).to.eql(null);
-            expect(res.body.runTarget).to.not.be.eql(null);
-            expect(res.body.runTarget.name).to.be.eql('Test Target-name changed');
+            expect(res.body.runEvent).to.not.be.eql(null);
+            expect(res.body.runEvent.user_id).to.be.eql(user_id);
+            expect(res.body.runEvent.target_id).to.be.eql(target_id);
+            expect(res.body.runEvent.distance).to.be.eql(3);
+            expect(res.body.runEvent.time).to.be.eql({minutes: 30});
+            id = res.body.runEvent.id;
+            console.log(id);
 
             done();
 
         });
     });
 
-    it('can delete a target', function(done) {
-        superagent.del('localhost:3000/api/v1/runTargets/' + id)
+    it('can find an event by id', function(done) {
+        superagent.get('localhost:3000/api/v1/runEvents/' + id)
+        .end(function(e, res) {
+            expect(e).to.eql(null);
+            console.log(res.body.runEvent.id);
+            expect(res.body.runEvent).to.not.be.eql(null);
+            expect(res.body.runEvent.user_id).to.be.eql(user_id);
+            expect(res.body.runEvent.target_id).to.be.eql(target_id);
+            expect(res.body.runEvent.distance).to.be.eql(3);
+            expect(res.body.runEvent.time).to.be.eql({minutes: 30});
+
+            done();
+
+        });
+    });
+
+    it('can get a collection of events', function(done) {
+        superagent.get('localhost:3000/api/v1/runEvents/')
+        .end(function(e, res) {
+            expect(e).to.eql(null);
+            expect(res.body.length).to.not.be.eql(0);
+
+            done();
+
+        });
+    });
+
+    it('can update an event\'s time', function(done) {
+        superagent.put('localhost:3000/api/v1/runEvents/' + id)
+        .send(
+            {
+            time: 32
+        })
+        .end(function(e, res) {
+            expect(e).to.eql(null);
+            expect(res.body.runEvent).to.not.be.eql(null);
+            expect(res.body.runEvent.time).to.be.eql(32);
+
+            done();
+
+        });
+    });
+
+    it('can delete an event', function(done) {
+        superagent.del('localhost:3000/api/v1/runEvents/' + id)
         .end(function(e, res) {
             expect(e).to.eql(null);
             expect(res.body.message).to.be.eql('Success');
@@ -111,5 +149,6 @@ describe('Targets API', function() {
 
         });
     });
+    superagent.del('localhost:3000/api/v1/runTargets/' + target_id);
     superagent.del('localhost:3000/api/v1/users/' + user_id);
 });

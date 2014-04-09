@@ -38,11 +38,20 @@ p {
 
 /* Default Styling (for all sizes) */
 
+#goalkeeper-circle-index {
+  width: 200px;
+  height: 200px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin: auto;
+  position: absolute;
+  z-index: 2000;
+}
+
 #text1 {
   margin: 0 auto;
   display: block;
-  position: absolute;
-  z-index: 2000;
 }
 
 #text2 {

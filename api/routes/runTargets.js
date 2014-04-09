@@ -9,7 +9,7 @@ exports.createRunTarget = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     var body = req.body.runTarget;
-    var user_id = req.body.user_id;
+    var user_id = body.user_id;
     if (!user_id) {
         res.send(500, {'error': 'Must be logged in'});
     }
@@ -48,8 +48,7 @@ exports.findById = function(req, res) {
     .fetch({withRelated: 'runEvents'})
     .exec(function(error, target) {
               if(error) {
-                  res.writeHead(500);
-                  res.send({'error': error});
+                  res.send(500, {'error': error});
               } else {
                   var runTarget = target.attributes;
                   runTarget.runEvents = [];
@@ -68,12 +67,11 @@ exports.findById = function(req, res) {
 exports.updateRunTarget = function(req, res) {
     new RunTarget({id: req.params.id})
     .save(req.body, {patch: true})
-    .exec(function(error) {
+    .exec(function(error, runTarget) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            res.send(500, {'error': error});
         } else {
-            res.send({'message': 'Success'});
+            res.send({'runTarget': runTarget});
         }
     });
 };
@@ -83,8 +81,7 @@ exports.deleteRunTarget = function(req, res) {
     .destroy()
     .exec(function(error) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            res.send(500, {'error': error});
         } else {
             res.send({'message': 'Success'});
         }
@@ -97,14 +94,12 @@ exports.collection = function(req, res) {
     new RunTargets().fetch()
     .exec(function(error, runTargets) {
         if(error) {
-            res.writeHead(500);
-            res.send({'error': error});
+            res.send(500, {'error': error});
         } else {
             var set = runTargets.models.map( function( runTarget ) {
                 var t = runTarget.attributes;
                 return t;
             });
-            console.log(set);
             res.send({ 'runTargets': set });
         }
     });

@@ -3,6 +3,7 @@
 var User = require('../models/User');
 
 exports.login = function(request, response) {
+  console.log(request.body);
   new User({email: request.body.email})
   .fetch()
   .exec(function(error, user) {
@@ -22,7 +23,7 @@ exports.login = function(request, response) {
 
 exports.signup = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
-
+    console.log(req.body);
     var body = req.body;
     var first_name = body.first_name;
     var last_name = body.last_name;

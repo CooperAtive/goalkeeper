@@ -1,0 +1,24 @@
+<div class="container">
+  <div id="goalkeeper-circle-login">
+    <center id="title-login">Goalkeeper</center>
+  </div>
+
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Signup</h4>
+      </div>
+        <div class="panel-body">
+          <form class="form-signup" role="form">
+            {{input type="text" id="first_name" class="form-control input-topper" placeholder="First name" value=first_name}}
+            {{input type="text" id="last_name" class="form-control input-topper" placeholder="Last name" value=last_name}}
+            {{input type="email" id="email" class="form-control input-topper" placeholder="Email address" value=email}}
+            {{input type="password" id="password" class="form-control input-topper" placeholder="Password" value=password}}
+            {{input type="password" id="password2" class="form-control input-topper" placeholder="Re-type Password" value=password2}}
+            <button class="btn btn-lg btn-primary btn-block" id="login-button" {{action "signup"}}>Let&#39;s Go!</button>
+            {{#link-to 'login' class="signUp"}}Already registered&#63; Login{{/link-to}}
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
