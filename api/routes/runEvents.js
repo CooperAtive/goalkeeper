@@ -30,7 +30,7 @@ exports.createRunEvent = function(req, res) {
             console.log(error);
             res.send(500, {'error': error});
         } else {
-            res.send({ 'runEvent': event });
+            res.send({ 'event': event.attributes });
         }
     });
 };

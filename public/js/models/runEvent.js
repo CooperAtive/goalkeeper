@@ -4,7 +4,13 @@ App.RunEvent = DS.Model.extend({
   target_id: DS.belongsTo('runTarget'),
   distance: DS.attr(),
   date: DS.attr(),
-  time: DS.attr()
+  time: DS.attr(),
+  minutes: function() {
+    return Math.floor(time / 60);
+  },
+  seconds: function() {
+    return time % 60;
+  }
 });
 
 
