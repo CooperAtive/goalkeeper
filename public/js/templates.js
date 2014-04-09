@@ -28,7 +28,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 
 
-  data.buffer.push("<div id=\"container\">\n  <div id=\"goalkeeper-circle\">\n      <center id=\"title-logo\">Goalkeeper</center>\n  </div>\n  <div id=\"pic-circle\"></div>\n</div>\n");
+  data.buffer.push("<div id=\"container\">\n  <div id=\"goalkeeper-circle\">\n    <center id=\"title-logo\">Goalkeeper</center>\n  </div>\n  <div id=\"pic-circle\"></div>\n</div>\n");
   
 });
 
@@ -134,71 +134,32 @@ function program1(depth0,data) {
 Ember.TEMPLATES["runTarget"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
   var buffer = '', stack1, helper, options;
-  data.buffer.push("\n  <li class='list-group-item'>\n  I ran: ");
-  stack1 = helpers._triageMustache.call(depth0, "runEvent.distance", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("\n      <li>You ran ");
+  stack1 = helpers._triageMustache.call(depth0, "run.distance", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" miles<br>\n  On: ");
-  data.buffer.push(escapeExpression((helper = helpers.formatDate || (depth0 && depth0.formatDate),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data},helper ? helper.call(depth0, "runEvent.date", options) : helperMissing.call(depth0, "formatDate", "runEvent.date", options))));
-  data.buffer.push("<br>\n  ");
-  data.buffer.push(escapeExpression(helpers.log.call(depth0, "runEvent.time", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
-  data.buffer.push("\n  In: ");
-  stack1 = helpers['if'].call(depth0, "runEvent.time.hours", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n      ");
-  stack1 = helpers._triageMustache.call(depth0, "runEvent.time.minutes", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" minutes\n  </li>\n  ");
-  return buffer;
-  }
-function program2(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n          ");
-  stack1 = helpers._triageMustache.call(depth0, "runEvent.time.hours", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" Hours and\n      ");
+  data.buffer.push(" miles on ");
+  data.buffer.push(escapeExpression((helper = helpers.formatDate || (depth0 && depth0.formatDate),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data},helper ? helper.call(depth0, "run.date", options) : helperMissing.call(depth0, "formatDate", "run.date", options))));
+  data.buffer.push("</li>\n    ");
   return buffer;
   }
 
-<<<<<<< HEAD
-  data.buffer.push("<div id=\"goalkeeper-circle\">\n  <center id=\"title-run-goal\">Goalkeeper</center>\n</div>\n\n<h2>");
+  data.buffer.push("<div id=\"goalkeeper-circle\">\n  <center id=\"title-logo\">Goalkeeper</center>\n</div>\n\n<h2 id=\"title-run-target\">");
   stack1 = helpers._triageMustache.call(depth0, "name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</h2>\n\n<div class=\"container\">\n  <div class=\"row marketing\">\n    <form class=\"form-inline\" id=\"form-run-goal\" role=\"form\">\n      <label>I ran</label>\n      <input type=\"text\" class=\"form-control\" id=\"distance-ran\" placeholder=\"#\"/>\n      <select class=\"form-control\" id=\"distance-ran-unit\">\n        <option>miles</option>\n        <option>kilometers</option>\n      </select>\n      <label>in</label>\n      <input type=\"text\" class=\"form-control\" id=\"time-ran\" placeholder=\"#\"/>\n      <select class=\"form-control\" id=\"time-ran-unit\">\n        <option>minutes</option>\n        <option>hours</option>\n      </select>\n      <label>on</label>\n      <input type=\"date\" class=\"form-control\" id=\"date-picker\" data-date-format=\"MM/DD/YYYY\">\n      <button type=\"button\" class=\"btn btn-primary\" id=\"add-run-milestone-button\">Add</button>\n    </form>\n  </div>\n  <h3>Progress List</h3>\n  <ul id=\"progress-list\"></ul>\n</div>\n\n\n\n\n<p>");
-=======
-  data.buffer.push("<h2>");
-  stack1 = helpers._triageMustache.call(depth0, "name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</h2>\n<p>");
->>>>>>> 5582d4cf4ac736bf1a663d029e1ed9a86e0951a7
+  data.buffer.push("</h2>\n\n<div class=\"container\">\n  <div class=\"jumbotron\">\n    <canvas id=\"run-canvas\" height=\"450\" width=\"600\"></canvas>\n  </div>\n\n  <h3 id=\"progress-miles\">100 of ");
   stack1 = helpers._triageMustache.call(depth0, "total_miles", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push(" miles</p>\n<ol class='list-group'>\n  ");
-  stack1 = helpers.each.call(depth0, "runEvent", "in", "runEvents", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n</ol>\n<h2>Create a new Running Event!</h2>\n<label>How far you ran: </label>\n");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("number"),
-    'value': ("distance")
-  },hashTypes:{'type': "STRING",'value': "ID"},hashContexts:{'type': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n<br>\n<label>On what day:</label>\n");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("date"),
-    'value': ("date")
-  },hashTypes:{'type': "STRING",'value': "ID"},hashContexts:{'type': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n<br>\n<label>How long you ran for: </label>\n");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("number"),
-    'value': ("time")
-  },hashTypes:{'type': "STRING",'value': "ID"},hashContexts:{'type': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n<br>\n<button class=\"btn btn-primary\" ");
+  data.buffer.push(" miles completed</h3>\n\n  <div class=\"row marketing\">\n    <form class=\"form-inline\" id=\"form-run-goal\" role=\"form\">\n      <label>I ran</label>\n      <input type=\"text\" class=\"form-control\" id=\"distance-ran\" placeholder=\"#\"/>\n      <select class=\"form-control\" id=\"distance-ran-unit\">\n        <option>miles</option>\n        <option>kilometers</option>\n      </select>\n      <label>in</label>\n      <input type=\"number\" class=\"form-control\" id=\"minutes-ran\" placeholder=\"#\"/>\n      <label>minutes and</label>\n      <input type=\"number\" class=\"form-control\" id=\"seconds-ran\" placeholder=\"#\"/>\n      <label>seconds on</label>\n      <input type=\"date\" class=\"form-control\" id=\"date-picker\">\n      <button type=\"button\" class=\"btn btn-primary\" id=\"add-run-milestone-button\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "saveEvent", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push("> Save this Run </button>\n");
+  data.buffer.push(">Add</button>\n    </form>\n  </div>\n  <h3>Progress List</h3>\n  <ul id=\"progress-list\">\n    ");
+  stack1 = helpers.each.call(depth0, "run", "in", "runEvents", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n  </ul>\n</div>\n");
   return buffer;
   
 });
