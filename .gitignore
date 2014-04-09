@@ -16,3 +16,6 @@ npm-debug.log
 node_modules
 bower_components/
 dist
+
+# Gemnasium gem configuration file
+config/gemnasium.yml
