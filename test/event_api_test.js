@@ -46,13 +46,14 @@ describe('Events API', function() {
 
     it('can create a target to attach events to', function(done) {
         superagent.post('localhost:3000/api/v1/runTargets')
-        .send({
+        .send({ runTarget: {
             user_id: user_id,
             name: 'Test Target',
             total_miles: 100,
             start_date: '4/15/2014',
             end_date: '9/15/2014',
             frequency: '1'
+        }
         })
         .end(function(e, res) {
             expect(e).to.eql(null);
