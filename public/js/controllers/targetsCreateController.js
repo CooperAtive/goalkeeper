@@ -59,6 +59,7 @@ App.TargetsCreateController = Ember.ObjectController.extend({
 
       this.set('model.user_id', this.get('controllers.application').get('userId'));
 
+      console.log()
       this.get('model')
         .save()
         .then(function() {
