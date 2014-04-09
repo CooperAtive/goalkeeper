@@ -72,13 +72,13 @@ describe('Events API', function() {
     });
 
     it('can create a new event with correct user and target id\'s', function(done) {
-        superagent.post('localhost:3000/api/v1/runEvents/'+ id)
+        superagent.post('localhost:3000/api/v1/runEvents/')
         .send({
             user_id: user_id,
             target_id: target_id,
             distance: 3,
-            date: 4/17/2014,
-            time: 30
+            date: '4/17/2014',
+            time: {minutes: 30}
         })
         .end(function(e, res) {
             expect(e).to.eql(null);
@@ -86,9 +86,9 @@ describe('Events API', function() {
             expect(res.body.runEvent.user_id).to.be.eql(user_id);
             expect(res.body.runEvent.target_id).to.be.eql(target_id);
             expect(res.body.runEvent.distance).to.be.eql(3);
-            expect(res.body.runEvent.date).to.be.eql('4/17/2014');
-            expect(res.body.runEvent.time).to.be.eql(30);
+            expect(res.body.runEvent.time).to.be.eql({minutes: 30});
             id = res.body.runEvent.id;
+            console.log(id);
 
             done();
 
@@ -99,19 +99,28 @@ describe('Events API', function() {
         superagent.get('localhost:3000/api/v1/runEvents/' + id)
         .end(function(e, res) {
             expect(e).to.eql(null);
+            console.log(res.body.runEvent.id);
             expect(res.body.runEvent).to.not.be.eql(null);
             expect(res.body.runEvent.user_id).to.be.eql(user_id);
             expect(res.body.runEvent.target_id).to.be.eql(target_id);
             expect(res.body.runEvent.distance).to.be.eql(3);
-            expect(res.body.runEvent.date).to.be.eql('4/17/2014');
-            expect(res.body.runEvent.time).to.be.eql(30);
+            expect(res.body.runEvent.time).to.be.eql({minutes: 30});
 
             done();
 
         });
     });
 
+    it('can get a collection of events', function(done) {
+        superagent.get('localhost:3000/api/v1/runEvents/')
+        .end(function(e, res) {
+            expect(e).to.eql(null);
+            expect(res.body.length).to.not.be.eql(0);
 
+            done();
+
+        });
+    });
 
     it('can update an event\'s time', function(done) {
         superagent.put('localhost:3000/api/v1/runEvents/' + id)
