@@ -25,7 +25,7 @@ function program1(depth0,data) {
 Ember.TEMPLATES["home"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing;
+  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 function program1(depth0,data) {
   
@@ -38,7 +38,9 @@ function program1(depth0,data) {
     'class': ("signUp")
   },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "targets.create", options) : helperMissing.call(depth0, "link-to", "targets.create", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n  </div>\n\n  <div id=\"pic-circle\"></div>\n  <div id=\"line1\"></div>\n  <div id=\"line2\"></div>\n  <div id=\"line3\"></div>\n  <div id=\"line4\"></div>\n</div>\n");
+  data.buffer.push("\n  </div>\n\n  <div id=\"pic-circle\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "goTarget", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push("></div>\n  <div id=\"line1\"></div>\n  <div id=\"line2\"></div>\n  <div id=\"line3\"></div>\n  <div id=\"line4\"></div>\n</div>\n");
   return buffer;
   
 });

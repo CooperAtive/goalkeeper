@@ -1,5 +1,6 @@
 App.HomeView = Ember.View.extend({
   didInsertElement: function() {
+    var self = this;
     var goals_array = ['Run', 'Travel', 'Read'];
     var percentage_complete = [0.75, 0.25, 0.50];
 
