@@ -186,6 +186,6 @@ module.exports = function(grunt) {
     grunt.registerTask('build:dev', ['emberTemplates']);
     grunt.registerTask('build:prod', ['clean', 'emberTemplates', 'concat', 'uglify']);
     grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express']);
-    grunt.registerTask('travis', [ 'jshint', 'test']);
+    grunt.registerTask('travis', [ 'simplemocha']);
 
 };
