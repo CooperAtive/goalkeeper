@@ -4,7 +4,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
-
+  
   var buffer = '';
   data.buffer.push("\n  <button id=\"logout-button\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "logout", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
@@ -19,7 +19,7 @@ function program1(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["home"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -28,8 +28,8 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
-
-
+  
+  
   data.buffer.push("\n      <center id=\"create-logo1\">Create</center>\n      <center id=\"create-logo2\">Goal</center>\n    ");
   }
 
@@ -40,7 +40,7 @@ function program1(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n  </div>\n\n  <div id=\"pic-circle\"></div>\n  <div id=\"line1\"></div>\n  <div id=\"line2\"></div>\n  <div id=\"line3\"></div>\n  <div id=\"line4\"></div>\n</div>\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -53,7 +53,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "go_login", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push(">Get Started</button>\n\n<img class=\"pic\" id=\"pic1\" src=\"public/images/friends2.jpg\" />\n<img class=\"pic\" id=\"pic2\" src=\"public/images/couple-travel.jpg\" />\n<img class=\"pic\" id=\"pic3\" src=\"public/images/woman-running.jpeg\" />\n<img class=\"pic\" id=\"pic4\" src=\"public/images/man-laughing.jpg\" />\n\n<div class=\"goal-circle\" id=\"goal-circle1\"></div>\n<div class=\"goal-circle\" id=\"goal-circle2\"></div>\n<div class=\"goal-circle\" id=\"goal-circle3\"></div>\n<div class=\"goal-circle\" id=\"goal-circle4\"></div>\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["login"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -62,8 +62,8 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
-
-
+  
+  
   data.buffer.push("No account&#63; Signup");
   }
 
@@ -92,7 +92,7 @@ function program1(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n          </form>\n        </div>\n    </div>\n  </div>\n</div>\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["profile/edit"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -111,7 +111,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
   data.buffer.push("\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["profile/index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -120,8 +120,8 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
-
-
+  
+  
   data.buffer.push("Edit Profile");
   }
 
@@ -139,7 +139,7 @@ function program1(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["runTarget"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -148,7 +148,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
-
+  
   var buffer = '', stack1, helper, options;
   data.buffer.push("\n      <li>You ran ");
   stack1 = helpers._triageMustache.call(depth0, "run.distance", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
@@ -172,7 +172,7 @@ function program1(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n  </ul>\n</div>\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["signup"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -181,8 +181,8 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
-
-
+  
+  
   data.buffer.push("Already registered&#63; Login");
   }
 
@@ -235,7 +235,7 @@ function program1(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n          </form>\n        </div>\n    </div>\n  </div>\n</div>\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["targets"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -248,7 +248,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["targets/create"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -257,8 +257,8 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 function program1(depth0,data) {
-
-
+  
+  
   data.buffer.push("<div id=\"goalkeeper-circle\">\n  <center id=\"title-logo\">Goalkeeper</center>\n</div>");
   }
 
@@ -289,7 +289,7 @@ function program1(depth0,data) {
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "createTarget", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push(">Go!</button>\n  </div>\n</form>\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["user"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -306,7 +306,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("</h1>\n");
   return buffer;
-
+  
 });
 
 Ember.TEMPLATES["users"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
@@ -315,7 +315,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
-
+  
   var buffer = '', stack1, helper, options;
   data.buffer.push("\n  <h2>");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "user", "", options) : helperMissing.call(depth0, "link-to", "user", "", options));
@@ -324,7 +324,7 @@ function program1(depth0,data) {
   return buffer;
   }
 function program2(depth0,data) {
-
+  
   var buffer = '', stack1;
   stack1 = helpers._triageMustache.call(depth0, "first_name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
@@ -341,5 +341,5 @@ function program2(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
   return buffer;
-
+  
 });

@@ -79,18 +79,18 @@ describe('Events API', function() {
             target_id: target_id,
             distance: 3,
             date: '4/17/2014',
-            time: {minutes: 30}
+            time: 30*60
         })
         .end(function(e, res) {
             expect(e).to.eql(null);
-            expect(res.body.runEvent).to.not.be.eql(null);
-            expect(res.body.runEvent.user_id).to.be.eql(user_id);
-            expect(res.body.runEvent.target_id).to.be.eql(target_id);
-            expect(res.body.runEvent.distance).to.be.eql(3);
-            expect(res.body.runEvent.time).to.be.eql({minutes: 30});
-            id = res.body.runEvent.id;
+            expect(res.body.event).to.not.be.eql(null);
+            expect(res.body.event.user_id).to.be.eql(user_id);
+            expect(res.body.event.target_id).to.be.eql(target_id);
+            expect(res.body.event.distance).to.be.eql(3);
+            expect(res.body.event.time).to.be.eql(30*60);
+            id = res.body.event.id;
             console.log(id);
-
+e
             done();
 
         });
@@ -100,12 +100,11 @@ describe('Events API', function() {
         superagent.get('localhost:3000/api/v1/runEvents/' + id)
         .end(function(e, res) {
             expect(e).to.eql(null);
-            console.log(res.body.runEvent.id);
             expect(res.body.runEvent).to.not.be.eql(null);
             expect(res.body.runEvent.user_id).to.be.eql(user_id);
             expect(res.body.runEvent.target_id).to.be.eql(target_id);
             expect(res.body.runEvent.distance).to.be.eql(3);
-            expect(res.body.runEvent.time).to.be.eql({minutes: 30});
+            expect(res.body.runEvent.time).to.be.eql(30*60);
 
             done();
 
