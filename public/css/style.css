@@ -116,9 +116,9 @@
   height: 100px;
   position: absolute;
   border-radius: 50%;
-  transition: -webkit-transform 1s;
-  transition: -ms-transform 1s;
-  transition: transform 1s;
+  transition: -webkit-transform 2s;
+  transition: -ms-transform 2s;
+  transition: transform 2s;
   -webkit-backface-visibility: hidden;
 }
 .radial-progress .circle .mask {
