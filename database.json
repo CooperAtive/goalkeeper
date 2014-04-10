@@ -1,0 +1,12 @@
+{
+    "dev": {
+        "driver": "pg"
+    },
+    "pg": {
+        "driver": "pg",
+        "user": "test",
+        "password": "test",
+        "host": "localhost",
+        "database": "mydb"
+    }
+}
