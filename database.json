@@ -1,12 +1,8 @@
 {
     "dev": {
-        "driver": "pg"
-    },
-    "pg": {
         "driver": "pg",
-        "user": "test",
-        "password": "test",
+        "user": "postgres",
         "host": "localhost",
-        "database": "mydb"
+        "database": "postgres"
     }
 }
