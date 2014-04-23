@@ -11,3 +11,4 @@ install:
 - bower install
 before_script:
 - grunt build:dev
+- cp config/database.yml.travis config/database.yml

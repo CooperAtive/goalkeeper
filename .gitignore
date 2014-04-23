@@ -22,3 +22,6 @@ dist
 
 # Gemnasium gem configuration file
 config/gemnasium.yml
+
+#travis db config
+config/database.yml.travis
