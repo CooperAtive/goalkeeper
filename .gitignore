@@ -24,4 +24,3 @@ dist
 config/gemnasium.yml
 
 #travis db config
-config/database.yml.travis
