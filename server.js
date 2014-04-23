@@ -3,8 +3,8 @@
 var application_root = __dirname;
 var express = require( 'express' );
 var path = require( 'path' );
-var https = require('https');
 var fs = require('fs');
+var logger = require('logger').createLogger();
 var Bookshelf = require('bookshelf');
 
 // connect to postgres db
@@ -22,33 +22,26 @@ Bookshelf.PG = Bookshelf.initialize({
 });
 
 Bookshelf.PG.knex.client.getConnection().then(function (connection) {
-        console.log('Yay, we have a connection!' + connection);
-    }).catch(function (err) {
-        console.log('Ooops, something went wrong!' + err);
+    console.log('Yay, we have a connection!' + connection);
+}).catch(function (err) {
+    console.log('Ooops, something went wrong!' + err);
 });
 
 // Create server
 var app = express();
 
-app.configure( function() {
-    // Log routing
-    app.use(express.logger('dev'));
-
-    //parses request body and populates request.body
-    app.use( express.bodyParser() );
-
-    //checks request.body for HTTP method overrides
-    app.use( express.methodOverride() );
-
-    //perform route lookup based on url and HTTP method
-    app.use( app.router );
-
-    // Serve static content from this path
-    app.use( express.static( path.join( application_root ) ) );
-
-    //show all errors in development
-    app.use( express.errorHandler( { dumpExceptions: true, showStack: true } ) );
-});
+// Log routing
+app.use(logger);
+//parses request body and populates request.body
+app.use( express.bodyParser() );
+//checks request.body for HTTP method overrides
+app.use( express.methodOverride() );
+//perform route lookup based on url and HTTP method
+app.use( app.router );
+// Serve static content from this path
+app.use( express.static( path.join( application_root ) ) );
+//show all errors in development
+app.use( express.errorHandler( { dumpExceptions: true, showStack: true } ) );
 
 //User Routes
 var users = require('./api/routes/users');
