@@ -114,7 +114,10 @@ module.exports = function(grunt) {
                     'public/js/router.js',
                     'public/js/routes/*.js',
                     'public/js/controllers/*.js',
-                    'public/js/views/*.js'
+                    'public/js/views/*.js',
+                    'public/js/components/*.js',
+                    'public/js/models/*.js',
+                    'public/js/templates.js'
                 ],
                 dest: 'dist/built.js'
             }

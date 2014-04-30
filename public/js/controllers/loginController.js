@@ -4,6 +4,7 @@ App.LoginController = Ember.ObjectController.extend({
   app: Ember.computed.alias('controllers.application'),
 
   actions: {
+      /*
     login: function() {
       var self = this;
       var email = this.get('email');
@@ -17,5 +18,6 @@ App.LoginController = Ember.ObjectController.extend({
         alert('Invalid login');
       });
     }
+    */
   }
 });

@@ -9,12 +9,17 @@
         <h4 class="panel-title">Log In</h4>
       </div>
         <div class="panel-body">
-          <form class="form-signin" role="form">
+         <form class="form-inline" {{action 'authenticate' on='submit'}}>
+            <div>Login with <a {{ action 'authenticateWithFacebook' }} class="alert-link" style="cursor: pointer;"> Facebook</a> </div>
+         </form>
+            <!--
+            <form class="form-signin" role="form">
             {{input type="email" id="email" class="form-control input-topper" placeholder="Email address" value=email}}
             {{input type="password" id="password" class="form-control input-topper" placeholder="Password" value=password}}
             <button class="btn btn-lg btn-primary btn-block" id="login-button" {{action "login"}}>Let&#39;s Go!</button>
             {{#link-to 'signup' class="signUp"}}No account&#63; Signup{{/link-to}}
           </form>
+            -->
         </div>
     </div>
   </div>

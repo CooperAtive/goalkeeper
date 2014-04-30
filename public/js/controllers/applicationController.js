@@ -1,4 +1,5 @@
 App.ApplicationController = Ember.Controller.extend({
+    /*
   userId: localStorage.user_id,
 
   logout: false,
@@ -10,5 +11,5 @@ App.ApplicationController = Ember.Controller.extend({
       this.set('logout', true);
       this.transitionToRoute('/');
     }
-  }
+  }*/
 });
