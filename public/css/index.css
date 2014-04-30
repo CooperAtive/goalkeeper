@@ -78,25 +78,26 @@ p {
 }
 
 #get-started-button {
-  width: 100px;
-  height: 40px;
+  width: 150px;
+  height: 80px;
 
   left: 50%;
-  bottom: 15%;
-  margin-left: -50px;
+  bottom: 10%;
+  margin-left: -75px;
   padding: 0px;
   position: absolute;
   z-index: 2000;
 
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(224, 224, 224, 0.7);
   border-color: white;
-  border-radius: 0;
+  border-radius: 10px;
   border-style: solid;
-  border-width: 1px;
+  border-width: 10px;
 
   color: #FFFFFF;
   font-family: 'GeosansLight';
-  font-size: 125%;
+  font-size: 150%;
+  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
   text-align: center;
   vertical-align: center;
 }
@@ -158,32 +159,8 @@ p {
   text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
 }
 
-#goal1 {
-  bottom: 1%;
-
-  text-align: left;
-  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
-}
-
-#goal2 {
-  bottom: 1%;
-
-  text-align: left;
-  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
-}
-
-#goal3 {
-  bottom: 30%;
-
-  text-align: left;
-  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
-}
-
-#goal4 {
-  bottom: 10%;
-
-  text-align: left;
-  text-shadow: 0 0 2px black,0 0 8px black,0 0 12px black,0 1px 3px #000;
+p.goal-display {
+  display: none;
 }
 
 .pic {
@@ -229,6 +206,10 @@ p {
     position: relative;
 
     font-size: 200%;
+  }
+
+  p.goal-display {
+    display: block;
   }
 
   #goal1 {
@@ -294,6 +275,7 @@ p {
   }
 
   .goal-circle {
+    display: block;
     width: 100px;
     height: 100px;
     -moz-border-radius: 50px;
