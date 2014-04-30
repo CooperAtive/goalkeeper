@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ember-templates');
     grunt.loadNpmTasks('grunt-express-server');
     //testing
-    grunt.loadNpmTasks('grunt-mocha');
+    grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-casperjs');
     //deploy
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -30,14 +30,12 @@ module.exports = function(grunt) {
             }
         },
         //=============== TESTING
-        mocha: {
+        mochaTest: {
             test: {
-                src:['test/*.js', '!test/acceptance/*_test.js'],
-                options:{
-                    slow: 500,
-                    timeout: 1000,
-                    node_env: 'test'
-                }
+                options: {
+                    reporter: 'spec'
+                },
+                src: ['test/*.js']
             }
         },
 
@@ -180,11 +178,11 @@ module.exports = function(grunt) {
         }
 
     });
-    grunt.registerTask('test', ['build:dev', 'env:dev', 'simplemocha']);
+    grunt.registerTask('test', ['build:dev', 'env:dev', 'mochaTest']);
     grunt.registerTask('test:acceptance', ['build:dev', 'express:dev', 'casperjs', 'dropUsers']);
     grunt.registerTask('build:dev', ['emberTemplates']);
     grunt.registerTask('build:prod', ['clean', 'emberTemplates', 'concat', 'uglify']);
     grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express']);
-    grunt.registerTask('travis', [ 'simplemocha']);
+    grunt.registerTask('travis', [ 'mochaTest']);
 
 };

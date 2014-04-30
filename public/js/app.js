@@ -4,7 +4,7 @@ window.App = Ember.Application.create();
 
 App.Route = Ember.Route.extend({
   beforeModel: function() {
-    if(this.controllerFor('application').get('logout') || 
+    if(this.controllerFor('application').get('logout') ||
       !this.get('router.url') ||
       this.get('router.url') === '/signup') {
       this.controllerFor('application').set('logout', false);

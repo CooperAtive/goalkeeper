@@ -1,0 +1,7 @@
+test:
+    adapter: postgresql
+    host: <%= ENV['GK_PG_HOST'] %>
+    database: <%= ENV['GK_PG_DATABASE'] %>
+    username: <%= ENV['GK_PG_USER'] %>
+    password: <%= ENV['GK_PG_PASS'] %>
+
