@@ -22,10 +22,32 @@ function program1(depth0,data) {
   
 });
 
+Ember.TEMPLATES["components/target-link"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n<div class='circle'>\n  <div class='mask full'>\n    <div class='fill'></div>\n  </div>\n  <div class='mask half'>\n    <div class='fill'></div>\n  </div>\n  <center class='goal-name'>");
+  stack1 = helpers._triageMustache.call(depth0, "target.name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</center>\n</div>\n");
+  return buffer;
+  }
+
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0],types:["ID","ID"],data:data},helper ? helper.call(depth0, "type", "target.id", options) : helperMissing.call(depth0, "link-to", "type", "target.id", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n");
+  return buffer;
+  
+});
+
 Ember.TEMPLATES["home"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
@@ -33,14 +55,27 @@ function program1(depth0,data) {
   data.buffer.push("\n      <center id=\"create-logo1\">Create</center>\n      <center id=\"create-logo2\">Goal</center>\n    ");
   }
 
+function program3(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n    ");
+  data.buffer.push(escapeExpression((helper = helpers['target-link'] || (depth0 && depth0['target-link']),options={hash:{
+    'target': ("target"),
+    'type': ("runTarget")
+  },hashTypes:{'target': "ID",'type': "STRING"},hashContexts:{'target': depth0,'type': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "target-link", options))));
+  data.buffer.push("\n  ");
+  return buffer;
+  }
+
   data.buffer.push("<div id=\"container\">\n  <div id=\"goalkeeper-circle\">\n    <center id=\"title-logo\">Goalkeeper</center>\n  </div>\n\n  <div id=\"create-circle\">\n    ");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
     'class': ("signUp")
   },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "targets.create", options) : helperMissing.call(depth0, "link-to", "targets.create", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n  </div>\n\n  <div id=\"pic-circle\" ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "goTarget", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push("></div>\n  <div id=\"line1\"></div>\n  <div id=\"line2\"></div>\n  <div id=\"line3\"></div>\n  <div id=\"line4\"></div>\n</div>\n");
+  data.buffer.push("\n  </div>\n\n  <div id=\"pic-circle\"></div>\n\n  ");
+  stack1 = helpers.each.call(depth0, "target", "in", "controller", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n</div>\n");
   return buffer;
   
 });

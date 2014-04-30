@@ -107,6 +107,7 @@
 }
 
 .goal-name {
+  color: white;
   top: 45%;
   margin-top: -0.5em;
   position: relative;
@@ -114,7 +115,7 @@
   font-weight: bolder;
 }
 
-.radial-progress {
+.target-link {
   width: 100px;
   height: 100px;
   position: absolute;
@@ -122,8 +123,8 @@
   border-radius: 50%;
 }
 
-.radial-progress .circle .mask,
-.radial-progress .circle .fill {
+.target-link .circle .mask,
+.target-link .circle .fill {
   width: 100px;
   height: 100px;
   position: absolute;
@@ -134,11 +135,11 @@
   -webkit-backface-visibility: hidden;
 }
 
-.radial-progress .circle .mask {
+.target-link .circle .mask {
   clip: rect(0px, 100px, 100px, 50px);
 }
 
-.radial-progress .circle .mask .fill {
+.target-link .circle .mask .fill {
   clip: rect(0px, 50px, 100px, 0px);
   background-color: rgba(224, 224, 224, 0.5);
 }

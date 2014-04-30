@@ -10,9 +10,9 @@
     {{/link-to}}
   </div>
 
-  <div id="pic-circle" {{action 'goTarget'}}></div>
-  <div id="line1"></div>
-  <div id="line2"></div>
-  <div id="line3"></div>
-  <div id="line4"></div>
+  <div id="pic-circle"></div>
+
+  {{#each target in controller}}
+    {{target-link target=target type='runTarget'}}
+  {{/each}}
 </div>
