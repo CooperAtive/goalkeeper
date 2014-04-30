@@ -29,15 +29,13 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 function program1(depth0,data) {
   
-  var buffer = '', stack1;
-  data.buffer.push("\n<div class='circle'>\n  <div class='mask full'>\n    <div class='fill'></div>\n  </div>\n  <div class='mask half'>\n    <div class='fill'></div>\n  </div>\n  <center class='goal-name'>");
-  stack1 = helpers._triageMustache.call(depth0, "target.name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</center>\n</div>\n");
-  return buffer;
+  
+  data.buffer.push("\n<div class='circle'>\n  <div class='mask full'>\n    <div class='fill'></div>\n  </div>\n  <div class='mask half'>\n    <div class='fill'></div>\n  </div>\n  <center class='goal-name'></center>\n</div>\n");
   }
 
-  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0],types:["ID","ID"],data:data},helper ? helper.call(depth0, "type", "target.id", options) : helperMissing.call(depth0, "link-to", "type", "target.id", options));
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
+    'title': ("target.name")
+  },hashTypes:{'title': "ID"},hashContexts:{'title': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0],types:["ID","ID"],data:data},helper ? helper.call(depth0, "type", "target.id", options) : helperMissing.call(depth0, "link-to", "type", "target.id", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
   return buffer;
@@ -182,9 +180,15 @@ function program1(depth0,data) {
 Ember.TEMPLATES["runTarget"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
+  
+  
+  data.buffer.push("\n<div id=\"goalkeeper-circle\">\n  <center id=\"title-logo\">Goalkeeper</center>\n</div>\n");
+  }
+
+function program3(depth0,data) {
   
   var buffer = '', stack1, helper, options;
   data.buffer.push("\n      <li>You ran ");
@@ -196,7 +200,9 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("<div id=\"goalkeeper-circle\">\n  <center id=\"title-logo\">Goalkeeper</center>\n</div>\n\n<h2 id=\"title-run-target\">");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "home", options) : helperMissing.call(depth0, "link-to", "home", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n\n<h2 id=\"title-run-target\">");
   stack1 = helpers._triageMustache.call(depth0, "name", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("</h2>\n\n<div class=\"container\">\n  <div class=\"jumbotron\">\n    <canvas id=\"run-canvas\" height=\"450\" width=\"600\"></canvas>\n  </div>\n\n  <h3 id=\"progress-miles\">100 of ");
@@ -205,7 +211,7 @@ function program1(depth0,data) {
   data.buffer.push(" miles completed</h3>\n\n  <div class=\"row marketing\">\n    <form class=\"form-inline\" id=\"form-run-goal\" role=\"form\">\n      <label>I ran</label>\n      <input type=\"text\" class=\"form-control\" id=\"distance-ran\" placeholder=\"#\"/>\n      <select class=\"form-control\" id=\"distance-ran-unit\">\n        <option>miles</option>\n        <option>kilometers</option>\n      </select>\n      <label>in</label>\n      <input type=\"number\" class=\"form-control\" id=\"minutes-ran\" placeholder=\"#\"/>\n      <label>minutes and</label>\n      <input type=\"number\" class=\"form-control\" id=\"seconds-ran\" placeholder=\"#\"/>\n      <label>seconds on</label>\n      <input type=\"date\" class=\"form-control\" id=\"date-picker\">\n      <button type=\"button\" class=\"btn btn-primary\" id=\"add-run-milestone-button\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "saveEvent", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push(">Add</button>\n    </form>\n  </div>\n  <h3>Progress List</h3>\n  <ul id=\"progress-list\">\n    ");
-  stack1 = helpers.each.call(depth0, "run", "in", "runEvents", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
+  stack1 = helpers.each.call(depth0, "run", "in", "runEvents", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n  </ul>\n</div>\n");
   return buffer;
