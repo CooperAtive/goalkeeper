@@ -1,6 +1,8 @@
 language: node_js
 node_js:
 - '0.10'
+addons:
+- postgresql: '9.3'
 before_install:
 - npm install -g grunt-cli
 - npm install -g bower
@@ -10,5 +12,3 @@ install:
 before_script:
 - cp config/database.yml.travis config/database.yml
 - grunt build:dev
-addons:
-- postgresql: '9.3'
