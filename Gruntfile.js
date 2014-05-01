@@ -10,6 +10,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-ember-templates');
     grunt.loadNpmTasks('grunt-express-server');
+    grunt.loadNpmTasks('grunt-browserify');
     //testing
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-casperjs');
@@ -86,6 +87,24 @@ module.exports = function(grunt) {
                 jshintrc: true
             }
         },
+        browserify: {
+            prod: {
+                src: ['public/js/*.js'],
+                dest: 'dist/browser.js',
+                options: {
+                    transform: ['debowerify', 'hbsfy', 'uglifyify'],
+                    debug: false
+                }
+            },
+            dev: {
+                src: ['public/js/app.js', 'public/js/*.js'],
+                dest: 'dist/browser.js',
+                options: {
+                    transform: ['hbsfy'],
+                    debug: true
+                }
+            }
+        },
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
@@ -110,14 +129,16 @@ module.exports = function(grunt) {
                     'bower_components/moment/moment.js',
                     'public/js/app.js',
                     'public/js/store.js',
-                    'public/js/helpers/helpers.js',
                     'public/js/router.js',
-                    'public/js/routes/*.js',
-                    'public/js/controllers/*.js',
-                    'public/js/views/*.js',
+                    'public/js/templates.js',
                     'public/js/components/*.js',
+                    'public/js/controllers/*.js',
+                    'public/js/helpers/*.js',
+                    'public/js/lib/*.js',
                     'public/js/models/*.js',
-                    'public/js/templates.js'
+                    'public/js/routes/*.js',
+                    'public/js/templates/*.js',
+                    'public/js/views/*.js',
                 ],
                 dest: 'dist/built.js'
             }

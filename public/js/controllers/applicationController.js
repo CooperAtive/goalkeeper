@@ -11,5 +11,6 @@ App.ApplicationController = Ember.Controller.extend({
       this.set('logout', true);
       this.transitionToRoute('/');
     }
-  }*/
+  }
+  */
 });

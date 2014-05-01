@@ -1,6 +1,9 @@
 'use strict';
 
-window.App = Ember.Application.create();
+window.App = Ember.Application.create({
+    LOG_TRANSITIONS: true,
+    LOG_TRANSITIONS_INTERNAL: true
+});
 
 FB.init({appId: 1429116610680315});
 
@@ -9,7 +12,8 @@ App.initializer({
     initialize: function(container, application) {
         container.register('authenticator:facebook', App.FacebookAuthenticator);
         Ember.SimpleAuth.setup(container, application, {
-            authorizerFactory: 'authorizer:facebook'
+            authorizerFactory: 'authorizer:facebook',
+            routeAfterAuthentication: '/home'
         });
     }
 });
