@@ -165,11 +165,11 @@ module.exports = function(grunt) {
         }
 
     });
-    grunt.registerTask('test', ['build:dev', 'env:dev', 'mochaTest']);
+    grunt.registerTask('test', ['build:dev', 'env:dev']);
     grunt.registerTask('test:acceptance', ['build:dev', 'express:dev', 'casper']);
     grunt.registerTask('build:dev', ['emberTemplates']);
     grunt.registerTask('build:prod', ['clean', 'emberTemplates', 'concat', 'uglify']);
     grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express']);
-    grunt.registerTask('travis', [ 'mochaTest']);
+    grunt.registerTask('travis', [ 'emberTemplates']);
 
 };
