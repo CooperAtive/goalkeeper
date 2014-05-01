@@ -105,44 +105,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-        uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-            },
-            dist: {
-                files: {
-                    'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
-                }
-            }
-        },
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: [
-                    'bower_components/jquery/dist/jquery.js',
-                    'bower_components/bootstrap/dist/js/bootstrap.js',
-                    'bower_components/handlebars/handlebars.js',
-                    'bower_components/ember/ember.js',
-                    'bower_components/ember-data/ember-data.js',
-                    'bower_components/moment/moment.js',
-                    'public/js/app.js',
-                    'public/js/store.js',
-                    'public/js/router.js',
-                    'public/js/templates.js',
-                    'public/js/components/*.js',
-                    'public/js/controllers/*.js',
-                    'public/js/helpers/*.js',
-                    'public/js/lib/*.js',
-                    'public/js/models/*.js',
-                    'public/js/routes/*.js',
-                    'public/js/templates/*.js',
-                    'public/js/views/*.js',
-                ],
-                dest: 'dist/built.js'
-            }
-        },
         clean: {
             build: {
                 src: ['dist', 'dist']
