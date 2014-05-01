@@ -29,7 +29,25 @@ App.HomeView = Ember.View.extend({
 
         angle += step;
       });
-    }
+    };
+
+    $('#pic-circle').click(function() {
+      var gap = 200;
+      $(this).animate({
+        top: '100px',
+        right: '10px',
+        left: $(window).width() - 160 + 'px',
+        bottom: $(window).height() - 130 + 'px'
+      });
+      
+      $('.target-link').each(function() {
+        $(this).animate({
+          top: gap + 'px',
+          left: '1.75%'
+        });
+        gap += 150;
+      });
+    });
 /*
     function animateGoals() {
       $('.target-link').click(function() {
