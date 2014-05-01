@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
     //testing
     grunt.loadNpmTasks('grunt-mocha-test');
-    grunt.loadNpmTasks('grunt-casperjs');
+    grunt.loadNpmTasks('grunt-casper');
     //deploy
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-forever');
@@ -39,14 +39,15 @@ module.exports = function(grunt) {
                 src: ['test/*.js']
             }
         },
-
-        casperjs: {
-            options: {
-                async: {
-                    parallel: false
+        casper: {
+            acceptance : {
+                options : {
+                    test : true
+                },
+                files : {
+                    'test/acceptance/casper-results.xml' : ['test/acceptance/*_test.js']
                 }
-            },
-            files: ['test/acceptance/*_test.js']
+            }
         },
         //=============== DEPLOY
         watch: {
@@ -165,7 +166,7 @@ module.exports = function(grunt) {
 
     });
     grunt.registerTask('test', ['build:dev', 'env:dev', 'mochaTest']);
-    grunt.registerTask('test:acceptance', ['build:dev', 'express:dev', 'casperjs', 'dropUsers']);
+    grunt.registerTask('test:acceptance', ['build:dev', 'express:dev', 'casper']);
     grunt.registerTask('build:dev', ['emberTemplates']);
     grunt.registerTask('build:prod', ['clean', 'emberTemplates', 'concat', 'uglify']);
     grunt.registerTask('server', [ 'env:dev', 'build:dev', 'express:dev', 'watch:express']);
