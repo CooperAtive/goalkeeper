@@ -6,9 +6,6 @@
   "directories": {
     "test": "test"
   },
-  "scripts": {
-    "test": "mkdir -p build && grunt travis --trace --verbose"
-  },
   "repository": {
     "type": "git",
     "url": "http://github.com/cooperative/goalkeeper"
