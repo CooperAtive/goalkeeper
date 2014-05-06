@@ -68,6 +68,7 @@ app.configure( function() {
 
     //show all errors in development
     app.use( express.errorHandler( { dumpExceptions: true, showStack: true } ) );
+
 });
 
 // MongoDB auth routes
@@ -90,7 +91,7 @@ app.delete('/api/v1/users/:id', users.deleteUser);
 //Running Target Routes
 var runTargets = require('./api/routes/runTargets');
 app.get('/api/v1/runTargets', runTargets.collection);
-app.get('/api/v1/targetLites', runTargets.targetLites);
+app.get('/api/v1/targetLites', isLoggedIn, runTargets.targetLites);
 app.get('/api/v1/runTargets/:id', runTargets.findById);
 app.post('/api/v1/runTargets', runTargets.createRunTarget);
 app.put('/api/v1/runTargets/:id', runTargets.updateRunTarget);

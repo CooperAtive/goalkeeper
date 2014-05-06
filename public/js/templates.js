@@ -229,15 +229,24 @@ function program3(depth0,data) {
 Ember.TEMPLATES["signup"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 function program1(depth0,data) {
+  
+  
+  data.buffer.push("\n        asdfg\n        ");
+  }
+
+function program3(depth0,data) {
   
   
   data.buffer.push("Already registered&#63; Login");
   }
 
-  data.buffer.push("<div class=\"container\">\n  <div id=\"goalkeeper-circle-login\">\n    <center id=\"title-login\">Goalkeeper</center>\n  </div>\n\n  <div class=\"panel-group\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h4 class=\"panel-title\">Signup</h4>\n      </div>\n        <div class=\"panel-body\">\n          <form class=\"form-signup\" role=\"form\" action=\"/signup\" method=\"post\">\n            ");
+  data.buffer.push("<div class=\"container\">\n  <div id=\"goalkeeper-circle-login\">\n    <center id=\"title-login\">Goalkeeper</center>\n  </div>\n\n  <div class=\"panel-group\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h4 class=\"panel-title\">Signup</h4>\n        ");
+  stack1 = helpers['if'].call(depth0, "message", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n      </div>\n        <div class=\"panel-body\">\n          <form class=\"form-signup\" role=\"form\" action=\"/signup\" method=\"post\">\n            ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'type': ("email"),
     'id': ("email"),
@@ -256,7 +265,7 @@ function program1(depth0,data) {
   data.buffer.push("\n            <button class=\"btn btn-lg btn-primary btn-block\" id=\"login-button\" type=\"submit\">Let&#39;s Go!</button>\n          </form>\n          ");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
     'class': ("signUp")
-  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "login", options) : helperMissing.call(depth0, "link-to", "login", options));
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "login", options) : helperMissing.call(depth0, "link-to", "login", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n        </div>\n    </div>\n  </div>\n</div>\n");
   return buffer;
