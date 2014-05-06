@@ -1,6 +1,8 @@
+<!-- need to find how to check passport authentcation using a handlebars helper
 {{#if session.isAuthenticated}}
   <button id="logout-button" {{action 'invalidateSession'}}>Logout</button>
 {{else}}
   <button id="logout-button" {{action 'authenticateSession'}}>Login</button>
 {{/if}}
+-->
 {{outlet}}

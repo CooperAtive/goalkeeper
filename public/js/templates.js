@@ -21,9 +21,10 @@ function program3(depth0,data) {
   return buffer;
   }
 
+  data.buffer.push("<!-- need to find how to check passport authentcation using a handlebars helper\n");
   stack1 = helpers['if'].call(depth0, "session.isAuthenticated", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n");
+  data.buffer.push("\n-->\n");
   stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
@@ -103,7 +104,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 Ember.TEMPLATES["login"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
@@ -111,36 +112,28 @@ function program1(depth0,data) {
   data.buffer.push("No account&#63; Signup");
   }
 
-  data.buffer.push("<div class=\"container\">\n  <div id=\"goalkeeper-circle-login\">\n    <center id=\"title-login\">Goalkeeper</center>\n  </div>\n\n  <div class=\"panel-group\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h4 class=\"panel-title\">Log In</h4>\n      </div>\n        <div class=\"panel-body\">\n         <form class=\"form-inline\" ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "authenticate", {hash:{
-    'on': ("submit")
-  },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(">\n            <div>Login with <a ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "authenticateWithFacebook", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(" class=\"alert-link\" style=\"cursor: pointer;\"> Facebook</a> </div>\n         </form>\n            <!--\n            <form class=\"form-signin\" role=\"form\">\n            ");
+  data.buffer.push("<div class=\"container\">\n  <div id=\"goalkeeper-circle-login\">\n    <center id=\"title-login\">Goalkeeper</center>\n  </div>\n\n  <div class=\"panel-group\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h4 class=\"panel-title\">Log In</h4>\n      </div>\n        <div class=\"panel-body\">\n         <form class=\"form-inline\" action=\"/login\" method=\"post\">\n            ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'type': ("email"),
     'id': ("email"),
     'class': ("form-control input-topper"),
     'placeholder': ("Email address"),
-    'value': ("email")
-  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'value': "ID"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+    'name': ("email")
+  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'name': "STRING"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
   data.buffer.push("\n            ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'type': ("password"),
     'id': ("password"),
     'class': ("form-control input-topper"),
     'placeholder': ("Password"),
-    'value': ("password")
-  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'value': "ID"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n            <button class=\"btn btn-lg btn-primary btn-block\" id=\"login-button\" ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "login", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(">Let&#39;s Go!</button>\n            ");
+    'name': ("password")
+  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'name': "STRING"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n            <button class=\"btn btn-lg btn-primary btn-block\" id=\"login-button\" type=\"submit\">Let&#39;s Go!</button>\n          </form>\n          ");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
     'class': ("signUp")
   },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "signup", options) : helperMissing.call(depth0, "link-to", "signup", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n          </form>\n            -->\n        </div>\n    </div>\n  </div>\n</div>\n");
+  data.buffer.push("\n        </div>\n    </div>\n  </div>\n</div>\n");
   return buffer;
   
 });
@@ -244,54 +237,28 @@ function program1(depth0,data) {
   data.buffer.push("Already registered&#63; Login");
   }
 
-  data.buffer.push("<div class=\"container\">\n  <div id=\"goalkeeper-circle-login\">\n    <center id=\"title-login\">Goalkeeper</center>\n  </div>\n\n  <div class=\"panel-group\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h4 class=\"panel-title\">Signup</h4>\n      </div>\n        <div class=\"panel-body\">\n          <form class=\"form-signup\" role=\"form\">\n            ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("text"),
-    'id': ("first_name"),
-    'class': ("form-control input-topper"),
-    'placeholder': ("First name"),
-    'value': ("first_name")
-  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'value': "ID"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n            ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("text"),
-    'id': ("last_name"),
-    'class': ("form-control input-topper"),
-    'placeholder': ("Last name"),
-    'value': ("last_name")
-  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'value': "ID"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n            ");
+  data.buffer.push("<div class=\"container\">\n  <div id=\"goalkeeper-circle-login\">\n    <center id=\"title-login\">Goalkeeper</center>\n  </div>\n\n  <div class=\"panel-group\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h4 class=\"panel-title\">Signup</h4>\n      </div>\n        <div class=\"panel-body\">\n          <form class=\"form-signup\" role=\"form\" action=\"/signup\" method=\"post\">\n            ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'type': ("email"),
     'id': ("email"),
     'class': ("form-control input-topper"),
     'placeholder': ("Email address"),
-    'value': ("email")
-  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'value': "ID"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+    'name': ("email")
+  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'name': "STRING"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
   data.buffer.push("\n            ");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'type': ("password"),
     'id': ("password"),
     'class': ("form-control input-topper"),
     'placeholder': ("Password"),
-    'value': ("password")
-  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'value': "ID"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n            ");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'type': ("password"),
-    'id': ("password2"),
-    'class': ("form-control input-topper"),
-    'placeholder': ("Re-type Password"),
-    'value': ("password2")
-  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'value': "ID"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n            <button class=\"btn btn-lg btn-primary btn-block\" id=\"login-button\" ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "signup", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(">Let&#39;s Go!</button>\n            ");
+    'name': ("password")
+  },hashTypes:{'type': "STRING",'id': "STRING",'class': "STRING",'placeholder': "STRING",'name': "STRING"},hashContexts:{'type': depth0,'id': depth0,'class': depth0,'placeholder': depth0,'name': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n            <button class=\"btn btn-lg btn-primary btn-block\" id=\"login-button\" type=\"submit\">Let&#39;s Go!</button>\n          </form>\n          ");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
     'class': ("signUp")
   },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "login", options) : helperMissing.call(depth0, "link-to", "login", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n          </form>\n        </div>\n    </div>\n  </div>\n</div>\n");
+  data.buffer.push("\n        </div>\n    </div>\n  </div>\n</div>\n");
   return buffer;
   
 });

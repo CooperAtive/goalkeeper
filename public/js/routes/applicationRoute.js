@@ -1,1 +1,3 @@
-App.ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteMixin, {});
+'use strict';
+
+App.ApplicationRoute = Ember.Route.extend({});

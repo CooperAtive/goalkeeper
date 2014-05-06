@@ -10,6 +10,7 @@ exports.login = function(request, response) {
     if(error) {
       response.send(500, {'error': error});
     } else {
+        //.attributes = psql convention
       user = user.attributes;
       if(request.body.password !== user.password) {
         response.send(500, {'error': 'Password does not match'});
